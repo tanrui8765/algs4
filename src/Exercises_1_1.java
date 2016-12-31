@@ -518,8 +518,41 @@ public class Exercises_1_1
 		}
 	}
 
+	public static void exercise_1_1_26(String[] args)
+	{
+		int a = StdIn.readInt();
+		int b = StdIn.readInt();
+		int c = StdIn.readInt();
+		int t = 0;
+
+		if(a>b){ t=a; a=b; b=t; }
+		StdOut.println("a " +a+", b " + b+ ", c "+c);
+		if(a>c){ t=a; a=c; c=t; }
+		StdOut.println("a " +a+", b " + b+ ", c "+c);
+		if(b>c){ t=b; b=c; c=t; }
+
+		StdOut.println("a " +a+", b " + b+ ", c "+c);
+	}
+
+	public static double binomial(int N, int k, double p)
+	{
+		if ((N == 0) && (k == 0)) return 1.0;
+		if ((N < 0) || (k < 0)) return 0.0;
+
+		StdOut.println("N: " + N + ", k: " + k + ", p: " + p);
+		return (1 - p) * binomial(N - 1, k, p) + p * binomial(N - 1, k - 1, p);
+	}
+
+	public static void exercise_1_1_27(String[] args)
+	{
+		double p = binomial(100, 50, 0.25);
+
+		StdOut.println("final p is " + p);
+	}
+
+
 	public static void main(String[] args)
 	{
-		exercise_1_1_24(args);
+		exercise_1_1_27(args);
 	}
 }
