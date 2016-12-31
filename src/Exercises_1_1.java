@@ -4,6 +4,7 @@
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Counter;
 import org.omg.CORBA.INTERNAL;
 
 import java.util.Arrays;
@@ -539,15 +540,55 @@ public class Exercises_1_1
 		if ((N == 0) && (k == 0)) return 1.0;
 		if ((N < 0) || (k < 0)) return 0.0;
 
-		StdOut.println("N: " + N + ", k: " + k + ", p: " + p);
 		return (1 - p) * binomial(N - 1, k, p) + p * binomial(N - 1, k - 1, p);
+	}
+
+	// method from aistrate's GitHub "AlgorithmSedgewick" Repo.
+	public static double binomial2(int N, int k, double p, Counter c)
+	{
+		double [][] v = new double[N+1][k+1];
+		for(int i=0;i<=N;i++)
+		{
+			for(int j=0;j<=k;j++)
+			{
+				v[i][j] = -1;
+			}
+		}
+		return binomial2(v,N,k,p,c);
+	}
+
+	public static double binomial2(double[][] v, int N, int k, double p, Counter c)
+	{
+		if((N==0)&&(k==0)) return 1.0;
+		if((N<0)||(k<0)) return 0.0;
+
+		if(v[N][k] == -1)
+		{
+			c.increment();
+			v[N][k] = (1.0 - p) * binomial2(v, N - 1, k, p, c) + p * binomial2(v, N - 1, k - 1, p, c);
+		}
+		return v[N][k];
 	}
 
 	public static void exercise_1_1_27(String[] args)
 	{
-		double p = binomial(100, 50, 0.25);
+		// Read the Link below for the explanation of binomial distribution
+		// http://blog.csdn.net/q932104843/article/details/51921756
+		// http://www.cnblogs.com/TonyNeal/p/zhsdtgs.html
+		// http://blog.csdn.net/zjq2008wd/article/details/23103411
 
-		StdOut.println("final p is " + p);
+		int N = Integer.parseInt(args[0]);
+		int k = Integer.parseInt(args[1]);
+		double p = Double.parseDouble(args[2]);
+
+		Counter c = new Counter("calls");
+
+		double prob = binomial2(N,k,p,c);
+
+//		double prob = binomial(N, k, p);
+
+		StdOut.println(prob);
+		StdOut.println(c);
 	}
 
 
