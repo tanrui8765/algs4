@@ -591,9 +591,62 @@ public class Exercises_1_1
 		StdOut.println(c);
 	}
 
+	public static void exercise_1_1_28(String[] args)
+	{
+		// Remove duplicate keys after sort
+		In in = new In(args[0]);
+		int[] whitelist = in.readAllInts();
+		Arrays.sort(whitelist);
+
+		StdOut.printf("raw: ");
+		for(int i=0;i<whitelist.length;i++)
+		{
+			StdOut.printf("%d, ", whitelist[i]);
+		}
+		StdOut.printf("\n");
+
+		// sign the same pair of data
+		int[] whitelist_rep = whitelist;
+		int cnt = 0;
+		for(int i=1;i<whitelist_rep.length;i++)
+		{
+			if(whitelist_rep[i] == whitelist_rep[i-1])
+			{
+				whitelist_rep[i-1] = -1;
+				cnt++;
+			}
+		}
+
+		StdOut.printf("sgn: ");
+		for(int i=0;i<whitelist_rep.length;i++)
+		{
+			StdOut.printf("%d, ", whitelist_rep[i]);
+		}
+		StdOut.printf("\n");
+
+		int[] whitelist_new = new int[whitelist_rep.length - cnt];
+		for(int i=0,j=0;i<whitelist_rep.length;i++,j++)
+		{
+			if (whitelist_rep[i] != -1)
+			{
+				whitelist_new[j] = whitelist_rep[i];
+			}
+			else
+			{
+				j--;
+			}
+		}
+
+		StdOut.printf("new: ");
+		for(int i=0;i<whitelist_new.length;i++)
+		{
+			StdOut.printf("%d, ", whitelist_new[i]);
+		}
+		StdOut.printf("\n");
+	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_1_27(args);
+		exercise_1_1_28(args);
 	}
 }
