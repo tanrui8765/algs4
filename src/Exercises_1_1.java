@@ -1,10 +1,7 @@
 /**
  * Created by the_real_Rui on 25/12/2016.
  */
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Counter;
+import edu.princeton.cs.algs4.*;
 import org.omg.CORBA.INTERNAL;
 
 import java.util.Arrays;
@@ -433,13 +430,13 @@ public class Exercises_1_1
 	public static void exercise_1_1_21(String[] args)
 	{
 		In in = new In(args[0]);
-		while(in.hasNextLine())
+		while (in.hasNextLine())
 		{
 			String name = in.readString();
 			int score = in.readInt();
 			int assist = in.readInt();
 
-			StdOut.printf("%8s | %8d | %8d | %8.3f\n", name, score, assist, (score*1.0)/assist);
+			StdOut.printf("%8s | %8d | %8d | %8.3f\n", name, score, assist, (score * 1.0) / assist);
 		}
 	}
 
@@ -465,7 +462,7 @@ public class Exercises_1_1
 
 	public static int rank(int key, int[] a, int depth)
 	{
-		return rank(key,a,0,a.length-1,depth);
+		return rank(key, a, 0, a.length - 1, depth);
 	}
 
 	public static void exercise_1_1_22(String[] args)
@@ -479,7 +476,7 @@ public class Exercises_1_1
 		if (location < 0)
 			StdOut.println("Key not found!");
 		else
-			StdOut.println("Key's location = " + (location+1));
+			StdOut.println("Key's location = " + (location + 1));
 	}
 
 	public static void exercise_1_1_23(String[] args)
@@ -490,27 +487,27 @@ public class Exercises_1_1
 		String s = args[3];
 		Arrays.sort(whitelist);
 
-		while(!in2.isEmpty())
+		while (!in2.isEmpty())
 		{
 			int key = in2.readInt();
 			int rlt = rank(key, whitelist, 0);
-			if((s.equals("+")) && (rlt == -1))
+			if ((s.equals("+")) && (rlt == -1))
 				StdOut.println(key);
-			if((s.equals("-")) && (rlt > -1))
+			if ((s.equals("-")) && (rlt > -1))
 				StdOut.println(key);
 		}
 	}
 
 	public static int gcd(int p, int q)
 	{
-		StdOut.println("p: " + p + ", q: " + q);
-		if(q == 0) return p;
-		return gcd(q, (p%q));
+//		StdOut.println("p: " + p + ", q: " + q);
+		if (q == 0) return p;
+		return gcd(q, (p % q));
 	}
 
 	public static void exercise_1_1_24(String[] args)
 	{
-		while(StdIn.hasNextLine())
+		while (StdIn.hasNextLine())
 		{
 			int x = StdIn.readInt();
 			int y = StdIn.readInt();
@@ -526,13 +523,28 @@ public class Exercises_1_1
 		int c = StdIn.readInt();
 		int t = 0;
 
-		if(a>b){ t=a; a=b; b=t; }
-		StdOut.println("a " +a+", b " + b+ ", c "+c);
-		if(a>c){ t=a; a=c; c=t; }
-		StdOut.println("a " +a+", b " + b+ ", c "+c);
-		if(b>c){ t=b; b=c; c=t; }
+		if (a > b)
+		{
+			t = a;
+			a = b;
+			b = t;
+		}
+		StdOut.println("a " + a + ", b " + b + ", c " + c);
+		if (a > c)
+		{
+			t = a;
+			a = c;
+			c = t;
+		}
+		StdOut.println("a " + a + ", b " + b + ", c " + c);
+		if (b > c)
+		{
+			t = b;
+			b = c;
+			c = t;
+		}
 
-		StdOut.println("a " +a+", b " + b+ ", c "+c);
+		StdOut.println("a " + a + ", b " + b + ", c " + c);
 	}
 
 	public static double binomial(int N, int k, double p)
@@ -546,23 +558,23 @@ public class Exercises_1_1
 	// method from aistrate's GitHub "AlgorithmSedgewick" Repo.
 	public static double binomial2(int N, int k, double p, Counter c)
 	{
-		double [][] v = new double[N+1][k+1];
-		for(int i=0;i<=N;i++)
+		double[][] v = new double[N + 1][k + 1];
+		for (int i = 0; i <= N; i++)
 		{
-			for(int j=0;j<=k;j++)
+			for (int j = 0; j <= k; j++)
 			{
 				v[i][j] = -1;
 			}
 		}
-		return binomial2(v,N,k,p,c);
+		return binomial2(v, N, k, p, c);
 	}
 
 	public static double binomial2(double[][] v, int N, int k, double p, Counter c)
 	{
-		if((N==0)&&(k==0)) return 1.0;
-		if((N<0)||(k<0)) return 0.0;
+		if ((N == 0) && (k == 0)) return 1.0;
+		if ((N < 0) || (k < 0)) return 0.0;
 
-		if(v[N][k] == -1)
+		if (v[N][k] == -1)
 		{
 			c.increment();
 			v[N][k] = (1.0 - p) * binomial2(v, N - 1, k, p, c) + p * binomial2(v, N - 1, k - 1, p, c);
@@ -583,7 +595,7 @@ public class Exercises_1_1
 
 		Counter c = new Counter("calls");
 
-		double prob = binomial2(N,k,p,c);
+		double prob = binomial2(N, k, p, c);
 
 //		double prob = binomial(N, k, p);
 
@@ -599,7 +611,7 @@ public class Exercises_1_1
 		Arrays.sort(whitelist);
 
 		StdOut.printf("raw: ");
-		for(int i=0;i<whitelist.length;i++)
+		for (int i = 0; i < whitelist.length; i++)
 		{
 			StdOut.printf("%d, ", whitelist[i]);
 		}
@@ -608,45 +620,226 @@ public class Exercises_1_1
 		// sign the same pair of data
 		int[] whitelist_rep = whitelist;
 		int cnt = 0;
-		for(int i=1;i<whitelist_rep.length;i++)
+		for (int i = 1; i < whitelist_rep.length; i++)
 		{
-			if(whitelist_rep[i] == whitelist_rep[i-1])
+			if (whitelist_rep[i] == whitelist_rep[i - 1])
 			{
-				whitelist_rep[i-1] = -1;
+				whitelist_rep[i - 1] = -1;
 				cnt++;
 			}
 		}
 
 		StdOut.printf("sgn: ");
-		for(int i=0;i<whitelist_rep.length;i++)
+		for (int i = 0; i < whitelist_rep.length; i++)
 		{
 			StdOut.printf("%d, ", whitelist_rep[i]);
 		}
 		StdOut.printf("\n");
 
 		int[] whitelist_new = new int[whitelist_rep.length - cnt];
-		for(int i=0,j=0;i<whitelist_rep.length;i++,j++)
+		for (int i = 0, j = 0; i < whitelist_rep.length; i++, j++)
 		{
 			if (whitelist_rep[i] != -1)
 			{
 				whitelist_new[j] = whitelist_rep[i];
-			}
-			else
+			} else
 			{
 				j--;
 			}
 		}
 
 		StdOut.printf("new: ");
-		for(int i=0;i<whitelist_new.length;i++)
+		for (int i = 0; i < whitelist_new.length; i++)
 		{
 			StdOut.printf("%d, ", whitelist_new[i]);
 		}
 		StdOut.printf("\n");
 	}
 
+	public static int rank_rec(int key, int lo, int hi, int[] a)
+	{
+		int ret_val=0;
+		if (hi < lo)
+		{
+			ret_val = lo;
+		}
+		else
+		{
+			int mid = (lo + hi) / 2;
+			if (a[mid] > key)
+				ret_val = rank_rec(key, lo, mid - 1, a);
+			else if (a[mid] < key)
+				ret_val=rank_rec(key, mid + 1, hi, a);
+			else
+				ret_val = mid;
+		}
+		return ret_val;
+	}
+
+	public static int rank(int key, int[] a)
+	{
+		int lo=0;
+		int hi=a.length-1;
+		int pos=0;
+		pos = rank_rec(key, lo, hi, a);
+
+		int i=0;
+		for(i=0;i<a.length;i++)
+		{
+			if(a[i]==a[pos])
+			{
+				break;
+			}
+		}
+
+		return i;
+	}
+
+	public static int count(int key, int[] a)
+	{
+		int cnt=0;
+		for(int i=0;i<a.length;i++)
+		{
+			if (a[i] == key)
+				cnt++;
+		}
+		return cnt;
+	}
+
+	public static void exercise_1_1_29(String[] args)
+	{
+		In in = new In(args[0]);
+		int[] whitelist = in.readAllInts();
+		Arrays.sort(whitelist);
+
+		int key = Integer.parseInt(args[1]);
+
+		int i = rank(key,whitelist);
+		int j = count(key,whitelist);
+
+		StdOut.println("rank: " + i + ", count: "+j);
+	}
+
+	public static void exercise_1_1_30(String[] args)
+	{
+		int i = Integer.parseInt(args[0]);
+		int j = Integer.parseInt(args[1]);
+
+		boolean[][] a = new boolean[i][j];
+
+		for(int m=0;m<i;m++)
+		{
+			for(int n=0;n<j;n++)
+			{
+				if(gcd(m,n)>1)
+				{
+					a[m][n] = false;
+				}
+				else
+				{
+					a[m][n] = true;
+				}
+
+				StdOut.printf("%5s ",a[m][n]);
+			}
+			StdOut.printf("\n");
+		}
+	}
+
+	public static boolean rel_prime(int i, int j)
+	{
+		if(i==0 || j==0)
+			return false;
+
+		if(i>j)
+		{
+			i=i^j;
+			j=j^i;
+			i=i^j;
+		}
+		for(int k=2;k<=i;k++)
+		{
+			// i and j can be divided by k, then i and j are not relatively prime.
+			if(j%k==0 && i%k==0)
+				return false;
+		}
+		return true;
+	}
+
+	public static void exercise_1_1_30_2(String[] args)
+	{
+		int i = Integer.parseInt(args[0]);
+		int j = Integer.parseInt(args[1]);
+		boolean[][] a= new boolean[i][j];
+
+		for(int m =0;m<i;m++)
+		{
+			for(int n=0;n<j;n++)
+			{
+				a[m][n] = rel_prime(m,n);
+			}
+		}
+
+		for(int m=0;m<a.length;m++)
+		{
+			for(int n=0;n<a[m].length;n++)
+			{
+				System.out.print(a[m][n]+" ");
+			}
+			System.out.println();
+		}
+	}
+
+	// Referred from aistrate's GitHub Repos.
+	public static void drawRandConn(int N, double p)
+	{
+		StdDraw.setCanvasSize(512,512);
+		StdDraw.setScale(-2.0,2.0);
+		StdDraw.setPenRadius(.015);
+
+		double[][] d = new double[N][2];
+		for(int i=0; i<N; i++)
+		{
+			// this is polar coordinate
+			d[i][0] = Math.cos(2 * Math.PI * i / N);
+			d[i][1] = Math.sin(2 * Math.PI * i / N);
+			StdDraw.point(d[i][0], d[i][1]);
+		}
+
+		StdDraw.setPenRadius();
+
+		for(int i=0;i<N-1;i++)
+		{
+			for(int j=i+1;j<N;j++)
+			{
+				if(StdRandom.bernoulli(p))
+					StdDraw.line(d[i][0],d[i][1],d[j][0],d[j][1]);
+			}
+		}
+	}
+
+	public static void exercise_1_1_31(String[] args)
+	{
+		int N = Integer.parseInt(args[0]);
+		double p = Double.parseDouble(args[1]);
+
+		p = Math.max(0,Math.min(1,p));
+
+		drawRandConn(N,p);
+	}
+//
+//	public static void exercise_1_1_32(String[] args)
+//	{
+//		int N = Integer.parseInt(args[0]);
+//		double l = Double.parseDouble(args[1]);
+//		double r = Double.parseDouble(args[2]);
+//
+//		In in = new In(args[3]);
+//		double[] values = in.readAllDoubles();
+//	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_1_28(args);
+		exercise_1_1_31(args);
 	}
 }
