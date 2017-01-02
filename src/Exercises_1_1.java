@@ -1,6 +1,7 @@
 /**
  * Created by the_real_Rui on 25/12/2016.
  */
+
 import edu.princeton.cs.algs4.*;
 import org.omg.CORBA.INTERNAL;
 
@@ -55,7 +56,8 @@ public class Exercises_1_1
 		if (args.length < INPUT_NUM)
 		{
 			StdOut.println("Not enough inputs!");
-		} else
+		}
+		else
 		{
 			int arg0 = Integer.parseInt(args[0]);
 			int arg1 = Integer.parseInt(args[1]);
@@ -83,7 +85,8 @@ public class Exercises_1_1
 		if (args.length < INPUT_NUM)
 		{
 			StdOut.println("not enough inputs.");
-		} else
+		}
+		else
 		{
 			double x = Double.parseDouble(args[0]);
 			double y = Double.parseDouble(args[1]);
@@ -201,16 +204,19 @@ public class Exercises_1_1
 					if (j > 0)
 					{
 						StdOut.printf("%d ", j);
-					} else
+					}
+					else
 					{
 						StdOut.printf("\\ ");
 					}
-				} else
+				}
+				else
 				{
 					if (j == 0)
 					{
 						StdOut.printf("%d ", i);
-					} else
+					}
+					else
 					{
 						if (array_2d[i - 1][j - 1] == false)
 							StdOut.printf("_ ");
@@ -415,7 +421,8 @@ public class Exercises_1_1
 		{
 			double rlt = Math.log10(N) + factorialln(N - 1);
 			return rlt;
-		} else
+		}
+		else
 			return 0;
 	}
 
@@ -642,7 +649,8 @@ public class Exercises_1_1
 			if (whitelist_rep[i] != -1)
 			{
 				whitelist_new[j] = whitelist_rep[i];
-			} else
+			}
+			else
 			{
 				j--;
 			}
@@ -658,7 +666,7 @@ public class Exercises_1_1
 
 	public static int rank_rec(int key, int lo, int hi, int[] a)
 	{
-		int ret_val=0;
+		int ret_val = 0;
 		if (hi < lo)
 		{
 			ret_val = lo;
@@ -669,7 +677,7 @@ public class Exercises_1_1
 			if (a[mid] > key)
 				ret_val = rank_rec(key, lo, mid - 1, a);
 			else if (a[mid] < key)
-				ret_val=rank_rec(key, mid + 1, hi, a);
+				ret_val = rank_rec(key, mid + 1, hi, a);
 			else
 				ret_val = mid;
 		}
@@ -678,15 +686,15 @@ public class Exercises_1_1
 
 	public static int rank(int key, int[] a)
 	{
-		int lo=0;
-		int hi=a.length-1;
-		int pos=0;
+		int lo = 0;
+		int hi = a.length - 1;
+		int pos = 0;
 		pos = rank_rec(key, lo, hi, a);
 
-		int i=0;
-		for(i=0;i<a.length;i++)
+		int i = 0;
+		for (i = 0; i < a.length; i++)
 		{
-			if(a[i]==a[pos])
+			if (a[i] == a[pos])
 			{
 				break;
 			}
@@ -697,8 +705,8 @@ public class Exercises_1_1
 
 	public static int count(int key, int[] a)
 	{
-		int cnt=0;
-		for(int i=0;i<a.length;i++)
+		int cnt = 0;
+		for (int i = 0; i < a.length; i++)
 		{
 			if (a[i] == key)
 				cnt++;
@@ -714,10 +722,10 @@ public class Exercises_1_1
 
 		int key = Integer.parseInt(args[1]);
 
-		int i = rank(key,whitelist);
-		int j = count(key,whitelist);
+		int i = rank(key, whitelist);
+		int j = count(key, whitelist);
 
-		StdOut.println("rank: " + i + ", count: "+j);
+		StdOut.println("rank: " + i + ", count: " + j);
 	}
 
 	public static void exercise_1_1_30(String[] args)
@@ -727,11 +735,11 @@ public class Exercises_1_1
 
 		boolean[][] a = new boolean[i][j];
 
-		for(int m=0;m<i;m++)
+		for (int m = 0; m < i; m++)
 		{
-			for(int n=0;n<j;n++)
+			for (int n = 0; n < j; n++)
 			{
-				if(gcd(m,n)>1)
+				if (gcd(m, n) > 1)
 				{
 					a[m][n] = false;
 				}
@@ -740,7 +748,7 @@ public class Exercises_1_1
 					a[m][n] = true;
 				}
 
-				StdOut.printf("%5s ",a[m][n]);
+				StdOut.printf("%5s ", a[m][n]);
 			}
 			StdOut.printf("\n");
 		}
@@ -748,19 +756,19 @@ public class Exercises_1_1
 
 	public static boolean rel_prime(int i, int j)
 	{
-		if(i==0 || j==0)
+		if (i == 0 || j == 0)
 			return false;
 
-		if(i>j)
+		if (i > j)
 		{
-			i=i^j;
-			j=j^i;
-			i=i^j;
+			i = i ^ j;
+			j = j ^ i;
+			i = i ^ j;
 		}
-		for(int k=2;k<=i;k++)
+		for (int k = 2; k <= i; k++)
 		{
 			// i and j can be divided by k, then i and j are not relatively prime.
-			if(j%k==0 && i%k==0)
+			if (j % k == 0 && i % k == 0)
 				return false;
 		}
 		return true;
@@ -770,21 +778,21 @@ public class Exercises_1_1
 	{
 		int i = Integer.parseInt(args[0]);
 		int j = Integer.parseInt(args[1]);
-		boolean[][] a= new boolean[i][j];
+		boolean[][] a = new boolean[i][j];
 
-		for(int m =0;m<i;m++)
+		for (int m = 0; m < i; m++)
 		{
-			for(int n=0;n<j;n++)
+			for (int n = 0; n < j; n++)
 			{
-				a[m][n] = rel_prime(m,n);
+				a[m][n] = rel_prime(m, n);
 			}
 		}
 
-		for(int m=0;m<a.length;m++)
+		for (int m = 0; m < a.length; m++)
 		{
-			for(int n=0;n<a[m].length;n++)
+			for (int n = 0; n < a[m].length; n++)
 			{
-				System.out.print(a[m][n]+" ");
+				System.out.print(a[m][n] + " ");
 			}
 			System.out.println();
 		}
@@ -793,12 +801,12 @@ public class Exercises_1_1
 	// Referred from aistrate's GitHub Repos.
 	public static void drawRandConn(int N, double p)
 	{
-		StdDraw.setCanvasSize(512,512);
-		StdDraw.setScale(-2.0,2.0);
+		StdDraw.setCanvasSize(512, 512);
+		StdDraw.setScale(-2.0, 2.0);
 		StdDraw.setPenRadius(.015);
 
 		double[][] d = new double[N][2];
-		for(int i=0; i<N; i++)
+		for (int i = 0; i < N; i++)
 		{
 			// this is polar coordinate
 			d[i][0] = Math.cos(2 * Math.PI * i / N);
@@ -808,12 +816,12 @@ public class Exercises_1_1
 
 		StdDraw.setPenRadius();
 
-		for(int i=0;i<N-1;i++)
+		for (int i = 0; i < N - 1; i++)
 		{
-			for(int j=i+1;j<N;j++)
+			for (int j = i + 1; j < N; j++)
 			{
-				if(StdRandom.bernoulli(p))
-					StdDraw.line(d[i][0],d[i][1],d[j][0],d[j][1]);
+				if (StdRandom.bernoulli(p))
+					StdDraw.line(d[i][0], d[i][1], d[j][0], d[j][1]);
 			}
 		}
 	}
@@ -823,23 +831,75 @@ public class Exercises_1_1
 		int N = Integer.parseInt(args[0]);
 		double p = Double.parseDouble(args[1]);
 
-		p = Math.max(0,Math.min(1,p));
+		p = Math.max(0, Math.min(1, p));
 
-		drawRandConn(N,p);
+		drawRandConn(N, p);
 	}
-//
-//	public static void exercise_1_1_32(String[] args)
-//	{
-//		int N = Integer.parseInt(args[0]);
-//		double l = Double.parseDouble(args[1]);
-//		double r = Double.parseDouble(args[2]);
-//
-//		In in = new In(args[3]);
-//		double[] values = in.readAllDoubles();
-//	}
+
+	public static int get_interval(double in, int n, double l, double r)
+	{
+		if ((in <= l) || (in >= r))
+			return -1;
+		else
+			return (int) ((in - l) * n / (r - l));
+	}
+
+	public static void histogram(double[] in, int n, double l, double r)
+	{
+		if (l > r)
+		{
+			double tmp;
+			tmp = l;
+			l = r;
+			r = tmp;
+		}
+		else if (l == r)
+		{
+			return;
+		}
+
+		double w = (r - l) / n;
+		int[] count = new int[n];
+
+		for (int i = 0; i < in.length; i++)
+		{
+			int k = get_interval(in[i], n, l, r);
+			if (k >= 0)
+				count[k]++;
+		}
+
+		int count_max = StdStats.max(count);
+
+		// following part is from aistrate's GitHub repos.
+		StdDraw.setCanvasSize(512, 256);
+		StdDraw.setXscale(l, r);
+		StdDraw.setYscale(0, count_max * 1.1);
+
+		for (int i = 0; i < n; i++)
+		{
+			// Note: the rectangle is draw based on the center point.
+			double x = l + (i + 0.5) * w;
+			double y = count[i] / 2.0;
+			double rw = 0.5 * w;
+			double rh = count[i] / 2.0;
+			StdDraw.filledRectangle(x, y, rw, rh);
+		}
+	}
+
+	public static void exercise_1_1_32(String[] args)
+	{
+		int N = Integer.parseInt(args[0]);
+		double l = Double.parseDouble(args[1]);
+		double r = Double.parseDouble(args[2]);
+
+		In in = new In(args[3]);
+		double[] values = in.readAllDoubles();
+
+		histogram(values, N, l, r);
+	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_1_31(args);
+		exercise_1_1_32(args);
 	}
 }
