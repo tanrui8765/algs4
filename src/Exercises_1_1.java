@@ -898,6 +898,125 @@ public class Exercises_1_1
 		histogram(values, N, l, r);
 	}
 
+	// exercise 1.1.33 is required to develop a Matrix Class with several methods
+	// let's just implement the methods below and test them with exercise_1_1_33()
+
+	// Some references:
+	// http://www.cnblogs.com/DreamUp/archive/2010/07/27/1786225.html
+	public static double dot(double[] x, double[] y)    // vector dot product
+	{
+		double dot_prod = 0;
+		if(x.length == y.length)
+		{
+			int len = x.length;
+
+			for(int i=0;i<len;i++)
+			{
+				dot_prod += x[i]*y[i];
+			}
+		}
+		return dot_prod;
+	}
+
+	public static double[][] mult(double[][] a, double[][] b)   // matrix-matrix product
+	{
+		int a_row = a.length;
+		int a_col = a[0].length;
+		int b_row = b.length;
+		int b_col = b[0].length;
+
+		if (a_col == b_row)
+		{
+			double[][] mm_prod = new double[a_row][b_col];
+
+			for (int i = 0; i < a_row; i++)
+			{
+				for (int j = 0; j < b_col; j++)
+				{
+					for (int k = 0; k < a_col; k++)
+					{
+						mm_prod[i][j] += a[i][k] + b[k][j];
+					}
+				}
+			}
+			return mm_prod;
+		}
+		else
+			return null;
+	}
+
+	public static double[] mult(double[][] a, double[] x)   // matrix-vector product
+	{
+		int a_row = a.length;
+		int a_col = a[0].length;
+		int x_row = x.length;
+		int x_col = 1;
+
+		if(a_col == x_row)
+		{
+			double[] mv_prod = new double[a_row];
+
+			for (int i = 0; i < a_row; i++)
+			{
+				for (int k = 0; k < a_col; k++)
+				{
+					mv_prod[i] += a[i][k] + x[k];
+				}
+			}
+			return mv_prod;
+		}
+		else
+			return null;
+	}
+
+	public static double[] mult(double[] y, double[][] b)   // vector-matrix product
+	{
+		int y_row = 1;
+		int y_col = y.length;
+		int b_row = b.length;
+		int b_col = b[0].length;
+
+		if (y_col == b_row)
+		{
+			double[] vm_prod = new double[b_col];
+
+			for (int j = 0; j < b_col; j++)
+			{
+				for (int k = 0; k < y_col; k++)
+				{
+					vm_prod[j] += y[k] + b[k][j];
+				}
+			}
+			return vm_prod;
+		}
+		else
+			return null;
+	}
+
+
+	public static double[][] transpose(double[][] a)   // transpose
+	{
+		int a_row = a.length;
+		int a_col = a[0].length;
+
+		double[][] a_trans = new double[a_col][a_row];
+
+		for(int i=0;i<a_row;i++)
+		{
+			for(int j=0;j<a_col;j++)
+			{
+				a_trans[j][i] = a[i][j];
+			}
+		}
+		return a_trans;
+	}
+
+	public static void exercise_1_1_33(String[] args)
+	{
+
+	}
+
+
 	public static void main(String[] args)
 	{
 		exercise_1_1_32(args);
