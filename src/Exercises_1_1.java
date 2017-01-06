@@ -960,7 +960,7 @@ public class Exercises_1_1
 			{
 				for (int k = 0; k < a_col; k++)
 				{
-					mv_prod[i] += a[i][k] + x[k];
+					mv_prod[i] += a[i][k] * x[k];
 				}
 			}
 			return mv_prod;
@@ -984,7 +984,7 @@ public class Exercises_1_1
 			{
 				for (int k = 0; k < y_col; k++)
 				{
-					vm_prod[j] += y[k] + b[k][j];
+					vm_prod[j] += y[k] * b[k][j];
 				}
 			}
 			return vm_prod;
@@ -1087,7 +1087,89 @@ public class Exercises_1_1
 
 		// transpose test client
 		// input should be like "matrix1.txt"
-		String[] lines = in1.readAllLines();
+//		String[] lines = in1.readAllLines();
+//		String[] items = lines[0].split(" ");
+//		double[][] matrix = new double[lines.length][items.length];
+//		for(int i=0;i<lines.length;i++)
+//		{
+//			items = lines[i].split(" ");
+//			for(int j=0;j<items.length;j++)
+//			{
+//				matrix[i][j] = Double.parseDouble(items[j]);
+//			}
+//		}
+//
+//		StdOut.println("matrix:");
+//		for(int i=0;i<matrix.length;i++)
+//		{
+//			for(int j=0;j<matrix[0].length;j++)
+//			{
+//				StdOut.printf("%.2f ",matrix[i][j]);
+//			}
+//			StdOut.println();
+//		}
+//		StdOut.println();
+//
+//		double[][] matrix_trans = transpose(matrix);
+//
+//
+//		StdOut.println("matrix_trans:");
+//		for(int i=0;i<matrix_trans.length;i++)
+//		{
+//			for(int j=0;j<matrix_trans[0].length;j++)
+//			{
+//				StdOut.printf("%.2f ",matrix_trans[i][j]);
+//			}
+//			StdOut.println();
+//		}
+//		StdOut.println();
+
+		// matrix - vector muti
+		// input should be like "matrix1.txt vector3.txt"
+//		String[] lines = in1.readAllLines();
+//		String[] items = lines[0].split(" ");
+//		double[][] matrix = new double[lines.length][items.length];
+//		for(int i=0;i<lines.length;i++)
+//		{
+//			items = lines[i].split(" ");
+//			for(int j=0;j<items.length;j++)
+//			{
+//				matrix[i][j] = Double.parseDouble(items[j]);
+//			}
+//		}
+//
+//		StdOut.println("matrix:");
+//		for(int i=0;i<matrix.length;i++)
+//		{
+//			for(int j=0;j<matrix[0].length;j++)
+//			{
+//				StdOut.printf("%.2f ",matrix[i][j]);
+//			}
+//			StdOut.println();
+//		}
+//		StdOut.println();
+//
+//		StdOut.println("vector:");
+//		double[] vector = in2.readAllDoubles();
+//		for(int i=0;i<vector.length;i++)
+//		{
+//			StdOut.printf("%.2f ",vector[i]);
+//		}
+//		StdOut.println();
+//		StdOut.println();
+//
+//		double[] mat = mult(matrix,vector);
+//
+//		StdOut.println("result:");
+//		for(int i=0;i<mat.length;i++)
+//		{
+//			StdOut.printf("%.2f ",mat[i]);
+//		}
+//		StdOut.println();
+
+		// vector - matrix product
+		// input should be like "vector4.txt matrix1.txt"
+		String[] lines = in2.readAllLines();
 		String[] items = lines[0].split(" ");
 		double[][] matrix = new double[lines.length][items.length];
 		for(int i=0;i<lines.length;i++)
@@ -1110,17 +1192,21 @@ public class Exercises_1_1
 		}
 		StdOut.println();
 
-		double[][] matrix_trans = transpose(matrix);
-
-
-		StdOut.println("matrix_trans:");
-		for(int i=0;i<matrix_trans.length;i++)
+		StdOut.println("vector:");
+		double[] vector = in1.readAllDoubles();
+		for(int i=0;i<vector.length;i++)
 		{
-			for(int j=0;j<matrix_trans[0].length;j++)
-			{
-				StdOut.printf("%.2f ",matrix_trans[i][j]);
-			}
-			StdOut.println();
+			StdOut.printf("%.2f ",vector[i]);
+		}
+		StdOut.println();
+		StdOut.println();
+
+		double[] mat = mult(vector,matrix);
+
+		StdOut.println("result:");
+		for(int i=0;i<mat.length;i++)
+		{
+			StdOut.printf("%.2f ",mat[i]);
 		}
 		StdOut.println();
 	}
