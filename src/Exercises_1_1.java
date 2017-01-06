@@ -1211,6 +1211,33 @@ public class Exercises_1_1
 		StdOut.println();
 	}
 
+	public static void exercise_1_1_34(String[] args)
+	{
+		// Q1: Print max and min numbers
+		// Ans: Do not need store all number, and only few variables is OK.
+
+		// Q2: Print the median of the numbers
+		// Ans: need to store all numbers
+
+		// Q3: Print the kth smallest value, for k less than 100
+		// Ans: can save only kth smallest value in the buffer, no need to save all numbers.
+
+		// Q4: Print the sum of the squares of the numbers
+		// Ans: can save only sum and its additional squared input keys.
+
+		// Q5: Print the average of the N nums
+		// Ans: can save only average value and added input numbers.
+
+		// Q6: Print the percentage of numbers greater than the average
+		// Ans: need to store all the value to do the final calc
+
+		// Q7: Print the N nums in increasing order.
+		// Ans: need to save all nums.
+
+		// Q8: Print the N nums in random order.
+		// Ans: need to save all nums.
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_1_33(args);
