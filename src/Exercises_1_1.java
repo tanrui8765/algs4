@@ -1238,8 +1238,34 @@ public class Exercises_1_1
 		// Ans: need to save all nums.
 	}
 
+	// Referred from aistrate's GitHub Repos.
+//	public static int[] throw_dice()
+//	{
+//	}
+
+	public static void exercise_1_1_35(String[] args)
+	{
+		int SIDES = 6;
+		// sum of two dice!
+		double[] dist = new double[2 * SIDES + 1];
+		for (int i = 1; i <= SIDES; i++)
+		{
+			for (int j = 1; j <= SIDES; j++)
+			{
+				dist[i + j] += 1.0;
+			}
+		}
+
+		for (int k = 2; k <= 2 * SIDES; k++)
+		{
+			dist[k] /= 36.0;
+		}
+
+		return;
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_1_33(args);
+		exercise_1_1_35(args);
 	}
 }
