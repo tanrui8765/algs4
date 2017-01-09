@@ -1238,7 +1238,6 @@ public class Exercises_1_1
 		// Ans: need to save all nums.
 	}
 
-	// Referred from aistrate's GitHub Repos.
 //	public static int[] throw_dice()
 //	{
 //	}
