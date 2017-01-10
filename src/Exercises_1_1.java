@@ -1238,9 +1238,58 @@ public class Exercises_1_1
 		// Ans: need to save all nums.
 	}
 
-//	public static int[] throw_dice()
-//	{
-//	}
+	public static int throw_dice(int dice_num)
+	{
+		int sum = 0;
+		int range_low = 1;
+		int range_high = 6 + 1;
+
+		for (int i = 0; i < dice_num; i++)
+		{
+			sum += StdRandom.uniform(range_low, range_high);
+		}
+
+		return sum;
+	}
+
+	public static void experiment_diec()
+	{
+		int SIDES = 6;
+		int dice_num = 2;
+		int throw_num = 10000;
+
+		int[] throw_hist = new int[2 * SIDES + 1];
+		double[] prob_hist = new double[2 * SIDES + 1];
+
+		for (int i = 0; i < throw_num; i++)
+		{
+			int rlt = throw_dice(2);
+			throw_hist[rlt]++;
+		}
+
+		for (int i = 0; i < (2 * SIDES + 1); i++)
+		{
+			prob_hist[i] = (double) throw_hist[i] / (double) throw_num;
+		}
+
+		Draw expm = new Draw();
+
+		// Draw the pictures of dice probabilities
+		expm.setCanvasSize(512, 256);
+		expm.setXscale(0, 2 * SIDES + 1);
+		expm.setYscale(0, throw_num);
+		expm.text(SIDES, throw_num / 2, "experiment");
+
+		for (int i = 0; i < (2 * SIDES + 1); i++)
+		{
+			// Note: the rectangle is draw based on the center point.
+			double x = 0 + (i + 0.5) * 1;
+			double y = throw_hist[i] / 2.0;
+			double rw = 0.5 * 1;
+			double rh = throw_hist[i] / 2.0;
+			expm.filledRectangle(x, y, rw, rh);
+		}
+	}
 
 	public static void exercise_1_1_35(String[] args)
 	{
@@ -1259,6 +1308,24 @@ public class Exercises_1_1
 		{
 			dist[k] /= 36.0;
 		}
+
+		Draw stard = new Draw();
+		stard.setCanvasSize(512, 256);
+		stard.setXscale(0, 2 * SIDES + 1);
+		stard.setYscale(0, 1);
+		stard.text(SIDES, 0.5, "standard");
+
+		for (int i = 0; i < (2 * SIDES + 1); i++)
+		{
+			// Note: the rectangle is draw based on the center point.
+			double x = 0 + (i + 0.5) * 1;
+			double y = dist[i] / 2.0;
+			double rw = 0.5 * 1;
+			double rh = dist[i] / 2.0;
+			stard.filledRectangle(x, y, rw, rh);
+		}
+
+		experiment_diec();
 
 		return;
 	}
