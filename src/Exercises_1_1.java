@@ -1369,8 +1369,64 @@ public class Exercises_1_1
 		return;
 	}
 
+	public static void shuffle(int[] a)
+	{
+		int N = a.length;
+		for (int i = 0; i < N; i++)
+		{   // Exchange a[i] with random element in a[i..N-1]
+			int r = i + StdRandom.uniform(N - i);
+			int temp = a[i];
+			a[i] = a[r];
+			a[r] = temp;
+		}
+	}
+
+	// following part is from aistrate's GitHub repos.
+	public static void ShuffleTest(int M, int N)
+	{
+		if (M <= 0) return;
+
+		int[][] s = new int[M][M];
+
+		for (int k = 0; k < N; k++)
+		{
+			int[] a = new int[M];
+
+			for (int i = 0; i < a.length; i++)
+			{
+				a[i] = i;
+			}
+
+			shuffle(a);
+
+			for (int i = 0; i < a.length; i++)
+			{
+				s[i][a[i]]++;
+			}
+		}
+
+		for (int i = 0; i < M; i++)
+		{
+			for (int j = 0; j < M; j++)
+			{
+				StdOut.printf("%7d", s[i][j]);
+			}
+			StdOut.println();
+		}
+	}
+
+	public static void exercise_1_1_36(String[] args)
+	{
+		// not quite understand the last 2 sentences.
+		// i在第j列位置出现的次数？最后一句又是什么用意？
+		int M = Integer.parseInt(args[0]);
+		int N = Integer.parseInt(args[1]);
+
+		ShuffleTest(M, N);
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_1_35(args);
+		exercise_1_1_36(args);
 	}
 }
