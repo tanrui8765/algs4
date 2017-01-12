@@ -1419,6 +1419,7 @@ public class Exercises_1_1
 	{
 		// not quite understand the last 2 sentences.
 		// i在第j列位置出现的次数？最后一句又是什么用意？
+		// Why should all entries in the table should be close to N/M ???
 		int M = Integer.parseInt(args[0]);
 		int N = Integer.parseInt(args[1]);
 
