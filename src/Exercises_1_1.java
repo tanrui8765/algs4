@@ -11,6 +11,7 @@ import java.lang.Integer;
 import java.lang.Double;
 import java.lang.Thread;
 import java.lang.InterruptedException;
+import java.text.DecimalFormat;
 
 public class Exercises_1_1
 {
@@ -1175,21 +1176,21 @@ public class Exercises_1_1
 		String[] lines = in2.readAllLines();
 		String[] items = lines[0].split(" ");
 		double[][] matrix = new double[lines.length][items.length];
-		for(int i=0;i<lines.length;i++)
+		for (int i = 0; i < lines.length; i++)
 		{
 			items = lines[i].split(" ");
-			for(int j=0;j<items.length;j++)
+			for (int j = 0; j < items.length; j++)
 			{
 				matrix[i][j] = Double.parseDouble(items[j]);
 			}
 		}
 
 		StdOut.println("matrix:");
-		for(int i=0;i<matrix.length;i++)
+		for (int i = 0; i < matrix.length; i++)
 		{
-			for(int j=0;j<matrix[0].length;j++)
+			for (int j = 0; j < matrix[0].length; j++)
 			{
-				StdOut.printf("%.2f ",matrix[i][j]);
+				StdOut.printf("%.2f ", matrix[i][j]);
 			}
 			StdOut.println();
 		}
@@ -1197,19 +1198,19 @@ public class Exercises_1_1
 
 		StdOut.println("vector:");
 		double[] vector = in1.readAllDoubles();
-		for(int i=0;i<vector.length;i++)
+		for (int i = 0; i < vector.length; i++)
 		{
-			StdOut.printf("%.2f ",vector[i]);
+			StdOut.printf("%.2f ", vector[i]);
 		}
 		StdOut.println();
 		StdOut.println();
 
-		double[] mat = mult(vector,matrix);
+		double[] mat = mult(vector, matrix);
 
 		StdOut.println("result:");
-		for(int i=0;i<mat.length;i++)
+		for (int i = 0; i < mat.length; i++)
 		{
-			StdOut.printf("%.2f ",mat[i]);
+			StdOut.printf("%.2f ", mat[i]);
 		}
 		StdOut.println();
 	}
@@ -1255,25 +1256,26 @@ public class Exercises_1_1
 		return sum;
 	}
 
-	public static void experiment_dice()
+	public static void experiment_dice(int throw_attempt)
 	{
 		int SIDES = 6;
 		int dice_num = 2;
-		int throw_num = 1000;
+		int throw_num = throw_attempt;
 
 		int[] throw_hist = new int[2 * SIDES + 1];
 		double[] prob_hist = new double[2 * SIDES + 1];
+		double[] stad_dist = new double[2 * SIDES + 1];
 
 		// Draw the pictures of dice probabilities
 		Draw throw_draw = new Draw();
-		Font throw_font = new Font("Sans Serif", Font.PLAIN, 10);
-		throw_draw.setCanvasSize(512, 256);
+		Font throw_font = new Font("Sans Serif", Font.PLAIN, 9);
+		throw_draw.setCanvasSize(800, 256);
 		throw_draw.setXscale(0, 2 * SIDES + 1);
 		throw_draw.setYscale(0, throw_num);
 
 		throw_draw.setPenColor(Draw.RED);
 		throw_draw.setFont(throw_font);
-		throw_draw.textLeft(0, throw_num * 0.9, "throw_draw");
+		throw_draw.textLeft(0, throw_num * 0.95, "throw_draw");
 		throw_draw.setPenColor(Draw.BLACK);
 
 
@@ -1288,80 +1290,81 @@ public class Exercises_1_1
 
 			int rlt = throw_dice(2);
 			throw_hist[rlt]++;
-
-			for (int j = 0; j < (2 * SIDES + 1); j++)
-			{
-				// Note: the rectangle is draw based on the center point.
-				double x = 0 + (j + 0.5) * 1;
-				double y = throw_hist[j] / 2.0;
-				double rw = 0.4 * 1;
-				double rh = throw_hist[j] / 2.0;
-				throw_draw.filledRectangle(x, y, rw, rh);
-
-				if (i == (throw_num - 1))
-					throw_draw.text(x, throw_hist[j] * 1.2, String.valueOf(throw_hist[j]));
-			}
 		}
+
+		for (int j = 0; j < (2 * SIDES + 1); j++)
+		{
+			// Note: the rectangle is draw based on the center point.
+			double x = 0 + (j + 0.5) * 1;
+			double y = throw_hist[j] / 2.0;
+			double rw = 0.4 * 1;
+			double rh = throw_hist[j] / 2.0;
+			throw_draw.filledRectangle(x, y, rw, rh);
+
+			throw_draw.text(x, throw_num * 0.9, String.valueOf(j));
+			throw_draw.text(x, throw_num * 0.85, String.valueOf(throw_hist[j]));
+		}
+
+		// Draw the pictures of dice probabilities
+		Draw prob_draw = new Draw();
+		Font prob_font = new Font("Sans Serif", Font.PLAIN, 9);
+		prob_draw.setCanvasSize(800, 256);
+		prob_draw.setXscale(0, 2 * SIDES + 1);
+		prob_draw.setYscale(0, 1);
+
+		prob_draw.setPenColor(Draw.BLUE);
+		prob_draw.setFont(prob_font);
+		prob_draw.textLeft(0, 1 * 0.95, "prob_draw");
+		prob_draw.setPenColor(Draw.BLACK);
 
 		for (int i = 0; i < (2 * SIDES + 1); i++)
 		{
 			prob_hist[i] = (double) throw_hist[i] / (double) throw_num;
-		}
-//
-//		Draw expm = new Draw();
-//
-//		// Draw the pictures of dice probabilities
-//		expm.setCanvasSize(512, 256);
-//		expm.setXscale(0, 2 * SIDES + 1);
-//		expm.setYscale(0, throw_num);
-//		expm.text(SIDES, throw_num / 2, "experiment");
-//
-//		for (int i = 0; i < (2 * SIDES + 1); i++)
-//		{
-//			// Note: the rectangle is draw based on the center point.
-//			double x = 0 + (i + 0.5) * 1;
-//			double y = throw_hist[i] / 2.0;
-//			double rw = 0.5 * 1;
-//			double rh = throw_hist[i] / 2.0;
-//			expm.filledRectangle(x, y, rw, rh);
-//		}
-	}
+			prob_hist[i] = (double) ((int) (prob_hist[i] * 1000)) / 1000;
 
-	public static void exercise_1_1_35(String[] args)
-	{
-		int SIDES = 6;
-		// sum of two dice!
-		double[] dist = new double[2 * SIDES + 1];
+			// Note: the rectangle is draw based on the center point.
+			double x = 0 + (i + 0.5) * 1;
+			double y = prob_hist[i] / 2.0;
+			double rw = 0.4 * 1;
+			double rh = prob_hist[i] / 2.0;
+			prob_draw.rectangle(x, y, rw, rh);
+
+			prob_draw.text(x, 1 * 0.9, String.valueOf(i));
+			prob_draw.text(x, 1 * 0.85, String.valueOf(prob_hist[i]));
+		}
+		// Draw the standard probability on the plate.
 		for (int i = 1; i <= SIDES; i++)
 		{
 			for (int j = 1; j <= SIDES; j++)
 			{
-				dist[i + j] += 1.0;
+				stad_dist[i + j] += 1.0;
 			}
 		}
 
-		for (int k = 2; k <= 2 * SIDES; k++)
+		for (int k = 0; k < (2 * SIDES + 1); k++)
 		{
-			dist[k] /= 36.0;
+			prob_draw.setPenColor(Draw.BLUE);
+
+			stad_dist[k] /= 36.0;
+			stad_dist[k] = (double) ((int) (stad_dist[k] * 1000)) / 1000;
+
+			if (stad_dist[k] == prob_hist[k])
+				prob_draw.setPenColor(Draw.RED);
+
+			double x = 0 + (k + 0.5) * 1;
+			double y = stad_dist[k] / 2.0;
+			double rw = 0.3 * 1;
+			double rh = stad_dist[k] / 2.0;
+			prob_draw.rectangle(x, y, rw, rh);
+			prob_draw.text(x, 1 * 0.8, String.valueOf(stad_dist[k]));
 		}
+	}
 
-//		Draw stard = new Draw();
-//		stard.setCanvasSize(512, 256);
-//		stard.setXscale(0, 2 * SIDES + 1);
-//		stard.setYscale(0, 1);
-//		stard.text(SIDES, 0.5, "standard");
-//
-//		for (int i = 0; i < (2 * SIDES + 1); i++)
-//		{
-//			// Note: the rectangle is draw based on the center point.
-//			double x = 0 + (i + 0.5) * 1;
-//			double y = dist[i] / 2.0;
-//			double rw = 0.5 * 1;
-//			double rh = dist[i] / 2.0;
-//			stard.filledRectangle(x, y, rw, rh);
-//		}
-
-		experiment_dice();
+	public static void exercise_1_1_35(String[] args)
+	{
+		// sum of two dice!
+		// the answer is N = 10000000, what a number, and might not be guaranteed.
+		experiment_dice(10000000);
 
 		return;
 	}
