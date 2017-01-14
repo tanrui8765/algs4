@@ -1514,8 +1514,12 @@ public class Exercises_1_1
 	public static boolean brute_search(int key, int[] arr)
 	{
 		for (int i = 0; i < arr.length; ++i)
-			if (arr[i] == key)
+		{
+			if (key == arr[i])
+			{
 				return true;
+			}
+		}
 		return false;
 	}
 
@@ -1559,15 +1563,49 @@ public class Exercises_1_1
 
 	public static void exercise_1_1_38(String[] args)
 	{
-		StdOut.println("Binary");
-		binary_shell(args);
-		StdOut.println();
+//		StdOut.println("Binary");
+//		binary_shell(args);
+//		StdOut.println();
 		StdOut.println("Brute");
 		brute_shell(args);
 	}
 
+	public static void exercise_1_1_39(String[] args)
+	{
+		int T = 100;
+		int N = 100000;
+		double avg = 0.0;
+		int same_cnt = 0;
+
+		for (int k = 0; k < T; k++)
+		{
+			int[] array1 = new int[N];
+			int[] array2 = new int[N];
+
+			for (int i = 0; i < N; i++)
+			{
+				array1[i] = StdRandom.uniform(100000, 999999 + 1);
+				array2[i] = StdRandom.uniform(100000, 999999 + 1);
+			}
+			Arrays.sort(array1);
+			Arrays.sort(array2);
+
+			for (int i = 0; i < N; i++)
+			{
+				int key = array1[i];
+				boolean find = binary_search(key, array2);
+				if (find == true)
+				{
+					same_cnt++;
+				}
+			}
+		}
+		avg = (double) same_cnt / (double) T;
+		StdOut.println("N: " + N + " the avg is " + avg);
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_1_38(args);
+		exercise_1_1_39(args);
 	}
 }
