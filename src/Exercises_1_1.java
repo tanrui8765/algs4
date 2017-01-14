@@ -4,6 +4,7 @@
 
 import edu.princeton.cs.algs4.*;
 import org.omg.CORBA.INTERNAL;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -1475,14 +1476,98 @@ public class Exercises_1_1
 	{
 		// not quite understand the last 2 sentences, AS WELL.
 		// What is the resulting order ??? and why possible is N! ???
-		int M = Integer.parseInt(args[0]);
-		int N = Integer.parseInt(args[1]);
+		int M = 2;//Integer.parseInt(args[0]);
+		int N = 10;//Integer.parseInt(args[1]);
 
+		StdOut.println("M: " + M + " N: " + N);
+		StdOut.println("Shuffle Normal:");
+		ShuffleTest(M, N);
+		StdOut.println();
+		StdOut.println("Shuffle Bad:");
 		ShuffleTest_Bad(M, N);
+	}
+
+	public static boolean binary_search(int key, int[] arr)
+	{
+		int low = 0;
+		int high = arr.length - 1;
+
+		while (low <= high)
+		{
+			int mid = low + ((high - low) >> 1);
+			if (key < arr[mid])
+			{
+				high = mid - 1;
+			}
+			else if (key > arr[mid])
+			{
+				low = mid + 1;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean brute_search(int key, int[] arr)
+	{
+		for (int i = 0; i < arr.length; ++i)
+			if (arr[i] == key)
+				return true;
+		return false;
+	}
+
+	public static void brute_shell(String[] args)
+	{
+		int[] whitelist = new In(args[0]).readAllInts();
+		long time0 = System.currentTimeMillis();
+
+		// Arrays.sort(whitelist);
+		while (!StdIn.isEmpty())
+		{
+			int key = StdIn.readInt();
+			boolean find = brute_search(key, whitelist);
+			if (!find)
+				StdOut.println(key);
+		}
+
+		long time1 = System.currentTimeMillis();
+		long elapse = time1 - time0;
+		StdOut.println("Brute Elapse: " + elapse + " ms");
+	}
+
+	public static void binary_shell(String[] args)
+	{
+		int[] whitelist = new In(args[0]).readAllInts();
+		long time0 = System.currentTimeMillis();
+
+		Arrays.sort(whitelist);
+		while (!StdIn.isEmpty())
+		{
+			int key = StdIn.readInt();
+			boolean find = binary_search(key, whitelist);
+			if (!find)
+				StdOut.println(key);
+		}
+
+		long time1 = System.currentTimeMillis();
+		long elapse = time1 - time0;
+		StdOut.println("Binary Elapse: " + elapse + " ms");
+	}
+
+	public static void exercise_1_1_38(String[] args)
+	{
+		StdOut.println("Binary");
+		binary_shell(args);
+		StdOut.println();
+		StdOut.println("Brute");
+		brute_shell(args);
 	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_1_37(args);
+		exercise_1_1_38(args);
 	}
 }
