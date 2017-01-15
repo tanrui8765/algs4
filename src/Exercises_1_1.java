@@ -1574,7 +1574,7 @@ public class Exercises_1_1
 	{
 		int T = 100;
 		int N = 100000;
-		double avg = 0.0;
+		double avg;
 		int same_cnt = 0;
 
 		for (int k = 0; k < T; k++)
