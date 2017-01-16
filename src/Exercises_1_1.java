@@ -1600,6 +1600,7 @@ public class Exercises_1_1
 				}
 			}
 		}
+
 		avg = (double) same_cnt / (double) T;
 		StdOut.println("N: " + N + " the avg is " + avg);
 	}
