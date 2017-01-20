@@ -1,6 +1,4 @@
-import edu.princeton.cs.algs4.Draw;
-import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.*;
 
 import java.awt.*;
 
@@ -59,8 +57,32 @@ public class Exercises_1_2
 		draw.text((x_lo + x_hi) / 2, y_hi * 0.95, "dist_min is " + dist_min);
 	}
 
+	public static void exercise_1_2_2(String[] args)
+	{
+		int N = 3;
+
+		Interval1D[] inter_array = new Interval1D[N];
+
+		inter_array[0] = new Interval1D(0.0, 5.0);
+		inter_array[1] = new Interval1D(7.0, 9.0);
+		inter_array[2] = new Interval1D(4.0, 8.0);
+
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = i + 1; j < N; j++)
+			{
+				if (i != j)
+				{
+					if (inter_array[i].intersects(inter_array[j]))
+					{
+						StdOut.println(inter_array[i].toString() + inter_array[j].toString());
+					}
+				}
+			}
+		}
+	}
 	public static void main(String[] args)
 	{
-		exercise_1_2_1(args);
+		exercise_1_2_2(args);
 	}
 }
