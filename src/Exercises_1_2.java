@@ -204,7 +204,52 @@ public class Exercises_1_2
 
 	public static void exercise_1_2_6(String[] args)
 	{
+		String s = "1234567890abcdefg";
+		String t = "190ab1def11234167";
+		boolean is_match = false;
 
+		if (s.length() != t.length())
+		{
+			StdOut.println("strings not same length");
+			return;
+		}
+
+		// find first character in the string t.
+		char s0 = s.charAt(0);
+		int s0_in_t = t.indexOf(s0, 0);
+		while (s0_in_t >= 0)
+		{
+			if (s0_in_t > 0)
+			{
+				String str_t2 = t.substring(s0_in_t);
+				String str_t1 = t.substring(0, s0_in_t);
+				String str_attempt = str_t2.concat(str_t1);
+				is_match = s.equals(str_attempt);
+
+				StdOut.println("[ " + s + " ] match with,");
+				StdOut.println("[ " + str_attempt + " ]");
+				StdOut.println();
+			}
+			else
+			{
+				is_match = s.equals(t);
+
+				StdOut.println("[ " + s + " ] match with,");
+				StdOut.println("[ " + t + " ]");
+				StdOut.println();
+			}
+
+			if (is_match)
+			{
+				break;
+			}
+			else
+			{
+				s0_in_t = t.indexOf(s0, s0_in_t + 1);
+			}
+		}
+
+		StdOut.println("s and t match result is: " + is_match);
 	}
 
 	public static void main(String[] args)
