@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.*;
+import sun.jvm.hotspot.utilities.Interval;
 
 import java.awt.*;
 
@@ -81,8 +82,111 @@ public class Exercises_1_2
 			}
 		}
 	}
+
+
+	public static void exercise_1_2_3(String[] args)
+	{
+		int N = 5;
+		double min = 0.0;
+		double max = 1.0;
+
+		Interval2D[] inter_array = new Interval2D[N];
+		Interval1D[] inter_1d_x = new Interval1D[N];
+		Interval1D[] inter_1d_y = new Interval1D[N];
+
+		StdDraw.setCanvasSize(512, 512);
+		StdDraw.setScale(min, max);
+//		StdDraw.setPenColor(StdDraw.BLACK);
+
+		for (int i = 0; i < N; i++)
+		{
+			double min1 = StdRandom.uniform(min, max);
+			double max1 = StdRandom.uniform(min, max);
+
+			while (min1 == max1)
+			{
+				min1 = StdRandom.uniform(min, max);
+			}
+
+			if (min1 > max1)
+			{
+				double temp = max1;
+				max1 = min1;
+				min1 = temp;
+			}
+
+			double min2 = StdRandom.uniform(min, max);
+			double max2 = StdRandom.uniform(min, max);
+
+			while (min2 == max2)
+			{
+				min2 = StdRandom.uniform(min, max);
+			}
+
+			if (min2 > max2)
+			{
+				double temp = max2;
+				max2 = min2;
+				min2 = temp;
+			}
+
+			inter_1d_x[i] = new Interval1D(min1, max1);
+			inter_1d_y[i] = new Interval1D(min2, max2);
+
+			inter_array[i] = new Interval2D(inter_1d_x[i], inter_1d_y[i]);
+
+			StdOut.println(inter_1d_x[i].toString() + inter_1d_y[i].toString());
+			inter_array[i].draw();
+//			StdDraw.rectangle(inter_1d_x.length()/2+inter_1d_x.min(),inter_1d_y.length()/2+inter_1d_y.min(),inter_1d_x.length()/2,inter_1d_y.length()/2);
+		}
+
+//		StdOut.println((max-min)/2);
+//		StdDraw.setPenColor(StdDraw.RED);
+//		StdDraw.rectangle((max-min)/2,(max-min)/2,(max-min)/2,(max-min)/2);
+
+		int num_intersect = 0;
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = i + 1; j < N; j++)
+			{
+				if (inter_array[i].intersects(inter_array[j]) == true)
+				{
+					num_intersect++;
+				}
+			}
+		}
+
+		int num_contain = 0;
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				if (i != j) // avoid the same
+				{
+					Point2D pt1 = new Point2D(inter_1d_x[j].min(), inter_1d_y[j].min()); // Point left bottom
+					Point2D pt2 = new Point2D(inter_1d_x[j].min(), inter_1d_y[j].max()); // Point left top
+					Point2D pt3 = new Point2D(inter_1d_x[j].max(), inter_1d_y[j].min()); // Point right bottom
+					Point2D pt4 = new Point2D(inter_1d_x[j].max(), inter_1d_y[j].max()); // Point right top
+
+					if ((inter_array[i].contains(pt1) == true
+							&& inter_array[i].contains(pt2) == true
+							&& inter_array[i].contains(pt3) == true
+							&& inter_array[i].contains(pt4) == true) == true)
+					{
+						num_contain++;
+					}
+				}
+			}
+		}
+
+		num_intersect = num_intersect - num_contain;
+
+		StdOut.println();
+		StdOut.println("intersects: " + num_intersect + " contains: " + num_contain);
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_2(args);
+		exercise_1_2_3(args);
 	}
 }
