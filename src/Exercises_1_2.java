@@ -252,8 +252,24 @@ public class Exercises_1_2
 		StdOut.println("s and t match result is: " + is_match);
 	}
 
+	public static String mystery(String s)
+	{
+		int N = s.length();
+		if (N <= 1) return s;
+		String a = s.substring(0, N / 2);
+		String b = s.substring(N / 2, N);
+		return mystery(b) + mystery(a);
+	}
+
+	public static void exercise_1_2_7(String[] args)
+	{
+		String test = "123456789";
+		String test_rlt = mystery(test);
+		StdOut.println(test_rlt);
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_6(args);
+		exercise_1_2_7(args);
 	}
 }
