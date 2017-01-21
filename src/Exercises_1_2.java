@@ -185,8 +185,30 @@ public class Exercises_1_2
 		StdOut.println("intersects: " + num_intersect + " contains: " + num_contain);
 	}
 
+	public static void exercise_1_2_4(String[] args)
+	{
+		String string1 = "hello";
+		String string2 = string1;
+		string1 = "world";
+		StdOut.println(string1);
+		StdOut.println(string2);
+	}
+
+	public static void exercise_1_2_5(String[] args)
+	{
+		String s = "Hello World";
+		s.toUpperCase();
+		s.substring(6, 11);
+		StdOut.println(s);
+	}
+
+	public static void exercise_1_2_6(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_3(args);
+		exercise_1_2_6(args);
 	}
 }
