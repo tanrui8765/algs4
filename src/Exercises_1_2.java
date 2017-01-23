@@ -140,10 +140,6 @@ public class Exercises_1_2
 //			StdDraw.rectangle(inter_1d_x.length()/2+inter_1d_x.min(),inter_1d_y.length()/2+inter_1d_y.min(),inter_1d_x.length()/2,inter_1d_y.length()/2);
 		}
 
-//		StdOut.println((max-min)/2);
-//		StdDraw.setPenColor(StdDraw.RED);
-//		StdDraw.rectangle((max-min)/2,(max-min)/2,(max-min)/2,(max-min)/2);
-
 		int num_intersect = 0;
 		for (int i = 0; i < N; i++)
 		{
