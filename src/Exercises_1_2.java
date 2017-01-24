@@ -264,8 +264,23 @@ public class Exercises_1_2
 		StdOut.println(test_rlt);
 	}
 
+	public static void exercise_1_2_8(String[] args)
+	{
+		int[] a = new int[3];
+		int[] b = new int[3];
+
+		for (int i = 0; i < 3; i++)
+		{
+			a[i] = i;
+			b[i] = i + 10;
+		}
+		int[] t = a;
+		a = b;
+		b = t;  // just swap the array
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_7(args);
+		exercise_1_2_8(args);
 	}
 }
