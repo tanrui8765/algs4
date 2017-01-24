@@ -2,6 +2,7 @@ import edu.princeton.cs.algs4.*;
 import sun.jvm.hotspot.utilities.Interval;
 
 import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Created by the_real_Rui on 19/1/2017.
@@ -279,8 +280,44 @@ public class Exercises_1_2
 		b = t;  // just swap the array
 	}
 
+	// Binary Search
+	public static int rank(int key, int[] a, Counter cnt)
+	{
+		// This array must be sorted
+		int lo = 0;
+		int hi = a.length - 1;
+		while (lo <= hi)
+		{   // Key is in a[lo..hi] or not present
+			cnt.increment();
+			StdOut.println(cnt.tally());
+			int mid = lo + (hi - lo) / 2;
+			if (key < a[mid]) hi = mid - 1;
+			else if (key > a[mid]) lo = mid + 1;
+			else return mid;
+		}
+		return -1;
+	}
+
+	public static void exercise_1_2_9(String[] args)
+	{
+		Counter cnt = new Counter("binary_cnt");
+		int[] a = {1, 3, 2, 4, 6, 7, 8, 5};
+
+		Arrays.sort(a);
+
+		if (rank(4, a, cnt) > -1)
+		{
+			StdOut.println("in the list");
+		}
+		else
+		{
+			StdOut.println("not in the list");
+		}
+		StdOut.println("total key examined time is " + cnt.tally());
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_8(args);
+		exercise_1_2_9(args);
 	}
 }
