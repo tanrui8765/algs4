@@ -316,8 +316,13 @@ public class Exercises_1_2
 		StdOut.println("total key examined time is " + cnt.tally());
 	}
 
+	public static void exercise_1_2_10(String[] args)
+	{
+		// Please Refer to Class VisualCounter_TR in VisualCounter_TR.java
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_9(args);
+		exercise_1_2_10(args);
 	}
 }
