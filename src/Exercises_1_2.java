@@ -321,8 +321,14 @@ public class Exercises_1_2
 		// Please Refer to Class VisualCounter_TR in VisualCounter_TR.java
 	}
 
+	public static void exercise_1_2_11(String[] args)
+	{
+		// please refer to Class SmartDate
+	}
+
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_10(args);
+		exercise_1_2_11(args);
 	}
 }
