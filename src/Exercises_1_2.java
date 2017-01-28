@@ -335,6 +335,12 @@ public class Exercises_1_2
 		// http://blog.163.com/shadow_hier/blog/static/4051874220095873612503/
 	}
 
+	public static void exercise_1_2_13(String[] args)
+	{
+		// 1.2.13 Using our implementation of Date as a model(page91),
+		// develop an implementation of Transaction.
+
+	}
 
 	public static void main(String[] args)
 	{
