@@ -13,6 +13,7 @@ public class SmartDate_TR
 	//        raises an excep- tion if the date is not legal.
 
 	private static int[] DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private static String[] day_of_week_s = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
 	private int month;    // month (between 1 and 12)
 	private int day;      // day (between 1 and DAYS[month])
@@ -204,6 +205,28 @@ public class SmartDate_TR
 		return hash;
 	}
 
+	public String dayOfTheWeek(SmartDate_TR date)
+	{
+		int y = date.year;
+		int m = date.month;
+		int d = date.day;
+		int day_of_week = 0;
+
+		// in this algs, month starts from March(3),
+		// ends at February(2), therefore Jan and Feb are 13 and 14
+		// if the date is in Jan and Feb, the year should roll back
+		// to the last year.
+		if ((m == 1) || (m == 2))
+		{
+			m += 12;
+			y--;
+		}
+
+		day_of_week = (d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7;
+
+		return day_of_week_s[day_of_week];
+	}
+
 
 	/**
 	 * Unit tests the {@code Date} data type.
@@ -212,8 +235,9 @@ public class SmartDate_TR
 	 */
 	public static void main(String[] args)
 	{
-		SmartDate_TR today = new SmartDate_TR(2, 25, 2004);
+		SmartDate_TR today = new SmartDate_TR(1, 28, 2017);
 		StdOut.println(today);
+		StdOut.println(today.dayOfTheWeek(today));
 		for (int i = 0; i < 10; i++)
 		{
 			today = today.next();

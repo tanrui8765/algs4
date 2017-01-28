@@ -326,9 +326,18 @@ public class Exercises_1_2
 		// please refer to Class SmartDate
 	}
 
+	public static void exercise_1_2_12(String[] args)
+	{
+		// please refer to Class SmartDate.dayOfTheWeek
+		// This is a very interesting question
+		// More deduction and information can be referenced from
+		// http://blog.csdn.net/flyingdon/article/details/6654248
+		// http://blog.163.com/shadow_hier/blog/static/4051874220095873612503/
+	}
+
 
 	public static void main(String[] args)
 	{
-		exercise_1_2_11(args);
+		exercise_1_2_12(args);
 	}
 }
