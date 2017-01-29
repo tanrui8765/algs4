@@ -342,8 +342,36 @@ public class Exercises_1_2
 
 	}
 
+
+	public static void exercise_1_2_14(String[] args)
+	{
+		// exercise 1.2.14 is also in the class of Transaction_TR.java
+	}
+
+	public static int[] readInts(String name)
+	{
+		In in = new In(name);
+		String input = in.readAll();
+		String[] words = input.split("\\s+");
+		int[] ints = new int[words.length];
+
+		for (int i = 0; i < words.length; i++)
+			ints[i] = Integer.parseInt(words[i]);
+
+		return ints;
+	}
+
+	public static void exercise_1_2_15(String[] args)
+	{
+		String int_file = "tinyW.txt";
+		int[] ints = readInts(int_file);
+
+		for (int i = 0; i < ints.length; i++)
+			StdOut.printf("%d ", ints[i]);
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_12(args);
+		exercise_1_2_15(args);
 	}
 }
