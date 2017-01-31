@@ -478,6 +478,10 @@ public class Exercises_1_2
 		accu.main();
 	}
 
+	public static void exercise_1_2_19(String[] args)
+	{
+		// this exercise is already implemented in the SmartDate_TR.java.
+	}
 	public static void main(String[] args)
 	{
 		exercise_1_2_18(args);
