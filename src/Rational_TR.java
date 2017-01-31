@@ -15,10 +15,12 @@ public class Rational_TR
 
 	public Rational_TR(int numerator, int denominator)
 	{
-		if (denominator == 0)
-		{
-			throw new IllegalArgumentException("Invalid denominator");
-		}
+//		if (denominator == 0)
+//		{
+//			throw new IllegalArgumentException("Invalid denominator");
+//		}
+
+		assert (denominator != 0) : "Invalid denominator";
 
 		this.numer = numerator;
 		this.denom = denominator;
@@ -268,7 +270,7 @@ public class Rational_TR
 	// TODO: this algorithm is not finished yet: negative numbers, display issues(too many minus signs).
 	public static void main(String[] args)
 	{
-		Rational_TR test1 = new Rational_TR(1, 5);
+		Rational_TR test1 = new Rational_TR(1, 0);
 		Rational_TR test2 = new Rational_TR(1, 4);
 
 		StdOut.println("test1: " + test1);

@@ -370,8 +370,109 @@ public class Exercises_1_2
 			StdOut.printf("%d ", ints[i]);
 	}
 
+	public static void exercise_1_2_16(String[] args)
+	{
+		// exercise 1.2.16 is completed in the java file of Rational_TR
+	}
+
+	public static void exercise_1_2_17(String[] args)
+	{
+		// this exercise is to practice assertion design and use, while I am not
+		// trying to do it currently.
+
+		// Note: you should add -ea into the Debug Configuration's VM option item.
+		// a simple usage of assertion is shown in Rational_TR.java as well.
+	}
+
+	public static class Accumulator_1_2_18
+	{
+		private double m;
+		private double s;
+		private int N;
+
+		private double mean;
+		private double vari;
+
+		public void addDataValue(double x)
+		{
+			N++;
+			s = s + 1.0 * (N - 1) / N * (x - m) * (x - m);
+			m = m + (x - m) / N;
+		}
+
+		public double mean()
+		{
+			return m;
+		}
+
+		public double mean(double[] a)
+		{
+			double sum = 0;
+			for (int i = 0; i < a.length; i++)
+			{
+				sum += a[i];
+			}
+			mean = (sum / (double) a.length);
+			return mean;
+		}
+
+		public double var()
+		{
+			return s / (N - 1);
+		}
+
+		public double var(double[] a)
+		{
+			double sum = 0;
+			double mean_local = 0;
+			double var_local = 0;
+
+			mean_local = mean(a);
+
+			for (int i = 0; i < a.length; i++)
+			{
+				sum += ((a[i] - mean_local) * (a[i] - mean_local));
+			}
+			var_local = sum / ((double) a.length - 1);
+			return var_local;
+		}
+
+		public double stddev()
+		{
+			return Math.sqrt(this.var());
+		}
+
+		public void main()
+		{
+			double[] a = {1, 2, 3};
+
+			for (int i = 0; i < a.length; i++)
+			{
+				this.addDataValue(a[i]);
+			}
+			StdOut.println("exercise mean is " + mean());
+			StdOut.println("exercise var is " + var());
+
+			StdOut.println("verify mean is " + mean(a));
+			StdOut.println("verify var is " + var(a));
+		}
+	}
+
+
+	public static void exercise_1_2_18(String[] args)
+	{
+		// Note:
+		// (1) the formula in this exercise can solve the var and mean calculation,
+		//      however, I don't quiet understand the deduction of those formulas.
+		//      those are worth to findout.
+		// (2) the denominator of variance formula is N or N-1, maybe with different
+		//      meaning.
+		Accumulator_1_2_18 accu = new Accumulator_1_2_18();
+		accu.main();
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_2_15(args);
+		exercise_1_2_18(args);
 	}
 }
