@@ -466,7 +466,10 @@ public class Exercises_1_2
 		//      however, I don't quiet understand the deduction of those formulas.
 		//      those are worth to findout.
 		// (2) the denominator of variance formula is N or N-1, maybe with different
-		//      meaning.
+		//      meaning. Found but not sure,
+		//      (http://blog.csdn.net/love_cppandc/article/details/7181960)
+		//      "N-1" is for Samples' Variance
+		//      "N" is for Total's Variance
 		Accumulator_1_2_18 accu = new Accumulator_1_2_18();
 		accu.main();
 	}
