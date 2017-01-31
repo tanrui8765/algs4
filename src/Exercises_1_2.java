@@ -464,12 +464,16 @@ public class Exercises_1_2
 		// Note:
 		// (1) the formula in this exercise can solve the var and mean calculation,
 		//      however, I don't quiet understand the deduction of those formulas.
-		//      those are worth to findout.
+		//      those are worth to find out.
 		// (2) the denominator of variance formula is N or N-1, maybe with different
 		//      meaning. Found but not sure,
 		//      (http://blog.csdn.net/love_cppandc/article/details/7181960)
 		//      "N-1" is for Samples' Variance
 		//      "N" is for Total's Variance
+		//      (http://blog.csdn.net/feliciafay/article/details/5878036)
+		//      prev url's "angle 2" is a very good point!
+		// Hence, I think, the code exercise 1.2.18 provided is the Sample Variance, needs N-1;
+		// the code we often implemented with an array of data input is Total Variance, needs N.
 		Accumulator_1_2_18 accu = new Accumulator_1_2_18();
 		accu.main();
 	}
