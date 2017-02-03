@@ -79,7 +79,7 @@ public class Stack_TR<Item> implements Iterable<Item>
 	{
 		// Create a stack and push/pop strings as directed on StdIn.
 		Stack_TR<String> s = new Stack_TR<String>();
-		String[] a = args[0].split(" ");
+		String[] a = args[0].split("\\s+");
 
 //		while(!StdIn.isEmpty())
 		for (int i = 0; i < a.length; i++)
