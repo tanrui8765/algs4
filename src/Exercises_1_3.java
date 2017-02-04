@@ -34,18 +34,58 @@ public class Exercises_1_3
 		StdOut.printf("%s (Unprinted: %d; Stack: [ %s])\n", i == n && s.isEmpty(), n - i, s);
 	}
 
+	public static void checkSequence_1(int[] v)
+	{
+		Stack<Integer> s = new Stack<Integer>();
+		int n = v.length;
+
+		int i = 0, j = 0;
+		while (i < n && j <= n)
+		{
+//			StdOut.printf("i=%d; j=%d; Stack: [ %s]\n",i,j,s);
+			if (!s.isEmpty() && s.peek() == v[i])
+			{
+				StdOut.printf("i=%d; j=%d; v[i]=%d; pop:%d; Stack: [%s]\n", i, j, v[i], s.pop(), s);
+				i++;
+			}
+			else
+			{
+				if (j < n)
+				{
+					s.push(j);
+					StdOut.printf("i=%d; j=%d; v[i]=%d; push:%d; Stack: [%s]\n", i, j, v[i], j, s);
+				}
+				else
+				{
+					StdOut.printf("i=%d; j=%d; v[i]=%d; stay:%d; Stack: [%s]\n", i, j, v[i], j, s);
+				}
+				j++;
+			}
+		}
+		StdOut.println();
+
+		StdOut.printf("%s (Unprinted: %d; Stack: [ %s])\n", i == n && s.isEmpty(), n - i, s);
+	}
+
+
 	public static void exercise_1_3_3(String[] args)
 	{
 //		String[] a = StdIn.readAll().split("\\s+");
 //		String[] a = "4 3 2 1 0 9 8 7 6 5".split("\\s+");
-		String[] a = "4 6 8 7 5 3 2 9 0 1".split("\\s+");
+//		String[] a = "4 6 8 7 5 3 2 9 0 1".split("\\s+");
+//		String[] a = "2 5 6 7 4 8 9 3 1 0".split("\\s+");
+//		String[] a = "4 3 2 1 0 5 6 7 8 9".split("\\s+");
+//		String[] a = "1 2 3 4 5 6 9 8 7 0".split("\\s+");
+//		String[] a = "0 4 6 5 3 8 1 7 2 9".split("\\s+");
+//		String[] a = "1 4 7 9 8 6 5 3 0 2".split("\\s+");
+		String[] a = "2 1 4 3 6 5 8 7 9 0".split("\\s+");
 
 		int[] v = new int[a.length];
 		for (int i = 0; i < a.length; i++)
 		{
 			v[i] = Integer.parseInt(a[i]);
 		}
-		checkSequence(v);
+		checkSequence_1(v);
 	}
 
 	public static void exercise_1_3_2(String[] args)
