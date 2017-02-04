@@ -114,15 +114,20 @@ public class Exercises_1_3
 			}
 			else if (s[i].equals("}") || s[i].equals("]") || s[i].equals(")"))
 			{
-				String s_tmp = st_par.pop();
-				if (s_tmp.equals("{") && s[i].equals("}"))
+				if (!st_par.isEmpty())
 				{
-				}
-				else if (s_tmp.equals("[") && s[i].equals("]"))
-				{
-				}
-				else if (s_tmp.equals("(") && s[i].equals(")"))
-				{
+					String s_tmp = st_par.pop();
+					if (s_tmp.equals("{") && s[i].equals("}"))
+					{
+					}
+					else if (s_tmp.equals("[") && s[i].equals("]"))
+					{
+					}
+					else if (s_tmp.equals("(") && s[i].equals(")"))
+					{
+					}
+					else
+						return false;
 				}
 				else
 				{
@@ -131,13 +136,21 @@ public class Exercises_1_3
 			}
 			StdOut.printf("Stack \" %s\"\n", st_par);
 		}
+
+		if (!st_par.isEmpty())
+			return false;
+
 		return true;
 	}
 
 	public static void exercise_1_3_4(String[] args)
 	{
-		String s = "[()]{}{[()()]()}";
+//		String s = "[()]{}{[()()]()}";
 //		String s = "[{]}";
+//		String s = "[[[";
+//		String s = "]]]";
+//		String s = "[[]";
+		String s = "[]]";
 		String[] a = s.split("");
 
 		StdOut.println(Parentheses(a));
