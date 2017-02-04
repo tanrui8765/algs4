@@ -8,6 +8,19 @@ import edu.princeton.cs.algs4.StdOut;
 public class Exercises_1_3
 {
 
+	public static void exercise_1_3_1(String[] args)
+	{
+		// exercise 1.3.1 is completed in the java file of FixedCapacityStackofStrings_TR
+	}
+
+	public static void exercise_1_3_2(String[] args)
+	{
+		String input[] = {"it was - the      best - of times - - - it was - the - -"};
+		Stack_TR<String> st = new Stack_TR<String>();
+
+		st.main(input);
+	}
+
 	// this checkSequence is from aistrate's Github Repo in Ex_1_3_03.java
 	public static void checkSequence(int[] v)
 	{
@@ -88,21 +101,50 @@ public class Exercises_1_3
 		checkSequence_1(v);
 	}
 
-	public static void exercise_1_3_2(String[] args)
+	public static boolean Parentheses(String[] s)
 	{
-		String input[] = {"it was - the      best - of times - - - it was - the - -"};
-		Stack_TR<String> st = new Stack_TR<String>();
+		Stack<String> st_par = new Stack<String>();
 
-		st.main(input);
+		StdOut.printf("Stack \" %s\"\n", st_par);
+		for (int i = 0; i < s.length; i++)
+		{
+			if (s[i].equals("{") || s[i].equals("[") || s[i].equals("("))
+			{
+				st_par.push(s[i]);
+			}
+			else if (s[i].equals("}") || s[i].equals("]") || s[i].equals(")"))
+			{
+				String s_tmp = st_par.pop();
+				if (s_tmp.equals("{") && s[i].equals("}"))
+				{
+				}
+				else if (s_tmp.equals("[") && s[i].equals("]"))
+				{
+				}
+				else if (s_tmp.equals("(") && s[i].equals(")"))
+				{
+				}
+				else
+				{
+					return false;
+				}
+			}
+			StdOut.printf("Stack \" %s\"\n", st_par);
+		}
+		return true;
 	}
 
-	public static void exercise_1_3_1(String[] args)
+	public static void exercise_1_3_4(String[] args)
 	{
-		// exercise 1.3.1 is completed in the java file of FixedCapacityStackofStrings_TR
+		String s = "[()]{}{[()()]()}";
+//		String s = "[{]}";
+		String[] a = s.split("");
+
+		StdOut.println(Parentheses(a));
 	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_3_3(args);
+		exercise_1_3_4(args);
 	}
 }
