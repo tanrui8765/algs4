@@ -212,8 +212,93 @@ public class Exercises_1_3
 		stack.print();
 	}
 
+	// I copied this from aistrate's GitHub implementation.
+	// very good one!
+	public static void exercise_1_3_9(String[] args)
+	{
+		String in = "1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )";
+//		String in = "sqrt 1 + 2 ) )";
+		String[] in_a = in.split("\\s+");
+
+		Stack<String> vals = new Stack<String>();
+		Stack<String> ops = new Stack<String>();
+
+		for (int i = 0; i < in_a.length; i++)
+		{
+			String s = in_a[i];
+			if (s.equals("("))
+			{
+			}
+			else if (s.equals("+") ||
+					s.equals("-") ||
+					s.equals("*") ||
+					s.equals("/") ||
+					s.equals("sqrt"))
+			{
+				ops.push(s);
+			}
+			else if (s.equals(")"))
+			{
+				String op = ops.pop();
+				String v = vals.pop();
+
+				if (op.equals("+") ||
+						op.equals("-") ||
+						op.equals("*") ||
+						op.equals("/"))
+					v = String.format("( %s %s %s )", vals.pop(), op, v);
+				else if (op.equals("sqrt"))
+					v = String.format("( %s %s )", op, v);
+
+				vals.push(v);
+				StdOut.println(vals.peek());
+			}
+			else    // digital value case
+				vals.push(s);
+		}
+
+		StdOut.println(vals.pop());
+	}
+
+	// for more explanation of infix, prefix and postfix
+	// please refer to the following urls:
+	// --> http://www.cs.man.ac.uk/~pjj/cs212/fix.html
+	// --> http://blog.csdn.net/chhj0103121429/article/details/40925555
+	public static void exercise_1_3_10(String[] args)
+	{
+//		String str = "( ( 1 + 2 ) * ( 3 - 4 ) * ( 5 - 6 ) ) )";
+		String str = "( 2 + ( ( 3 + 4 ) * ( 5 * 6 ) ) )";
+		String[] a = str.split("\\s+");
+
+		Stack<String> stack = new Stack<String>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			String s = a[i];
+
+			if (s.equals("+") ||
+					s.equals("-") ||
+					s.equals("*") ||
+					s.equals("/"))
+			{
+				stack.push(s);
+			}
+			else if (s.equals(")"))
+			{
+				StdOut.print(stack.pop() + " ");
+			}
+			else if (s.equals("("))
+			{
+			}
+			else
+			{
+				StdOut.print(s + " ");
+			}
+		}
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_8(args);
+		exercise_1_3_10(args);
 	}
 }
