@@ -173,8 +173,21 @@ public class Exercises_1_3
 		StdOut.println();
 	}
 
+
+	public static void exercise_1_3_6(String[] args)
+	{
+		// the following code reverse the data in the queue.ª
+		/*
+		Stack<String> s = new Stack<String>();
+		while(!q.isEmpty())
+			s.push(q.dequeue());
+		while(!s.isEmpty())
+			q.enqueue(s.pop());
+		*/
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_5(args);
+		exercise_1_3_6(args);
 	}
 }
