@@ -191,8 +191,29 @@ public class Exercises_1_3
 		// this peek() has implemented in the Stack_TR.java.
 	}
 
+	public static void exercise_1_3_8(String[] args)
+	{
+		String s = "it was - the best - of times - - - it was - the - -";
+		String[] a = s.split("\\s+");
+
+		ResizingArrayStack_TR<String> stack = new ResizingArrayStack_TR<String>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			if (!a[i].equals("-"))
+			{
+				stack.push(a[i]);
+			}
+			else if (!stack.isEmpty())
+			{
+				stack.pop();
+			}
+		}
+		stack.print();
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_7(args);
+		exercise_1_3_8(args);
 	}
 }
