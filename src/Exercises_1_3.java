@@ -297,8 +297,111 @@ public class Exercises_1_3
 		}
 	}
 
+	public static String[] InfixToPostfix(String str)
+	{
+		String[] a = str.split("\\s+");
+		String[] out = new String[a.length];
+		int n = 0;
+
+		Stack_TR<String> stack = new Stack_TR<String>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			String s = a[i];
+
+			if (s.equals("+") ||
+					s.equals("-") ||
+					s.equals("*") ||
+					s.equals("/"))
+			{
+				stack.push(s);
+			}
+			else if (s.equals(")"))
+			{
+				String tmp = stack.pop();
+				StdOut.print(tmp + " ");
+				out[n++] = tmp;
+			}
+			else if (s.equals("("))
+			{
+			}
+			else
+			{
+				StdOut.print(s + " ");
+				out[n++] = s;
+			}
+		}
+		StdOut.println();
+
+		String[] temp_array = new String[n];
+		for (int i = 0; i < n; i++)
+			temp_array[i] = out[i];
+
+		out = temp_array;
+
+		return out;
+	}
+
+	public static int EvaluatePostfix(String[] str_post)
+	{
+		Stack_TR<Integer> vals = new Stack_TR<Integer>();
+//		Stack_TR<String> ops = new Stack_TR<String>();
+
+		for (int i = 0; i < str_post.length; i++)
+		{
+			String s = str_post[i];
+
+			if (s.equals("+") ||
+					s.equals("-") ||
+					s.equals("*") ||
+					s.equals("/"))
+			{
+				int val2 = vals.pop();
+				int val1 = vals.pop();
+				int rlt = 0;
+
+				if (s.equals("+"))
+				{
+					rlt = val1 + val2;
+				}
+				if (s.equals("-"))
+				{
+					rlt = val1 - val2;
+				}
+				if (s.equals("*"))
+				{
+					rlt = val1 * val2;
+				}
+				if (s.equals("/"))
+				{
+					rlt = val1 / val2;
+				}
+
+				vals.push(rlt);
+			}
+			else
+				vals.push(Integer.parseInt(s));
+
+			StdOut.printf("Symbol %s; Stack [ %s]\n", s, vals);
+		}
+
+		return vals.pop();
+	}
+
+	// Code need to be refined more in the future:
+	// (1) no error checking
+	// (2) characters must be separated by whitespace.
+	public static void exercise_1_3_11(String[] args)
+	{
+//		String str_in = "( 2 + ( ( 3 + 4 ) * ( 5 * 6 ) ) )";
+		String str_in = "( 3 * ( 4 + 5 ) )";
+		String[] str_post = InfixToPostfix(str_in);
+		StdOut.println("rlt is " + EvaluatePostfix(str_post));
+	}
+
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_10(args);
+		exercise_1_3_11(args);
 	}
 }

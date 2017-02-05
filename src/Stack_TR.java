@@ -58,6 +58,17 @@ public class Stack_TR<Item> implements Iterable<Item>
 		return first.item;
 	}
 
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+		for (Item item : this)
+		{
+			s.append(item);
+			s.append(' ');
+		}
+		return s.toString();
+	}
+
 	public Iterator<Item> iterator()
 	{
 		return new ListIterator();
