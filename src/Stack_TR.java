@@ -2,6 +2,7 @@
  * Created by the_real_Rui on 3/2/2017.
  */
 
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 

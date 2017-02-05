@@ -1,6 +1,6 @@
-import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.*;
+
+import java.util.NoSuchElementException;
 
 /**
  * Created by the_real_Rui on 1/2/2017.
@@ -399,9 +399,93 @@ public class Exercises_1_3
 		StdOut.println("rlt is " + EvaluatePostfix(str_post));
 	}
 
+	public static Stack_TR<String> stack_copy(Stack_TR<String> st_org)
+	{
+		if (st_org.isEmpty()) throw new NoSuchElementException("Stack empty");
+
+		Stack_TR<String> st_cpy = new Stack_TR<String>();
+		Stack_TR<String> st_tmp = new Stack_TR<String>();
+
+		for (String s : st_org)
+		{
+			st_tmp.push(s);
+		}
+		StdOut.printf("Mid [ %s]\n", st_tmp);
+		for (String s : st_tmp)
+		{
+			st_cpy.push(s);
+		}
+
+		return st_cpy;
+	}
+
+	public static void exercise_1_3_12(String[] args)
+	{
+		String str = "1 2 3";
+		String[] a = str.split("\\s+");
+
+		Stack_TR<String> stack_org = new Stack_TR<String>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			stack_org.push(a[i]);
+		}
+
+		StdOut.printf("Org [ %s]\n", stack_org);
+
+		Stack_TR<String> stack_cpy = stack_copy(stack_org);
+
+		StdOut.printf("Cpy [ %s]\n", stack_cpy);
+
+	}
+
+	public static void exercise_1_3_13(String[] args)
+	{
+		String str = "0 1 2 3 4 5 6 7 8 9";
+//		String str = "4 6 8 7 5 3 2 9 0 1";
+//		String str = "0 1 2 3 4 9 8 7 6 5";
+		String[] a = str.split("\\s+");
+
+		int[] v = new int[a.length];
+		for (int i = 0; i < a.length; i++)
+		{
+			v[i] = Integer.parseInt(a[i]);
+		}
+
+		Queue<Integer> q = new Queue<Integer>();
+
+		int i = 0, j = 0;
+		int n = a.length;
+		while (i < n && j <= n)
+		{
+			if (!q.isEmpty() && q.peek() == v[i])
+			{
+				StdOut.printf("i=%d; j=%d; v[i]=%d; deq:%d; Queue: [ %s]\n", i, j, v[i], q.dequeue(), q);
+//				StdOut.print(q.dequeue() + " ");
+				i++;
+			}
+			else
+			{
+				if (j < n)
+				{
+					q.enqueue(j);
+					StdOut.printf("i=%d; j=%d; v[i]=%d; enq:%d; Queue: [ %s]\n", i, j, v[i], j, q);
+				}
+				else
+				{
+					StdOut.printf("i=%d; j=%d; v[i]=%d; stay:%d; Queue: [ %s]\n", i, j, v[i], j, q);
+				}
+				j++;
+			}
+		}
+		StdOut.println();
+		// Loop jumped out is because i over the length of int array.
+		StdOut.printf("i=%d; j=%d; Queue: [ %s]\n", i, j, q);
+		StdOut.printf("%s (Unprinted: %d; Queue: [ %s])\n", i == n && q.isEmpty(), n - i, q);
+	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_3_11(args);
+		exercise_1_3_13(args);
 	}
 }
