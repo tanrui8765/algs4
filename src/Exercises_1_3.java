@@ -186,8 +186,13 @@ public class Exercises_1_3
 		*/
 	}
 
+	public static void exercise_1_3_7(String[] args)
+	{
+		// this peek() has implemented in the Stack_TR.java.
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_6(args);
+		exercise_1_3_7(args);
 	}
 }

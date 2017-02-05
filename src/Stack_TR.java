@@ -7,6 +7,7 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 public class Stack_TR<Item> implements Iterable<Item>
 {
@@ -43,10 +44,18 @@ public class Stack_TR<Item> implements Iterable<Item>
 	public Item pop()
 	{
 		// Remove item from top of stack
+		if (isEmpty()) throw new NoSuchElementException("Stack underflow");
 		Item item = first.item;
 		first = first.next;
 		N--;
 		return item;
+	}
+
+	public Item peek()
+	{
+		// return the most recently item without deleting it from the stack
+		if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+		return first.item;
 	}
 
 	public Iterator<Item> iterator()
