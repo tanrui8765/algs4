@@ -156,8 +156,25 @@ public class Exercises_1_3
 		StdOut.println(Parentheses(a));
 	}
 
+	public static void exercise_1_3_5(String[] args)
+	{
+		// this is the binary representation of N
+		int N = 8;
+		Stack<Integer> stack = new Stack<Integer>();
+
+		while (N > 0)
+		{
+			stack.push(N % 2); // Get the last binary bit
+			N = N / 2;              // N >> 1, Right shift N by 1 binary bit
+		}
+		// Digit save from lower bit to higher bit
+		// Digit print from higher bit to lower bit
+		for (int d : stack) StdOut.print(d);
+		StdOut.println();
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_4(args);
+		exercise_1_3_5(args);
 	}
 }
