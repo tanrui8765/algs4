@@ -484,6 +484,12 @@ public class Exercises_1_3
 		StdOut.printf("%s (Unprinted: %d; Queue: [ %s])\n", i == n && q.isEmpty(), n - i, q);
 	}
 
+	public static void exercise_1_3_14(String[] args)
+	{
+		// get a copy from the following url, but name changed as "ResizingArrayQueue_TR".
+		// http://algs4.cs.princeton.edu/13stacks/ResizingArrayQueue.java.html
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_13(args);
