@@ -490,8 +490,40 @@ public class Exercises_1_3
 		// http://algs4.cs.princeton.edu/13stacks/ResizingArrayQueue.java.html
 	}
 
+
+	public static void exercise_1_3_15(String[] args)
+	{
+		int k = 2;
+		ResizingArrayQueue_TR<String> queue = new ResizingArrayQueue_TR<String>();
+//		In in = new In("tinyW.txt");
+//		String[] a = in.readAllStrings();
+
+		String[] a = {"1", "2", "3", "4", "5"};
+
+		for (int i = 0; i < a.length; i++)
+		{
+			queue.enqueue(a[i]);
+		}
+		// actually, in this exercise, the programmer should not know how many strings,
+		// the queue has collected so far.
+		// all strings are from standard input one by one.
+
+		int n = queue.size() - k + 1;
+		int i = 0;
+		for (String s : queue)
+		{
+			i++;
+			if (i == n)
+			{
+				StdOut.println("i=" + i + "; string:" + s);
+				break;
+			}
+		}
+
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_13(args);
+		exercise_1_3_15(args);
 	}
 }

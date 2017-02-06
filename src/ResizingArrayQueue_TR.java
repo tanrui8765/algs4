@@ -81,6 +81,17 @@ public class ResizingArrayQueue_TR<Item> implements Iterable<Item>
 		return q[first];
 	}
 
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+		for (Item item : this)
+		{
+			s.append(item);
+			s.append(' ');
+		}
+		return s.toString();
+	}
+
 	// return an iterator that iterates over the items in this queue in FIFO order.
 	public Iterator<Item> iterator()
 	{
