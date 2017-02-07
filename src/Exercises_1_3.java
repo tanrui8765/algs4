@@ -1,6 +1,9 @@
 import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.Date;
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.Stack;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Created by the_real_Rui on 1/2/2017.
@@ -522,8 +525,86 @@ public class Exercises_1_3
 
 	}
 
+	public static Date[] readAllDates()
+	{
+		String[] str_date = {"2/7/2017",
+				"3/8/2017",
+				"4/9/2017",
+				"5/10/2017"};
+//		In in = new In(name);
+		Queue<Date> q = new Queue<Date>();
+//		while(!in.isEmpty())
+//		{
+//			q.enqueue(in.readInt());
+//		}
+		for (int i = 0; i < str_date.length; i++)
+		{
+			String[] mdy = str_date[i].split("/");
+			Date date = new Date(Integer.parseInt(mdy[0]), Integer.parseInt(mdy[1]), Integer.parseInt(mdy[2]));
+			q.enqueue(date);
+		}
+
+		int N = q.size();
+		Date[] a = new Date[N];
+		for (int i = 0; i < N; i++)
+		{
+			a[i] = q.dequeue();
+		}
+		return a;
+	}
+
+	public static void exercise_1_3_16(String[] args)
+	{
+		Date[] date = readAllDates();
+
+		for (int i = 0; i < date.length; i++)
+		{
+			StdOut.println(date[i]);
+		}
+	}
+
+	public static Transaction_TR[] readAllTransctions()
+	{
+		String[] str_trans = {"Rui 2/7/2017 12.34",
+				"Emma 3/8/2017 22.22",
+				"Steve 4/9/2017 33.33",
+				"Michelle 5/10/2017 11.11"};
+//		In in = new In(name);
+		Queue<Transaction_TR> q = new Queue<Transaction_TR>();
+//		while(!in.isEmpty())
+//		{
+//			q.enqueue(in.readInt());
+//		}
+		for (int i = 0; i < str_trans.length; i++)
+		{
+			String[] wwa = str_trans[i].split("\\s+");
+			String[] mdy = wwa[1].split("/");
+			SmartDate_TR smt_date = new SmartDate_TR(Integer.parseInt(mdy[0]), Integer.parseInt(mdy[1]), Integer.parseInt(mdy[2]));
+			Transaction_TR trans = new Transaction_TR(wwa[0], smt_date, Double.parseDouble(wwa[2]));
+			q.enqueue(trans);
+		}
+
+		int N = q.size();
+		Transaction_TR[] a = new Transaction_TR[N];
+		for (int i = 0; i < N; i++)
+		{
+			a[i] = q.dequeue();
+		}
+		return a;
+	}
+
+	public static void exercise_1_3_17(String[] args)
+	{
+		Transaction_TR[] trans = readAllTransctions();
+
+		for (int i = 0; i < trans.length; i++)
+		{
+			StdOut.println(trans[i]);
+		}
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_15(args);
+		exercise_1_3_17(args);
 	}
 }
