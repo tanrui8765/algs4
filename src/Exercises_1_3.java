@@ -603,6 +603,18 @@ public class Exercises_1_3
 		}
 	}
 
+
+	public static void exercise_1_3_18(String[] args)
+	{
+		// x is a linked-list node, but not the last one.
+		// the effect of the following code
+		// x.next = x.next.next;
+
+		// Answer: Delete the node from the list immediately following x.
+		// Node: Memory collection should be carefully in systems without automatic
+		//       garbage collector.
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_17(args);
