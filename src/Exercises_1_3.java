@@ -615,8 +615,37 @@ public class Exercises_1_3
 		//       garbage collector.
 	}
 
+
+	public static void exercise_1_3_19(String[] args)
+	{
+		// think this should solve the problem, but not 100% sure yet.
+		/*
+			if(first != null)
+			{
+				temp = first;
+				prev = null;
+				while (temp.next != null)
+				{
+					prev = temp;
+					temp = temp.next;
+				}
+
+				if(temp == first)   // if first is the only one
+				{
+					first = null;
+					temp = null;
+				}
+				else                // node is more than one
+				{
+					temp = null;
+					prev.next = null;
+				}
+			}
+		*/
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_17(args);
+		exercise_1_3_19(args);
 	}
 }
