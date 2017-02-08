@@ -644,6 +644,11 @@ public class Exercises_1_3
 		*/
 	}
 
+	public static void exercise_1_3_20(String[] args)
+	{
+		// implemented in the LinkedList_TR.java
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_19(args);
