@@ -691,6 +691,15 @@ public class Exercises_1_3
 		// insert t right after x
 	}
 
+
+	public static void exercise_1_3_23(String[] args)
+	{
+		// x.next = t;
+		// t.next = x.next;
+
+		// this behavior will make t.next point to t itself.
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_21(args);
