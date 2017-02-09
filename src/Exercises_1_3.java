@@ -649,8 +649,43 @@ public class Exercises_1_3
 		// implemented in the LinkedList_TR.java
 	}
 
+	public static boolean find(LinkedList_TR<String> list, String key)
+	{
+		if (list.isEmpty())
+		{
+			return false;
+		}
+
+		for (String item : list)
+		{
+			if (item.equals(key))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static void exercise_1_3_21(String[] args)
+	{
+		LinkedList_TR<String> list = new LinkedList_TR<String>();
+
+		for (int i = 0; i < 10; i++)
+		{
+			list.add(Integer.toString(i));
+		}
+
+		StdOut.printf("LinkedList [ %s]\n", list);
+
+		String str = "1";
+		StdOut.println("find " + str + " " + find(list, "9"));
+
+
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_19(args);
+		exercise_1_3_21(args);
 	}
 }
