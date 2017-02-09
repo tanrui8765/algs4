@@ -680,8 +680,15 @@ public class Exercises_1_3
 
 		String str = "1";
 		StdOut.println("find " + str + " " + find(list, "9"));
+	}
 
+	public static void exercise_1_3_22(String[] args)
+	{
+		// t.next = x.next;
+		// x.next = t;
 
+		// insert t into the x and x's next item.
+		// insert t right after x
 	}
 
 	public static void main(String[] args)
