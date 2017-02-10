@@ -76,6 +76,34 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		return item;
 	}
 
+	public void removeAfter(Node node)
+	{
+		if (node == null) return;        // this node null.
+
+		Node temp = first;
+		for (int i = 0; i < N; i++)
+		{
+			if (temp == node)            // this node exist.
+			{
+				if (temp.next == null)   // this node exist, next node null.
+				{
+					return;
+				}
+				else                    // this node exist, next node exist.
+				{
+					temp.next = temp.next.next;
+					N--;
+					if (isEmpty()) last = null;
+				}
+			}
+			else
+			{
+				temp = temp.next;
+			}
+		}
+		return; // this node is not in the list.
+	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
@@ -127,7 +155,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 //		{
 //			l.delete();
 //		}
-		l.delete(8);
+//		l.delete(8);
 		StdOut.printf("LinkedList2: [ %s]\n", l);
 	}
 }

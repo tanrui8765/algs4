@@ -700,8 +700,13 @@ public class Exercises_1_3
 		// this behavior will make t.next point to t itself.
 	}
 
+	public static void exercise_1_3_24(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_21(args);
+		exercise_1_3_24(args);
 	}
 }
