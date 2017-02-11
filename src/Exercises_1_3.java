@@ -702,7 +702,8 @@ public class Exercises_1_3
 
 	public static void exercise_1_3_24(String[] args)
 	{
-
+		// TODO: have no idea how to test this... Try this later.
+		// Code is in LinkedList_TR.java
 	}
 
 	public static void main(String[] args)

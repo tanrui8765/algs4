@@ -8,14 +8,14 @@ import java.util.NoSuchElementException;
  */
 public class LinkedList_TR<Item> implements Iterable<Item>
 {
-	private Node first;
-	private Node last;
+	private Node<Item> first;
+	private Node<Item> last;
 	private int N = 0;
 
-	private class Node
+	private static class Node<Item>
 	{
 		Item item;
-		Node next;
+		Node<Item> next;
 	}
 
 	public LinkedList_TR()
@@ -35,8 +35,8 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 	public void add(Item item)
 	{
 		// Add item to the last of the linked list
-		Node oldlast = last;
-		last = new Node();
+		Node<Item> oldlast = last;
+		last = new Node<Item>();
 		last.item = item;
 		last.next = null;
 		if (isEmpty()) first = last;
@@ -63,7 +63,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 			return delete();
 		}
 
-		Node temp = first;
+		Node<Item> temp = first;
 		for (int i = 1; i < k - 1; i++)
 		{
 			temp = temp.next;
@@ -76,11 +76,11 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		return item;
 	}
 
-	public void removeAfter(Node node)
+	public void removeAfter(Node<Item> node)
 	{
 		if (node == null) return;        // this node null.
 
-		Node temp = first;
+		Node<Item> temp = first;
 		for (int i = 0; i < N; i++)
 		{
 			if (temp == node)            // this node exist.
@@ -122,7 +122,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 
 	private class ListIterator implements Iterator<Item>
 	{
-		private Node current = first;
+		private Node<Item> current = first;
 
 		public boolean hasNext()
 		{
@@ -155,7 +155,8 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 //		{
 //			l.delete();
 //		}
-//		l.delete(8);
+
+		l.delete(8);
 		StdOut.printf("LinkedList2: [ %s]\n", l);
 	}
 }
