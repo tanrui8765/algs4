@@ -104,6 +104,16 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		return; // this node is not in the list.
 	}
 
+	public void insertAfter(Node<Item> node1, Node<Item> node2)
+	{
+		if ((node1 == null) || (node2 == null)) return;
+
+		node2.next = node1.next;
+		node1.next = node2;
+
+		return;
+	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
