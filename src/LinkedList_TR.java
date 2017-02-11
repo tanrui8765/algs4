@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -76,6 +77,54 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		return item;
 	}
 
+	public void remove(LinkedList_TR<Item> list, Item key)
+	{
+		int size = list.size();
+		Node<Item> curr = list.first;
+		Node<Item> prev = null;
+		for (int i = 0; i < size; i++)
+		{
+			if (curr.item == key)
+			{
+				if (curr == list.first)
+				{
+					list.first = curr.next;
+					list.N--;
+					if (list.isEmpty()) list.last = null;
+				}
+				else
+				{
+					prev.next = curr.next;
+					list.N--;
+				}
+				curr = curr.next;
+			}
+			else
+			{
+				prev = curr;
+				curr = curr.next;
+			}
+		}
+	}
+
+	public int max(Node<Integer> first_node)
+	{
+		if (first_node == null) return 0;
+		if (first_node.next == null) return first_node.item;
+
+		int max = 0;
+		Node<Integer> temp = first_node;
+		while (temp != null)
+		{
+			if (temp.item > max)
+			{
+				max = temp.item;
+			}
+			temp = temp.next;
+		}
+		return max;
+	}
+
 	public void removeAfter(Node<Item> node)
 	{
 		if (node == null) return;        // this node null.
@@ -110,6 +159,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 
 		node2.next = node1.next;
 		node1.next = node2;
+		N++;
 
 		return;
 	}
@@ -154,10 +204,12 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 	public static void main(String[] args)
 	{
 		LinkedList_TR<Integer> l = new LinkedList_TR<Integer>();
-
-		for (int i = 1; i < 10; i++)
+//		int[] a = {1,1,2,1,2,1,2,2,1,1};
+//		int[] a = {1,2,1,2};
+		for (int i = 0; i < 10; i++)
 		{
-			l.add(i);
+			int a = StdRandom.uniform(1, 10);
+			l.add(a);
 		}
 		StdOut.printf("LinkedList: [ %s]\n", l);
 
@@ -166,7 +218,10 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 //			l.delete();
 //		}
 
-		l.delete(8);
-		StdOut.printf("LinkedList2: [ %s]\n", l);
+//		l.delete(8);
+//		l.remove(l,2);
+//		StdOut.printf("LinkedList: [ %s]\n", l);
+
+		StdOut.println("The Max is " + l.max(l.first));
 	}
 }

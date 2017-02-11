@@ -712,6 +712,16 @@ public class Exercises_1_3
 		// Code is in LinkedList_TR.java : insertAfter
 	}
 
+	public static void exercise_1_3_26(String[] args)
+	{
+		// Code is in LinkedList_TR.java : remove
+	}
+
+	public static void exercise_1_3_27(String[] args)
+	{
+		// Code is in LinkedList_TR.java : max
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
