@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -125,6 +126,30 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		return max;
 	}
 
+	public int max_recursive(Node<Integer> ref_node)
+	{
+		if (ref_node == null)
+		{
+			return 0;
+		}
+		return max_recursive(ref_node, ref_node.item);
+	}
+
+	public int max_recursive(Node<Integer> ref_node, int max_val)
+	{
+		if (ref_node == null)
+		{
+			return max_val;
+		}
+		int val = ref_node.item;
+
+		StdOut.println("compare: " + val + " and " + max_val);
+		if (val > max_val)
+			return max_recursive(ref_node.next, val);
+		else
+			return max_recursive(ref_node.next, max_val);
+	}
+
 	public void removeAfter(Node<Item> node)
 	{
 		if (node == null) return;        // this node null.
@@ -223,5 +248,6 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 //		StdOut.printf("LinkedList: [ %s]\n", l);
 
 		StdOut.println("The Max is " + l.max(l.first));
+		StdOut.println("The Max_rec is " + l.max_recursive(l.first));
 	}
 }

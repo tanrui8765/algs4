@@ -722,6 +722,11 @@ public class Exercises_1_3
 		// Code is in LinkedList_TR.java : max
 	}
 
+	public static void exercise_1_3_28(String[] args)
+	{
+		// Code is in LinkedList_TR.java : max_recursive
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
