@@ -727,6 +727,18 @@ public class Exercises_1_3
 		// Code is in LinkedList_TR.java : max_recursive
 	}
 
+
+	public static void exercise_1_3_29(String[] args)
+	{
+		// Code is in CircularLinkedListQueue.java
+	}
+
+	public static void exercise_1_3_30(String[] args)
+	{
+		// a very smart implementation.
+		// please refer to test book page 165 to learn.
+		// code is in LinkedList_TR.java, reverse() and reverse_recursive()
+	}
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);

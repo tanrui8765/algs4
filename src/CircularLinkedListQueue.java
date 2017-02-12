@@ -121,7 +121,7 @@ public class CircularLinkedListQueue<Item> implements Iterable<Item>
 
 		for (int i = 0; i < 10; i++)
 		{
-			cl.enqueue(i);
+			cl.enqueue(i * 2);
 		}
 		StdOut.printf("Circular LinkedList [ %s]\n", cl);
 	}
