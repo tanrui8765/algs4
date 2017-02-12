@@ -213,6 +213,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		first.next = null;
 		return rest;
 	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
