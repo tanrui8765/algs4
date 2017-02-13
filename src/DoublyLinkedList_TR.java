@@ -6,15 +6,15 @@ import java.util.NoSuchElementException;
  */
 public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 {
-	private Node<Item> first;
-	private Node<Item> last;
+	private Node first;
+	private Node last;
 	private int N = 0;
 
-	private static class Node<Item>
+	private class Node
 	{
 		Item item;
-		Node<Item> next;
-		Node<Item> prev;
+		Node next;
+		Node prev;
 	}
 
 	public DoublyLinkedList_TR()
@@ -26,7 +26,7 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 
 	public boolean isEmpty()
 	{
-		return N == 0;
+		return first == null;
 	}
 
 	public int size()
@@ -34,133 +34,55 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 		return N;
 	}
 
-	// insert at the beginning
-	public void insertFirst(Node<Item> x)
+	public Item first()
 	{
-		if (x == null) throw new NoSuchElementException("Input is NULL");
-		if (isEmpty())
-		{
-			first = x;
-			first.next = null;
-			first.prev = null;
-
-			last = x;
-			last.next = null;
-			last.prev = null;
-		}
-		else
-		{
-			Node<Item> oldfirst = first;
-			first = x;
-			first.prev = null;
-			first.next = oldfirst;
-			oldfirst.prev = first;
-		}
-		N++;
-		return;
+		if (isEmpty()) throw new NoSuchElementException("List is empty");
+		return first.item;
 	}
 
-	// insert at the end
-	public void insertLast(Node<Item> x)
+	public Item last()
 	{
-		if (x == null) throw new NoSuchElementException("Input is NULL");
-		if (isEmpty())
-		{
-			first = x;
-			first.next = null;
-			first.prev = null;
-
-			last = x;
-			last.next = null;
-			last.prev = null;
-		}
-		else
-		{
-			Node<Item> oldlast = last;
-			last = x;
-			last.prev = oldlast;
-			last.next = null;
-			oldlast.next = last;
-		}
-		N++;
-		return;
+		if (isEmpty()) throw new NoSuchElementException("List is empty");
+		return last.item;
 	}
 
-	// remove from the beginning
-	public Node<Item> removeFirst()
+	// return the kth node
+	// positive k is the kth node from the beginning.
+	// negative k is the kth node from the end.
+	public Node node(int k)
 	{
-		if (isEmpty())
+		Node curr = null;
+		int i = 1;
+
+		if (k > 0)
 		{
-			throw new NoSuchElementException("Linked List Empty");
-		}
-
-		Node<Item> node = first;
-		first = first.next;
-		first.prev = null;
-		N--;
-		if (isEmpty()) last = null;
-
-		return node;
-	}
-
-	// remove from the end
-	public Node<Item> removeLast()
-	{
-		if (isEmpty())
-		{
-			throw new NoSuchElementException("Linked List Empty");
-		}
-
-		Node<Item> node = last;
-		last = last.prev;
-		last.next = null;
-		N--;
-		if (isEmpty()) first = null;
-
-		return node;
-	}
-
-	// insert before a given node
-	public void insertBefore(Node<Item> node, Item item)
-	{
-	}
-
-	// insert after a given node
-	public void insertAfter()
-	{
-
-	}
-
-	// remove a given node
-	public boolean remove(Node<Item> x)
-	{
-		if (isEmpty())
-		{
-			return false;
-		}
-
-		Node<Item> temp = first;
-		while (temp != null)
-		{
-			if (temp == x)
+			curr = first;
+			while (i < k && curr != null)
 			{
-				temp.prev.next = temp.next;
-				temp.next.prev = temp.prev;
-				N--;
-				if (isEmpty())
-				{
-					first = null;
-					last = null;
-				}
-				return true;
-			}
-			else
-			{
-				temp = temp.next;
+				curr = curr.next;
+				i++;
 			}
 		}
-		return false;
+		else if (k < 0)
+		{
+			k = -k;
+			curr = last;
+			while (i < k && curr != null)
+			{
+				curr = curr.prev;
+				i++;
+			}
+		}
+
+		return curr;
 	}
+
+	public void prepend(Item item)
+	{
+
+	}
+
+
 
 	public String toString()
 	{
@@ -179,7 +101,7 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 
 	private class ListIterator implements Iterator<Item>
 	{
-		private Node<Item> current = first;
+		private Node current = first;
 
 		public boolean hasNext()
 		{
@@ -224,7 +146,7 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 
 		private class ReverseListIterator implements Iterator<Item>
 		{
-			private Node<Item> current = last;
+			private Node current = last;
 
 			public boolean hasNext()
 			{
