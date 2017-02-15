@@ -113,7 +113,6 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 		N++;
 	}
 
-
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
