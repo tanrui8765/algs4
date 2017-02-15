@@ -79,9 +79,39 @@ public class DoublyLinkedList_TR<Item> implements Iterable<Item>
 
 	public void prepend(Item item)
 	{
-
+		Node x = new Node();
+		x.item = item;
+		if (isEmpty())
+		{
+			first = x;
+			last = x;
+		}
+		else
+		{
+			x.next = first;
+			first.prev = x;
+			first = x;
+		}
+		N++;
 	}
 
+	public void append(Item item)
+	{
+		Node x = new Node();
+		x.item = item;
+		if (isEmpty())
+		{
+			first = x;
+			last = x;
+		}
+		else
+		{
+			x.prev = last;
+			last.next = x;
+			last = x;
+		}
+		N++;
+	}
 
 
 	public String toString()
