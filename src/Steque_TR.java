@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -87,6 +88,18 @@ public class Steque_TR<Item> implements Iterable<Item>
 		N++;
 	}
 
+	public Item removeLast()
+	{
+		if (isEmpty()) throw new RuntimeException("List is Empty");
+		Item item = last.item;
+		last.parent = null;
+		if (last.prev != null) last.prev.next = null;
+		last = last.prev;
+		N--;
+		if (last == null) first = null;  // to avoid loitering
+		return item;
+	}
+
 
 	public void push(Item item)
 	{
@@ -100,6 +113,40 @@ public class Steque_TR<Item> implements Iterable<Item>
 
 	public Item pop()
 	{
+		return removeLast();
+	}
 
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+
+	}
+
+	public Iterator<Item> iterator()
+	{
+		return new ListIterator();
+	}
+
+	private class ListIterator implements Iterator<Item>
+	{
+		private Node current = first;
+
+		public boolean hasNext()
+		{
+			return current != null;
+		}
+
+		public void remove()
+		{
+			throw new UnsupportedOperationException();
+		}
+
+		public Item next()
+		{
+			if (!hasNext()) throw new NoSuchElementException();
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
 	}
 }
