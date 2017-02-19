@@ -739,6 +739,17 @@ public class Exercises_1_3
 		// please refer to test book page 165 to learn.
 		// code is in LinkedList_TR.java, reverse() and reverse_recursive()
 	}
+
+	public static void exercise_1_3_31(String[] args)
+	{
+		// code is in DoublyLinkedList_TR.java
+	}
+
+	public static void exercise_1_3_32(String[] args)
+	{
+		// code is in Steque_TR.java
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
