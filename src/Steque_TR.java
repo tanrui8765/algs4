@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -28,6 +31,22 @@ public class Steque_TR<Item> implements Iterable<Item>
 		first = null;
 		last = null;
 		N = 0;
+	}
+
+	public Steque_TR(Item[] a)
+	{
+		for (Item t : a)
+		{
+			push(t);
+		}
+	}
+
+	public Steque_TR(Iterable<Item> coll)
+	{
+		for (Item t : coll)
+		{
+			push(t);
+		}
 	}
 
 	public boolean isEmpty()
@@ -100,6 +119,18 @@ public class Steque_TR<Item> implements Iterable<Item>
 		return item;
 	}
 
+	public Item removeFirst()
+	{
+		if (isEmpty()) throw new RuntimeException("List is Empty");
+		Item item = first.item;
+		first.parent = null;
+		if (first.next != null) first.next.prev = null;
+		first = first.next;
+		N--;
+		if (first == null) last = null;
+		return item;
+	}
+
 
 	public void push(Item item)
 	{
@@ -108,7 +139,7 @@ public class Steque_TR<Item> implements Iterable<Item>
 
 	public void enqueue(Item item)
 	{
-		prepend(item);
+		append(item);
 	}
 
 	public Item pop()
@@ -116,10 +147,19 @@ public class Steque_TR<Item> implements Iterable<Item>
 		return removeLast();
 	}
 
+	public Item dequeue()
+	{
+		return removeFirst();
+	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
-
+		for (Item item : this)
+		{
+			s.append(item + " ");
+		}
+		return s.toString();
 	}
 
 	public Iterator<Item> iterator()
@@ -148,5 +188,135 @@ public class Steque_TR<Item> implements Iterable<Item>
 			current = current.next;
 			return item;
 		}
+	}
+
+	public Iterable<Item> reversed()
+	{
+		return new ReverseIterable();
+	}
+
+	private class ReverseIterable implements Iterable<Item>
+	{
+		public String toString()
+		{
+			StringBuilder s = new StringBuilder();
+			for (Item item : this)
+			{
+				s.append(item + " ");
+			}
+			return s.toString();
+		}
+
+		public Iterator<Item> iterator()
+		{
+			return new ReverseListIterator();
+		}
+
+		private class ReverseListIterator implements Iterator<Item>
+		{
+			private Node current = last;
+
+			public boolean hasNext()
+			{
+				return current != null;
+			}
+
+			public void remove()
+			{
+				throw new UnsupportedOperationException();
+			}
+
+			public Item next()
+			{
+				if (!hasNext())
+				{
+					throw new NoSuchElementException();
+				}
+				Item item = current.item;
+				current = current.prev;
+				return item;
+			}
+		}
+	}
+
+	/* Unit Test */
+	private static void testPush()
+	{
+		StdOut.println("push:");
+		int[] a = {2, 4, 6, 8, 10};
+		Steque_TR<Integer> list = new Steque_TR<Integer>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			list.push(a[i]);
+		}
+		showList(list);
+		StdOut.println();
+	}
+
+	private static void testEnqueue()
+	{
+		StdOut.println("enqueue:");
+		int[] a = {2, 4, 6, 8, 10};
+		Steque_TR<Integer> list = new Steque_TR<Integer>();
+
+		for (int i = 0; i < a.length; i++)
+		{
+			list.enqueue(a[i]);
+		}
+		showList(list);
+		StdOut.println();
+	}
+
+	private static void testPop()
+	{
+		StdOut.println("pop:");
+		Steque_TR<Integer> list = new Steque_TR<Integer>(new Integer[]{6, 8, 12});
+		StdOut.println(list + "[initial]\n");
+
+		while (!list.isEmpty())
+		{
+			StdOut.println("pop: " + list.pop());
+			showList(list);
+		}
+		StdOut.println();
+	}
+
+	private static void testDequeue()
+	{
+		StdOut.println("dequeue:");
+		Steque_TR<Integer> list = new Steque_TR<Integer>(new Integer[]{6, 8, 12});
+		StdOut.println(list + "[initial]\n");
+
+		while (!list.isEmpty())
+		{
+			StdOut.println("pop: " + list.dequeue());
+			showList(list);
+		}
+		StdOut.println();
+	}
+
+	/* Unit test helper */
+	private static void showList(Steque_TR list)
+	{
+		StdOut.println(list);
+		StdOut.println(list.reversed() + "[in reverse]");
+		if (!list.isEmpty())
+		{
+			StdOut.printf("Size: %d, First: %s, Last: %s\n\n", list.size(), list.first(), list.last());
+		}
+		else
+		{
+			StdOut.printf("Size: %d\n\n", list.size());
+		}
+	}
+
+	public static void main(String[] args)
+	{
+//		testPush();
+//		testPop();
+
+		testEnqueue();
+		testDequeue();
 	}
 }
