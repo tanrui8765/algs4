@@ -750,6 +750,11 @@ public class Exercises_1_3
 		// code is in Steque_TR.java
 	}
 
+	public static void exercise_1_3_33(String[] args)
+	{
+		// LikedList implementation code is in Deque_TR.java
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
