@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Created by the_real_Rui on 19/2/2017.
+ * this solution is mainly referenced from GleasonK/Java on Github
  */
 public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 {
@@ -191,7 +192,10 @@ public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 				{
 					throw new NoSuchElementException();
 				}
-				Item item = ;
+				Item item;
+				if (last - i >= 0) item = q[last - i];
+				else item = q[q.length - i + last];
+				i++;
 				return item;
 			}
 		}
@@ -201,7 +205,7 @@ public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 	private static void testPushRight()
 	{
 		StdOut.println("push right:");
-		int[] a = {2, 4, 6, 8, 10};
+		int[] a = {1, 3, 5, 7, 9};
 		Deque_TR<Integer> list = new Deque_TR<Integer>();
 
 		for (int i = 0; i < a.length; i++)
@@ -215,7 +219,7 @@ public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 	private static void testPushLeft()
 	{
 		StdOut.println("push left:");
-		int[] a = {2, 4, 6, 8, 10};
+		int[] a = {1, 3, 5, 7, 9};
 		Deque_TR<Integer> list = new Deque_TR<Integer>();
 
 		for (int i = 0; i < a.length; i++)
@@ -229,7 +233,7 @@ public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 	private static void testPopLeft()
 	{
 		StdOut.println("pop left:");
-		Deque_TR<Integer> list = new Deque_TR<Integer>(new Integer[]{6, 8, 12});
+		Deque_TR<Integer> list = new Deque_TR<Integer>(new Integer[]{3, 9, 11});
 		StdOut.println(list + "[initial]\n");
 
 		while (!list.isEmpty())
@@ -243,7 +247,7 @@ public class ResizingArrayDeque_TR<Item> implements Iterable<Item>
 	private static void testPopRight()
 	{
 		StdOut.println("pop right:");
-		Deque_TR<Integer> list = new Deque_TR<Integer>(new Integer[]{6, 8, 12});
+		Deque_TR<Integer> list = new Deque_TR<Integer>(new Integer[]{3, 9, 11});
 		StdOut.println(list + "[initial]\n");
 
 		while (!list.isEmpty())

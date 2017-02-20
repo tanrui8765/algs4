@@ -753,6 +753,7 @@ public class Exercises_1_3
 	public static void exercise_1_3_33(String[] args)
 	{
 		// LikedList implementation code is in Deque_TR.java
+		// Resize Array implement code is in ResizingArrayDeque_TR.java
 	}
 
 	public static void main(String[] args)
