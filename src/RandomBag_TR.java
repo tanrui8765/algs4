@@ -16,7 +16,7 @@ public class RandomBag_TR<Item> implements Iterable<Item>
 
 	public RandomBag_TR()
 	{
-		a = (Item[]) new Object[10];
+		a = (Item[]) new Object[2];
 		n = 0;
 		first = 0;
 		last = 0;
