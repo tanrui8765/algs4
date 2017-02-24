@@ -103,10 +103,25 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 			a[(first + index) % a.length] = a[last];
 			a[last] = temp;
 
+			StdOut.printf("array1: ");
+			for (int p = 0; p < a.length; p++)
+			{
+				StdOut.printf("%5d, ", a[p]);
+			}
+			StdOut.println();
+
 			item = a[last];
 			a[last] = null;
 			n--;
 			last--;
+
+			StdOut.printf("array2: ");
+			for (int p = 0; p < a.length; p++)
+			{
+				StdOut.printf("%5d, ", a[p]);
+			}
+			StdOut.println();
+
 			if (n > 0 && n == a.length / 4) resize(a.length / 2);
 		}
 		return item;
@@ -147,7 +162,7 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 	{
 		public ArrayIterator()
 		{
-			shuffle(a);
+//			shuffle(a);
 		}
 
 //		private void shuffle(Item b[])
@@ -196,7 +211,7 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 	}
 
 	/* Unit test helper */
-	private static void showList(RandomBag_TR list)
+	private static void showList(RandomQueue_TR list)
 	{
 		StdOut.println(list);
 		if (!list.isEmpty())
@@ -211,15 +226,20 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 
 	public static void main(String[] args)
 	{
-//		StdOut.println("add:");
-//		int[] q = {1, 3, 5, 7, 9};
-//		RandomBag_TR<Integer> list = new RandomBag_TR<Integer>();
-//
-//		for (int i = 0; i < q.length; i++)
-//		{
-//			list.add(q[i]);
-//		}
+		StdOut.println("enqueue: ");
+		int[] q = {1, 3, 5, 7, 9};
+		RandomQueue_TR<Integer> list = new RandomQueue_TR<Integer>();
+
+		for (int i = 0; i < q.length; i++)
+		{
+			list.enqueue(q[i]);
+		}
 ////		showList(list);
-//		StdOut.println(list.toString());
+		StdOut.println(list.toString());
+
+		for (int i = 0; i < q.length; i++)
+		{
+			StdOut.println(list.dequeue().toString());
+		}
 	}
 }
