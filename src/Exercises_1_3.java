@@ -756,6 +756,16 @@ public class Exercises_1_3
 		// Resize Array implement code is in ResizingArrayDeque_TR.java
 	}
 
+	public static void exercise_1_3_34(String[] args)
+	{
+		// please find code in RandomBag_TR.java
+	}
+
+	public static void exercise_1_3_35(String[] args)
+	{
+		// please find code in RandomQueue_TR.java
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
