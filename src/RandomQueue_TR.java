@@ -163,20 +163,8 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 	{
 		public ArrayIterator()
 		{
-//			shuffle(a);
+			shuffle(a);
 		}
-
-//		private void shuffle(Item b[])
-//		{
-//			int N = b.length;
-//			for(int j=0;j<N;j++)
-//			{
-//				int r = j+(int)(Math.random()*(N-j));
-//				Item temp = b[j];
-//				b[j] = b[r];
-//				b[r] = temp;
-//			}
-//		}
 
 		private void shuffle(Item b[])
 		{
@@ -241,11 +229,13 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 			list.enqueue(q[i]);
 		}
 		showList(list);
-//		StdOut.println(list.toString());
+		StdOut.println("random iterator test 1: " + list.toString());
+		StdOut.println("random iterator test 2: " + list.toString());
+		StdOut.println("random iterator test 3: " + list.toString());
 
-		for (int i = 0; i < q.length; i++)
-		{
-			StdOut.println(list.dequeue().toString());
-		}
+//		for (int i = 0; i < q.length; i++)
+//		{
+//			StdOut.println(list.dequeue().toString());
+//		}
 	}
 }
