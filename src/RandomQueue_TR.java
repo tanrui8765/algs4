@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
+import javax.smartcardio.Card;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -100,8 +101,8 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 		{
 			int index = StdRandom.uniform(0, n);
 			Item temp = a[(first + index) % a.length];
-			a[(first + index) % a.length] = a[last];
-			a[last] = temp;
+			a[(first + index) % a.length] = a[last - 1];
+			a[last - 1] = temp;
 
 			StdOut.printf("array1: ");
 			for (int p = 0; p < a.length; p++)
@@ -110,8 +111,8 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 			}
 			StdOut.println();
 
-			item = a[last];
-			a[last] = null;
+			item = a[last - 1];
+			a[last - 1] = null;
 			n--;
 			last--;
 
@@ -224,6 +225,11 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 		}
 	}
 
+	public static void testBridgeHands()
+	{
+		// TODO This test will be filled up later, cause I don't know much about "how to deal bridge hands".
+	}
+
 	public static void main(String[] args)
 	{
 		StdOut.println("enqueue: ");
@@ -234,8 +240,8 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 		{
 			list.enqueue(q[i]);
 		}
-////		showList(list);
-		StdOut.println(list.toString());
+		showList(list);
+//		StdOut.println(list.toString());
 
 		for (int i = 0; i < q.length; i++)
 		{
