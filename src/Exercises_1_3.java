@@ -771,6 +771,10 @@ public class Exercises_1_3
 		// please find code in RandomQueue_TR.java
 	}
 
+	public static void exercise_1_3_37(String[] args)
+	{
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_24(args);
