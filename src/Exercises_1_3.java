@@ -771,12 +771,25 @@ public class Exercises_1_3
 		// please find code in RandomQueue_TR.java
 	}
 
+	public static void testJosephus(int M, int N)
+	{
+		ResizingArrayQueue_TR<Integer> q = new ResizingArrayQueue_TR<Integer>();
+
+		for (int i = 0; i < N; i++)
+		{
+			q.enqueue(i);
+		}
+
+		StdOut.println(q.toString());
+	}
+
 	public static void exercise_1_3_37(String[] args)
 	{
+		testJosephus(2, 7);
 	}
 
 	public static void main(String[] args)
 	{
-		exercise_1_3_24(args);
+		exercise_1_3_37(args);
 	}
 }
