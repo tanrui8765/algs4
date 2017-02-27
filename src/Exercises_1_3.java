@@ -781,6 +781,16 @@ public class Exercises_1_3
 		}
 
 		StdOut.println(q.toString());
+
+		while (!q.isEmpty())
+		{
+			for (int i = 0; i < M - 1; i++)
+			{
+				q.enqueue(q.dequeue());
+			}
+			StdOut.print(q.dequeue() + " ");
+		}
+		StdOut.println();
 	}
 
 	public static void exercise_1_3_37(String[] args)
