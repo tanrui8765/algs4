@@ -56,7 +56,7 @@ public class RandomQueue_TR<Item> implements Iterable<Item>
 	public Item last()
 	{
 		if (isEmpty()) throw new NoSuchElementException("RandomBag is Empty");
-		return a[last];
+		return a[last-1];
 	}
 
 	public void enqueue(Item item)
