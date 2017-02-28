@@ -1,5 +1,4 @@
 import edu.princeton.cs.algs4.*;
-import sun.jvm.hotspot.utilities.Interval;
 
 import java.awt.*;
 import java.util.Arrays;
