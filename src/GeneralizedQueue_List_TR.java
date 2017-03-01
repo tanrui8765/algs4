@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -216,35 +218,46 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 		append(x);
 	}
 
-	public Item delete()
-	{
-		if (isEmpty()) throw new NoSuchElementException("List underflow");
-		Item item = first.item;
-		first = first.next;
-		N--;
-		if (isEmpty()) last = null;
-		return item;
-	}
-
 	public Item delete(int k)
 	{
-		if (N < k) throw new NoSuchElementException("No kth element");
-		if (k <= 0) throw new NoSuchElementException("k should not be zero");
+		if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+		if ((k <= 0) || (k > N)) throw new NoSuchElementException("No such index");
+
+		Item item;
 		if (k == 1)
 		{
-			return delete();
+			item = first.item;
+			first.parent = null;
+			if (first.next != null) first.next.prev = null;
+			first = first.next;
+			N--;
+			if (first == null) last = null;  // to avoid loitering
 		}
-
-		Node temp = first;
-		for (int i = 1; i < k - 1; i++)
+		else if (k == N)
 		{
-			temp = temp.next;
+			item = last.item;
+			last.parent = null;
+			if (last.prev != null) last.prev.next = null;
+			last = last.prev;
+			N--;
+			if (last == null) first = null; // to avoid loitering
+		}
+		else
+		{
+			Node temp = first;
+			for (int i = 1; i <= k - 1; i++)
+			{
+				temp = temp.next;
+			}
+
+			item = temp.item;
+			temp.parent = null;
+			temp.prev.next = temp.next;
+			temp.next.prev = temp.prev;
+			N--;
+			if (isEmpty()) last = null;
 		}
 
-		Item item = temp.item;
-		temp.next = temp.next.next;
-		N--;
-		if (isEmpty()) last = null;
 		return item;
 	}
 
@@ -333,5 +346,51 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 				return item;
 			}
 		}
+	}
+
+	/* Unit test helper */
+	private static void showList(GeneralizedQueue_List_TR list)
+	{
+		StdOut.println(list);
+		if (!list.isEmpty())
+		{
+			StdOut.printf("Size: %d, First: %s, Last: %s\n\n", list.size(), list.first(), list.last());
+		}
+		else
+		{
+			StdOut.printf("Size: %d\n\n", list.size());
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		StdOut.println("enqueue: ");
+		int[] q = {1, 2, 3, 4, 5};
+		GeneralizedQueue_List_TR<Integer> list = new GeneralizedQueue_List_TR<>();
+
+		for (int i = 0; i < q.length; i++)
+		{
+			list.insert(q[i]);
+		}
+		showList(list);
+		StdOut.println("generalized queue is: " + list.toString());
+		StdOut.println();
+
+//		StdOut.println("delete: " + list.delete(2).toString());
+		StdOut.println("delete: " + list.delete(3).toString());
+		StdOut.println("generalized queue is: " + list.toString());
+
+//		int[] q2 = {2, 4, 6, 8, 10};
+//		for (int i = 0; i < q.length; i++)
+//		{
+//			list.insert(q2[i]);
+//		}
+//		showList(list);
+//		StdOut.println("generalized queue is: " + list.toString());
+//		StdOut.println();
+//
+//		StdOut.println("delete: " + list.delete(2).toString());
+//		StdOut.println("delete: " + list.delete(3).toString());
+//		StdOut.println("generalized queue is: " + list.toString());
 	}
 }

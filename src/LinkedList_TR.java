@@ -71,7 +71,7 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 			temp = temp.next;
 		}
 
-		Item item = temp.item;
+		Item item = temp.next.item;
 		temp.next = temp.next.next;
 		N--;
 		if (isEmpty()) last = null;
@@ -256,9 +256,9 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 		LinkedList_TR<Integer> l = new LinkedList_TR<Integer>();
 //		int[] a = {1,1,2,1,2,1,2,2,1,1};
 //		int[] a = {1,2,1,2};
-		int[] a = {1, 2, 3};
+		int[] a = {1, 2, 3, 4, 5};
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 5; i++)
 		{
 //			int a = StdRandom.uniform(1, 10);
 			l.add(a[i]);
@@ -270,13 +270,13 @@ public class LinkedList_TR<Item> implements Iterable<Item>
 //			l.delete();
 //		}
 
-//		l.delete(8);
+		StdOut.println("dequeue: " + l.delete(3));
 //		l.remove(l,2);
-//		StdOut.printf("LinkedList: [ %s]\n", l);
+		StdOut.printf("LinkedList: [ %s]\n", l);
 
-		StdOut.println("The Max is " + l.max(l.first));
-		StdOut.println("The Max_rec is " + l.max_recursive(l.first));
+//		StdOut.println("The Max is " + l.max(l.first));
+//		StdOut.println("The Max_rec is " + l.max_recursive(l.first));
 //		StdOut.println("Reverse is " + l.reverse(l.first).item);
-		StdOut.println("Reverse_rec is " + l.reverse_recursive(l.first).item);
+//		StdOut.println("Reverse_rec is " + l.reverse_recursive(l.first).item);
 	}
 }
