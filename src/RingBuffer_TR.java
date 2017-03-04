@@ -27,4 +27,9 @@ public class RingBuffer_TR<Item> implements Iterable<Item>
 
 	}
 
+	public Item delete(void)
+	{
+
+	}
+
 }
