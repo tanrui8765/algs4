@@ -1,3 +1,4 @@
+import com.sun.tools.javac.jvm.Gen;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
@@ -30,6 +31,34 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 		first = null;
 		last = null;
 		N = 0;
+	}
+
+	public GeneralizedQueue_List_TR(GeneralizedQueue_List_TR<Item> q)
+	{
+		if (q.isEmpty())
+		{
+			throw new NoSuchElementException("Input queue is empty!");
+		}
+		/*
+		GeneralizedQueue_List_TR<Item> temp_list = new GeneralizedQueue_List_TR<Item>();
+//		GeneralizedQueue_List_TR<Item> ret_list = new GeneralizedQueue_List_TR<Item>();
+
+		for(Item item : q)
+		{
+			temp_list.append(q.removeFirst());
+		}
+
+		for(Item item : temp_list)
+		{
+			q.append(item);
+			this.append(item);
+		}
+		*/
+
+		for (Item item : q)
+		{
+			this.append(item);
+		}
 	}
 
 	public boolean isEmpty()
@@ -348,6 +377,28 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 		}
 	}
 
+	public static void testCopyQueue()
+	{
+		int[] num = {1, 2, 3, 4, 5};
+		GeneralizedQueue_List_TR<Integer> list = new GeneralizedQueue_List_TR<>();
+
+		for (int i = 0; i < num.length; i++)
+		{
+			list.insert(num[i]);
+		}
+		StdOut.println("list_org: " + list.toString());
+
+		GeneralizedQueue_List_TR<Integer> list_cpy = new GeneralizedQueue_List_TR<Integer>(list);
+		StdOut.println("list_cpy: " + list_cpy.toString());
+
+		list_cpy.removeLast();
+		list_cpy.insert(6);
+		StdOut.println("list_org: " + list.toString());
+		StdOut.println("list_cpy: " + list_cpy.toString());
+
+
+	}
+
 	/* Unit test helper */
 	private static void showList(GeneralizedQueue_List_TR list)
 	{
@@ -364,6 +415,9 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 
 	public static void main(String[] args)
 	{
+		testCopyQueue();    // test for 1.3.41
+/*
+
 		StdOut.println("enqueue: ");
 		int[] q = {1, 2, 3, 4, 5};
 		GeneralizedQueue_List_TR<Integer> list = new GeneralizedQueue_List_TR<>();
@@ -392,5 +446,7 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 //		StdOut.println("delete: " + list.delete(2).toString());
 //		StdOut.println("delete: " + list.delete(3).toString());
 //		StdOut.println("generalized queue is: " + list.toString());
+
+*/
 	}
 }
