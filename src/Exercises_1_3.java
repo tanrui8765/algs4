@@ -798,6 +798,22 @@ public class Exercises_1_3
 		testJosephus(2, 7);
 	}
 
+	public static void exercise_1_3_38(String[] args)
+	{
+		// GeneralizedQueue_TR
+		// GeneralizedQueue_List_TR
+	}
+
+	public static void exercise_1_3_39(String[] args)
+	{
+		// RingBuffer_TR
+	}
+
+	public static void exercise_1_3_40(String[] args)
+	{
+		// MoveToFront_TR
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_37(args);
