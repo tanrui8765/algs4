@@ -59,7 +59,7 @@ public class GeneralizedQueue_TR<Item> implements Iterable<Item>
 	public Item last()
 	{
 		if (isEmpty()) throw new NoSuchElementException("GeneralizedQueue is Empty");
-		return q[last - 1];
+		return q[last - 1]; // might have wrap around problem, should check carefully later.
 	}
 
 	// add the item to this queue
