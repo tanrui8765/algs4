@@ -3,6 +3,7 @@ import edu.princeton.cs.algs4.Date;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -824,8 +825,49 @@ public class Exercises_1_3
 		// Stack_TR, testCopyStack
 	}
 
+	public static void ListingFiles()
+	{
+		String folder_path = "/Users/the_real_Rui/Desktop/Code/IDEA/algs4";
+
+		Queue<File> queue = new Queue<File>();
+		File root = new File(folder_path);
+		if (!root.exists())
+		{
+			StdOut.println(folder_path + " does not exist");
+			return;
+		}
+
+		queue.enqueue(root);
+		while (!queue.isEmpty())
+		{
+			File x = queue.dequeue();
+			if (!x.isDirectory())
+			{
+				StdOut.println(x.length() + ":\t" + x);
+			}
+			else
+			{
+				File[] files = x.listFiles();
+				if (files != null)
+				{
+					for (int i = 0; i < files.length; i++)
+					{
+						queue.enqueue(files[i]);
+					}
+				}
+			}
+		}
+
+	}
+
+	public static void exercise_1_3_43(String[] args)
+	{
+		// refered from "http://algs4.cs.princeton.edu/13stacks/Directory.java.html"
+		ListingFiles();
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_37(args);
+		exercise_1_3_43(args);
 	}
 }
