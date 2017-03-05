@@ -819,6 +819,11 @@ public class Exercises_1_3
 		// GeneralizedQueue_List_TR, testCopyQueue
 	}
 
+	public static void exercise_1_3_42(String[] args)
+	{
+		// Stack_TR, testCopyStack
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_37(args);

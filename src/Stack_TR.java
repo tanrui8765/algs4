@@ -22,6 +22,29 @@ public class Stack_TR<Item> implements Iterable<Item>
 		Node next;
 	}
 
+	public Stack_TR()
+	{
+		N = 0;
+	}
+
+	public Stack_TR(Stack_TR<Item> s)
+	{
+		if (s.isEmpty())
+		{
+			throw new NoSuchElementException("Input stack is empty!");
+		}
+		Stack_TR<Item> temp_st = new Stack_TR<Item>();
+		// reverse the iterator
+		for (Item item : s)
+		{
+			temp_st.push(item);
+		}
+		for (Item item : temp_st)
+		{
+			this.push(item);
+		}
+	}
+
 	public boolean isEmpty()
 	{
 		return first == null;
@@ -96,8 +119,33 @@ public class Stack_TR<Item> implements Iterable<Item>
 		}
 	}
 
+	public static void testCopyStack()
+	{
+		int[] num = {1, 2, 3, 4, 5};
+		Stack_TR<Integer> st = new Stack_TR<>();
+
+		for (int i = 0; i < num.length; i++)
+		{
+			st.push(num[i]);
+		}
+		StdOut.println("stack_org: " + st.toString());
+
+		Stack_TR<Integer> st_cpy = new Stack_TR<Integer>(st);
+		StdOut.println("stack_cpy: " + st_cpy.toString());
+
+		st_cpy.pop();
+		st_cpy.push(6);
+		StdOut.println("stack_org: " + st.toString());
+		StdOut.println("stack_cpy: " + st_cpy.toString());
+
+
+	}
+
 	public static void main(String[] args)
 	{
+		testCopyStack(); // test for 1.3.42
+
+		/*
 		// Create a stack and push/pop strings as directed on StdIn.
 		Stack_TR<String> s = new Stack_TR<String>();
 		String[] a = args[0].split("\\s+");
@@ -113,5 +161,6 @@ public class Stack_TR<Item> implements Iterable<Item>
 		}
 
 		StdOut.println("(" + s.size() + " left on stack)");
+		*/
 	}
 }
