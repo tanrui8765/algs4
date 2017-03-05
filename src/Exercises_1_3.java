@@ -871,8 +871,48 @@ public class Exercises_1_3
 		// Buffer_TR
 	}
 
+	public static void testStackGenerability()
+	{
+		// I think this test is to check whether a sequence of characters representing
+		// push operation(non '-') and pop operation('-'), could cause a stack underflow.
+		// Therefore, I count the number of pop operation and push operation each iteration,
+		// the underflow flag will be set once when the pop count is greater than the push
+		// count. This algorithm will test if the permutation is okay to output for stack.
+
+		char[] c = {'1', '2', '-', '3', '-', '-', '-', '-'};
+
+		int cnt_pop = 0;
+		int cnt_push = 0;
+		boolean flg_underflow = false;
+
+		for (int i = 0; i < c.length; i++)
+		{
+			if (c[i] == '-')
+			{
+				cnt_pop++;
+			}
+			else
+			{
+				cnt_push++;
+			}
+
+			if (cnt_pop > cnt_push)
+			{
+				flg_underflow = true;
+				break;
+			}
+		}
+
+		StdOut.println("stack will underflow: " + flg_underflow);
+	}
+
+	public static void exercise_1_3_45(String[] args)
+	{
+		testStackGenerability();
+	}
+
 	public static void main(String[] args)
 	{
-		exercise_1_3_43(args);
+		exercise_1_3_45(args);
 	}
 }
