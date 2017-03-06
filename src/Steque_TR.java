@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
@@ -57,6 +58,11 @@ public class Steque_TR<Item> implements Iterable<Item>
 	public int size()
 	{
 		return N;
+	}
+
+	public void setSize(int stq_size)
+	{
+		N = stq_size;
 	}
 
 	public Item first()
@@ -150,6 +156,22 @@ public class Steque_TR<Item> implements Iterable<Item>
 	public Item dequeue()
 	{
 		return removeFirst();
+	}
+
+	public Steque_TR<Item> catenation(Steque_TR<Item> stq)
+	{
+		if (stq.isEmpty()) throw new NoSuchElementException("Input Null");
+
+		Steque_TR<Item> tmp = new Steque_TR<Item>();
+
+		tmp.first = this.first;
+		tmp.last = stq.last;
+		this.last.next = stq.first;
+		stq.first.prev = this.last;
+
+		tmp.setSize(this.size() + stq.size());
+
+		return tmp;
 	}
 
 	public String toString()
@@ -296,6 +318,17 @@ public class Steque_TR<Item> implements Iterable<Item>
 		StdOut.println();
 	}
 
+	private static void testCatenation()
+	{
+		// test concatenation
+		Steque_TR<Integer> list_1 = new Steque_TR<Integer>(new Integer[]{6, 8, 12});
+		Steque_TR<Integer> list_2 = new Steque_TR<Integer>(new Integer[]{7, 9, 13});
+		Steque_TR<Integer> list_cnt = list_1.catenation(list_2);
+
+		StdOut.println(list_cnt + "[initial]\n");
+		showList(list_cnt);
+	}
+
 	/* Unit test helper */
 	private static void showList(Steque_TR list)
 	{
@@ -316,7 +349,9 @@ public class Steque_TR<Item> implements Iterable<Item>
 //		testPush();
 //		testPop();
 
-		testEnqueue();
-		testDequeue();
+//		testEnqueue();
+//		testDequeue();
+
+		testCatenation();
 	}
 }

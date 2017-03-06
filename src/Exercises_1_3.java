@@ -918,6 +918,11 @@ public class Exercises_1_3
 		// http://algs4.cs.princeton.edu/13stacks/ (test 46)
 	}
 
+	public static void exercise_1_3_47(String[] args)
+	{
+		// in Steque_TR testCatenation()
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_45(args);
