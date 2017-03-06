@@ -911,6 +911,13 @@ public class Exercises_1_3
 		testStackGenerability();
 	}
 
+	public static void exercise_1_3_46(String[] args)
+	{
+		// Not quiet fully understand please refer to the answer:
+		// http://ju.outofmemory.cn/entry/142834
+		// http://algs4.cs.princeton.edu/13stacks/ (test 46)
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_45(args);
