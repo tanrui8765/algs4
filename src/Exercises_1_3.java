@@ -923,6 +923,11 @@ public class Exercises_1_3
 		// in Steque_TR testCatenation()
 	}
 
+	public static void exercise_1_3_48(String[] args)
+	{
+		// BiStack_TR
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_45(args);
