@@ -65,6 +65,34 @@ public class BiStack_TR<Item> implements Iterable<Item>
 		return right_N;
 	}
 
+	public Item left_first()
+	{
+//		if (isLeftEmpty()) throw new NoSuchElementException("Left List is empty");
+		if (isLeftEmpty()) return null;
+		return left_first.item;
+	}
+
+	public Item left_last()
+	{
+//		if (isLeftEmpty()) throw new NoSuchElementException("Left List is empty");
+		if (isLeftEmpty()) return null;
+		return left_last.item;
+	}
+
+	public Item right_first()
+	{
+//		if (isRightEmpty()) throw new NoSuchElementException("Right List is empty");
+		if (isLeftEmpty()) return null;
+		return right_first.item;
+	}
+
+	public Item right_last()
+	{
+//		if (isRightEmpty()) throw new NoSuchElementException("Right List is empty");
+		if (isLeftEmpty()) return null;
+		return right_last.item;
+	}
+
 	public void pushLeft(Item item)
 	{
 		Node x = new Node();
@@ -230,7 +258,7 @@ public class BiStack_TR<Item> implements Iterable<Item>
 	private static void showList(BiStack_TR list)
 	{
 		StdOut.println(list);
-		StdOut.println(list.reversed() + "[in reverse]");
+//		StdOut.println(list.reversed() + "[in reverse]");
 		if (!list.isEmpty())
 		{
 			StdOut.printf("Size: %d, First: %s, Last: %s\n\n", list.size(), list.left_first(), list.right_first());
@@ -245,7 +273,7 @@ public class BiStack_TR<Item> implements Iterable<Item>
 	{
 		StdOut.println("push left:");
 		int[] a = {2, 4, 6, 8, 10};
-		BiStack_TR<Integer> list = new BiStack_TR<>();
+		BiStack_TR<Integer> list = new BiStack_TR<Integer>();
 
 		for (int i = 0; i < a.length; i++)
 		{
@@ -262,7 +290,16 @@ public class BiStack_TR<Item> implements Iterable<Item>
 
 	private static void testPushRight()
 	{
+		StdOut.println("push right:");
+		int[] a = {1, 3, 5, 7, 9};
+		BiStack_TR<Integer> list = new BiStack_TR<Integer>();
 
+		for (int i = 0; i < a.length; i++)
+		{
+			list.pushRight(a[i]);
+		}
+		showList(list);
+		StdOut.println();
 	}
 
 	private static void testPopRight()
@@ -272,6 +309,6 @@ public class BiStack_TR<Item> implements Iterable<Item>
 
 	public static void main(String[] args)
 	{
-
+		testPushLeft();
 	}
 }

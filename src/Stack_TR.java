@@ -82,6 +82,19 @@ public class Stack_TR<Item> implements Iterable<Item>
 		return first.item;
 	}
 
+	public void catenation(Stack_TR<Item> s)
+	{
+		Stack_TR<Item> tmp = new Stack_TR<Item>();
+		for (Item item : s)
+		{
+			tmp.push(item);
+		}
+		for (Item item : tmp)
+		{
+			this.push(item);
+		}
+	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();

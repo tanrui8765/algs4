@@ -290,6 +290,12 @@ public class GeneralizedQueue_List_TR<Item> implements Iterable<Item>
 		return item;
 	}
 
+	public void catenation(GeneralizedQueue_List_TR<Item> q)
+	{
+		for (Item item : q)
+			this.append(item);
+	}
+
 	public String toString()
 	{
 		StringBuilder s = new StringBuilder();
