@@ -82,14 +82,14 @@ public class BiStack_TR<Item> implements Iterable<Item>
 	public Item right_first()
 	{
 //		if (isRightEmpty()) throw new NoSuchElementException("Right List is empty");
-		if (isLeftEmpty()) return null;
+		if (isRightEmpty()) return null;
 		return right_first.item;
 	}
 
 	public Item right_last()
 	{
 //		if (isRightEmpty()) throw new NoSuchElementException("Right List is empty");
-		if (isLeftEmpty()) return null;
+		if (isRightEmpty()) return null;
 		return right_last.item;
 	}
 
@@ -279,36 +279,71 @@ public class BiStack_TR<Item> implements Iterable<Item>
 		{
 			list.pushLeft(a[i]);
 		}
-		showList(list);
+		StdOut.println(list);
 		StdOut.println();
 	}
 
 	private static void testPopLeft()
 	{
-
-	}
-
-	private static void testPushRight()
-	{
-		StdOut.println("push right:");
-		int[] a = {1, 3, 5, 7, 9};
+		StdOut.println("pop left:");
+		int[] a = {2, 4, 6, 8, 10};
 		BiStack_TR<Integer> list = new BiStack_TR<Integer>();
 
 		for (int i = 0; i < a.length; i++)
 		{
-			list.pushRight(a[i]);
+			list.pushLeft(a[i]);
 		}
-		showList(list);
+		StdOut.println(list + "[initial]\n");
+
+		while (!list.isEmpty())
+		{
+			StdOut.println("pop: " + list.popLeft());
+			showList(list);
+		}
 		StdOut.println();
 	}
 
+	// 右侧stack的显示还是有问题，没想好怎么处理。
+	private static void testPushRight()
+	{
+//		StdOut.println("push right:");
+//		int[] a = {1, 3, 5, 7, 9};
+//		BiStack_TR<Integer> list1 = new BiStack_TR<Integer>();
+//
+//		for (int i = 0; i < a.length; i++)
+//		{
+//			list1.pushRight(a[i]);
+//		}
+//		StdOut.println(list1);
+//		StdOut.println();
+	}
+
+	// 右侧stack的显示还是有问题，没想好怎么处理。
 	private static void testPopRight()
 	{
+//		StdOut.println("pop right:");
+//		int[] a = {1, 3, 5, 7, 9};
+//		BiStack_TR<Integer> list = new BiStack_TR<Integer>();
 
+//		for (int i = 0; i < a.length; i++)
+//		{
+//			list.pushRight(a[i]);
+//		}
+//		StdOut.println(list + "[initial]\n");
+//
+//		while (!list.isEmpty())
+//		{
+//			StdOut.println("pop: " + list.popRight());
+//			showList(list);
+//		}
+//		StdOut.println();
 	}
 
 	public static void main(String[] args)
 	{
-		testPushLeft();
+//		testPushLeft();
+		testPopLeft();
+//		testPushRight();
+//		testPopRight();
 	}
 }

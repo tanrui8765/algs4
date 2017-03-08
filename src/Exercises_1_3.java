@@ -920,7 +920,7 @@ public class Exercises_1_3
 
 	public static void exercise_1_3_47(String[] args)
 	{
-		// in Steque_TR testCatenation()
+		// in Steque_TR, GeneralizedQueue_List_TR, Stack_TR testCatenation()
 	}
 
 	public static void exercise_1_3_48(String[] args)
