@@ -928,6 +928,11 @@ public class Exercises_1_3
 		// BiStack_TR
 	}
 
+
+	public static void exercise_1_3_49(String[] args)
+	{
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_45(args);
