@@ -931,6 +931,8 @@ public class Exercises_1_3
 
 	public static void exercise_1_3_49(String[] args)
 	{
+		// https://github.com/suiyueyu/algs4Learn/blob/master/src/me/suiyueyu/algs4/sec1/exercise/ex_1_3/QueueWithThreeStacks.java
+		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ex13/Ex1349QueueWith3Stacks.java
 	}
 
 	public static void main(String[] args)
