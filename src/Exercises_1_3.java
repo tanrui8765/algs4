@@ -947,6 +947,12 @@ public class Exercises_1_3
 		// Implementation is in Stack_TR.java Fail-Fast section.
 	}
 
+	public static void exercise_1_3_51(String[] args)
+	{
+		// implemented Evaluate from the algs4 website "http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html"
+		// tomorrow implement EvaluateDeluxe
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_3_45(args);
