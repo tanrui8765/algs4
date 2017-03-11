@@ -2,18 +2,18 @@
  * Created by the_real_Rui on 3/2/2017.
  */
 
+import edu.princeton.cs.algs4.*;
 import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
+import java.util.*;
+import java.util.Queue;
 
 public class Stack_TR<Item> implements Iterable<Item>
 {
 	private Node first; // top of stack (most recently added node)
 	private int N;
+
+	private int global_count; // for iterator Fail-Fast mechanism.
 
 	private class Node
 	{
@@ -42,6 +42,7 @@ public class Stack_TR<Item> implements Iterable<Item>
 		for (Item item : temp_st)
 		{
 			this.push(item);
+			global_count++; // this add itself is preventing from Fail-Fast problem in iterator.
 		}
 	}
 
@@ -63,6 +64,8 @@ public class Stack_TR<Item> implements Iterable<Item>
 		first.item = item;
 		first.next = oldfirst;
 		N++;
+
+		global_count++;
 	}
 
 	public Item pop()
@@ -72,6 +75,9 @@ public class Stack_TR<Item> implements Iterable<Item>
 		Item item = first.item;
 		first = first.next;
 		N--;
+
+		global_count++;
+
 		return item;
 	}
 
@@ -92,6 +98,7 @@ public class Stack_TR<Item> implements Iterable<Item>
 		for (Item item : tmp)
 		{
 			this.push(item);
+			global_count++; // this add itself is preventing from Fail-Fast problem in iterator.
 		}
 	}
 
@@ -114,6 +121,7 @@ public class Stack_TR<Item> implements Iterable<Item>
 	private class ListIterator implements Iterator<Item>
 	{
 		private Node current = first;
+		private int reserve_global_count = global_count;
 
 		public boolean hasNext()
 		{
@@ -126,9 +134,20 @@ public class Stack_TR<Item> implements Iterable<Item>
 
 		public Item next()
 		{
+			if (!checkGlobalCount())
+			{
+				throw new ConcurrentModificationException();
+			}
+
 			Item item = current.item;
 			current = current.next;
 			return item;
+		}
+
+		// this is for fail fast implementation, exercise 1.3.50
+		private boolean checkGlobalCount()
+		{
+			return reserve_global_count == global_count;
 		}
 	}
 
@@ -156,7 +175,7 @@ public class Stack_TR<Item> implements Iterable<Item>
 
 	public static void main(String[] args)
 	{
-		testCopyStack(); // test for 1.3.42
+//		testCopyStack(); // test for 1.3.42
 
 		/*
 		// Create a stack and push/pop strings as directed on StdIn.
@@ -175,5 +194,19 @@ public class Stack_TR<Item> implements Iterable<Item>
 
 		StdOut.println("(" + s.size() + " left on stack)");
 		*/
+
+		// check iterator Fail-Fast problem
+		Stack_TR<String> stack1 = new Stack_TR<String>();
+		stack1.push("1");
+		stack1.push("2");
+		stack1.push("3");
+
+
+		Iterator<String> iterator = stack1.iterator();
+		while(iterator.hasNext())
+		{
+//			stack1.push("4"); // uncommented this line will trigger Fast-Fast mechanism.
+			StdOut.println(iterator.next());
+		}
 	}
 }

@@ -931,8 +931,20 @@ public class Exercises_1_3
 
 	public static void exercise_1_3_49(String[] args)
 	{
+		// TODO work on this exercise later, I know how to implement a queue with 2 stacks but more is difficult now.
+
+		// http://stackoverflow.com/questions/5538192/how-to-implement-a-queue-with-three-stacks
 		// https://github.com/suiyueyu/algs4Learn/blob/master/src/me/suiyueyu/algs4/sec1/exercise/ex_1_3/QueueWithThreeStacks.java
 		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ex13/Ex1349QueueWith3Stacks.java
+		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ds/QueueWithSevenStacks.java
+	}
+
+	public static void exercise_1_3_50(String[] args)
+	{
+		// Iterator introduction:
+		// http://blog.csdn.net/lcore/article/details/12083951
+
+		// Implementation is in Stack_TR.java Fail-Fast section.
 	}
 
 	public static void main(String[] args)
