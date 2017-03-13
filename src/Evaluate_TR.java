@@ -30,7 +30,7 @@ import edu.princeton.cs.algs4.StdOut;
  *  separated by whitespace. Also, each operation must
  *  be enclosed in parentheses. For example, you must write
  *  ( 1 + ( 2 + 3 ) ) instead of ( 1 + 2 + 3 ).
- *  See EvaluateDeluxe.java for a fancier version.
+ *  See EvaluateDeluxe_TR.java for a fancier version.
  *
  *
  *  Remarkably, Dijkstra's algorithm computes the same
