@@ -34,6 +34,7 @@
 
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.TreeMap;
 
@@ -51,6 +52,9 @@ public class EvaluateDeluxe_TR
 
 	public static void main(String[] args)
 	{
+		String a = "3 + 5 * 6 - 7 * ( 8 + 5 )";
+		String[] a_sp = a.split(" ");
+
 		// precedence order of operators
 		TreeMap<String, Integer> precedence = new TreeMap<String, Integer>();
 		precedence.put("(", 0);     // for convenience with algorithm
@@ -63,10 +67,12 @@ public class EvaluateDeluxe_TR
 		Stack<String> ops = new Stack<String>();
 		Stack<Double> vals = new Stack<Double>();
 
-		while (!StdIn.isEmpty())
+//		while (!StdIn.isEmpty())
+		for (int i = 0; i < a_sp.length; i++)
 		{
 			// read in next token (operator or value)
-			String s = StdIn.readString();
+//			String s = StdIn.readString();
+			String s = a_sp[i];
 
 			// token is a value
 			if (!precedence.containsKey(s))
@@ -104,6 +110,20 @@ public class EvaluateDeluxe_TR
 				}
 			}
 		}
+
+		// finished parsing string - evaluate operator and operands remaining on two stacks
+		while (!ops.isEmpty())
+		{
+			String op = ops.pop();
+			double val2 = vals.pop();
+			double val1 = vals.pop();
+			vals.push(eval(op, val1, val2));
+		}
+
+		// last value on stack is value of expression
+		StdOut.println(vals.pop());
+		assert vals.isEmpty();
+		assert ops.isEmpty();
 	}
 
 }
