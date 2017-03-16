@@ -70,6 +70,9 @@ public class EvaluateDeluxe_TR
 //		while (!StdIn.isEmpty())
 		for (int i = 0; i < a_sp.length; i++)
 		{
+			StdOut.println("ops: " + ops);
+			StdOut.println("val: " + vals);
+			StdOut.println();
 			// read in next token (operator or value)
 //			String s = StdIn.readString();
 			String s = a_sp[i];
