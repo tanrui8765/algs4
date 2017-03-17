@@ -950,7 +950,7 @@ public class Exercises_1_3
 	public static void exercise_1_3_51(String[] args)
 	{
 		// implemented Evaluate from the algs4 website "http://algs4.cs.princeton.edu/13stacks/Evaluate.java.html"
-		// tomorrow implement EvaluateDeluxe_TR
+		// implemented EvaluateDeluxe_TR from the algs4 website "http://algs4.cs.princeton.edu/13stacks/EvaluateDeluxe.java.html"
 	}
 
 	public static void main(String[] args)
