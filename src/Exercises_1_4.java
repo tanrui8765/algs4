@@ -4,5 +4,5 @@
  */
 public class Exercises_1_4
 {
-	// 19/3/2017 Reading
+	// 19/3/2017 Reading.
 }
