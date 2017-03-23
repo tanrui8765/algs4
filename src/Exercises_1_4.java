@@ -14,4 +14,9 @@ public class Exercises_1_4
 		// for fundamental permutation and combination explanation, please refer to
 		// "http://www.cnblogs.com/simbon/p/6074575.html"
 	}
+
+	public static void exercise_1_4_2(String[] args)
+	{
+
+	}
 }
