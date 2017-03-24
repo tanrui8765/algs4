@@ -12,7 +12,7 @@ public class ThreeSum_TR
 		int cnt = 0;
 		for (int i = 0; i < N; i++)
 		{
-			for (int j = i + 1; i < N; j++)
+			for (int j = i + 1; j < N; j++)
 			{
 				for (int k = j + 1; k < N; k++)
 				{
@@ -28,7 +28,8 @@ public class ThreeSum_TR
 
 	public static void main(String[] args)
 	{
-		In in = new In(args[0]);
+//		In in = new In(args[0]);
+		In in = new In("1Kints.txt");
 		int[] a = in.readAllInts();
 		StdOut.println(count(a));
 	}
