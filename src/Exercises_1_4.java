@@ -17,6 +17,8 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_2(String[] args)
 	{
-
+		// if two values are int values, and add them will cause overflow, the result would be negative value.
+		// I think this won't be cause the original ThreeSum work fail.
+		// Am I right ???
 	}
 }
