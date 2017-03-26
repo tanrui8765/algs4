@@ -21,4 +21,9 @@ public class Exercises_1_4
 		// I think this won't be cause the original ThreeSum work fail.
 		// Am I right ???
 	}
+
+	public static void exercise_1_4_3(String[] args)
+	{
+		// in DoublingTest_TR, not implemented very well, will be refined in the future.
+	}
 }
