@@ -26,4 +26,9 @@ public class Exercises_1_4
 	{
 		// in DoublingTest_TR, not implemented very well, will be refined in the future.
 	}
+
+	public static void exercise_1_4_4(String[] args)
+	{
+
+	}
 }
