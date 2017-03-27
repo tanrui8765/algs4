@@ -31,4 +31,21 @@ public class Exercises_1_4
 	{
 		// you could extend this question from TwoSum_TR.java
 	}
+
+	// My BAD math...... T^T, if you know the right answer, please leave me a message.
+	// Thanks!!!!!
+	public static void exercise_1_4_5(String[] args)
+	{
+		// Am I Right???
+
+		// a: N+1                       : ~ N
+		// b: 1+1/N                     : ~ 1/N
+		// c: (1+1/N)(1+2/N)            : ~ 2/N^2
+		// d: (2N^3)-(15N^2)+N          : ~ 2N^3
+		// e: lg(2N)/lgN                : ~ lg2/lgN
+		// f: lg(N^2+1)/lgN             : ~ lg(N^2+1)/lgN
+		// g: N^100/2^N                 : ~ ???
+	}
+
+
 }
