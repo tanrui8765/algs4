@@ -68,4 +68,9 @@ public class Exercises_1_4
 //			for(int j=0;j<N;j++)
 //				sum++;
 	}
+
+	public static void exercise_1_4_7(String[] args)
+	{
+		// the cost model variable is in ThreeSum_TR.java
+	}
 }

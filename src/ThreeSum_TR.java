@@ -6,6 +6,8 @@ import edu.princeton.cs.algs4.StdOut;
  */
 public class ThreeSum_TR
 {
+	private static int arith_op_cmp_cnt = 0; // for the use of cost models.
+
 	public static int count(int[] a)
 	{
 		int N = a.length;
@@ -20,6 +22,7 @@ public class ThreeSum_TR
 					{
 						cnt++;
 					}
+					arith_op_cmp_cnt += 3;
 				}
 			}
 		}
@@ -32,5 +35,6 @@ public class ThreeSum_TR
 		In in = new In("1Kints.txt");
 		int[] a = in.readAllInts();
 		StdOut.println(count(a));
+		StdOut.println("For 1K numbers, " + "cost model: " + arith_op_cmp_cnt);
 	}
 }
