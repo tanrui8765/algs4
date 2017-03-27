@@ -73,4 +73,10 @@ public class Exercises_1_4
 	{
 		// the cost model variable is in ThreeSum_TR.java
 	}
+
+	public static void exercise_1_4_8(String[] args)
+	{
+		// the quadratic version is in TwoEqual_TR.java
+		// the linear version is in TwoEqualFast_TR.java
+	}
 }
