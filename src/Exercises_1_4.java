@@ -79,4 +79,9 @@ public class Exercises_1_4
 		// the quadratic version is in TwoEqual_TR.java
 		// the linear version is in TwoEqualFast_TR.java
 	}
+
+	public static void exercise_1_4_9(String[] args)
+	{
+
+	}
 }
