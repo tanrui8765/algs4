@@ -87,4 +87,9 @@ public class Exercises_1_4
 		// based on Proposition C. (Doubling ratio) on page 193.
 		// the formula is (~ a * N^b * lgN)
 	}
+
+	public static void exercise_1_4_10(String[] args)
+	{
+
+	}
 }
