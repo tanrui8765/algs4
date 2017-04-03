@@ -47,6 +47,8 @@ public class BinarySearch_SmallestIndex
 		__runTest(b, 2, 2);
 		int[] c = {1, 1, 1, 1, 1};
 		__runTest(c, 1, 0);
+		int[] d = {1, 1, 1, 1, 1};
+		__runTest(d, 2, -1);
 
 	}
 
