@@ -88,10 +88,8 @@ public class Exercises_1_4
 		// the formula is (~ a * N^b * lgN)
 	}
 
-	// refer to this web:
-	// https://github.com/HatlessFox/SelfStudy/blob/6fe07048d4ed0e8b8d1cd3b438a2e8dbd5a6f9f6/problem_solving/algorithms/algorithms_4th-sedgewick_wayne/Solutions/src/chapter_1/section_4/Task_10.java
 	public static void exercise_1_4_10(String[] args)
 	{
-
+		// BinarySearch_SmallestIndex.java
 	}
 }
