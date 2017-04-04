@@ -49,24 +49,9 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_6(String[] args)
 	{
-		int N = 100;
-		// code frag a: linear (N + N/2 + N/4 + ...)
-//		int sum = 0;
-//		for(int n=N;n>0;n/=2)
-//			for(int i=0;i<n;i++)
-//				sum++;
-
-		// code frag b: linear (1 + 2 + 4 + 8 + ...)
-//		int sum = 0;
-//		for(int i=1;i<N;i*=2)
-//			for(int j=0;j<i;j++)
-//				sum++;
-
-		// code frag c: linearithmic (N + 2N + 4N + 8N + ...) // Is this Right ???
-//		int sum = 0;
-//		for(int i=1;i<N;i*=2)
-//			for(int j=0;j<N;j++)
-//				sum++;
+		// In FragmentsOrderOfGrowth.java
+		// refereed from:
+		// "https://github.com/HatlessFox/SelfStudy/blob/6fe07048d4ed0e8b8d1cd3b438a2e8dbd5a6f9f6/problem_solving/algorithms/algorithms_4th-sedgewick_wayne/Solutions/src/chapter_1/section_4/Task_06.java"
 	}
 
 	public static void exercise_1_4_7(String[] args)
