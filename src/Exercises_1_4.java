@@ -89,5 +89,9 @@ public class Exercises_1_4
 		// However, [2] didn't give a better time complexity than [1].
 		// I think, maybe [1] is better for the small arrays, and [2] is better for the larger ones with large amount of same keys.
 		// I tested in the main(), Am I doing right ???
+
+		// GitHub::Hatless Fox has a cleaner and better binary search version, which I copied to "StaticSETofInts_HatlessFox.java"
+
+		// In general, both binary search versions, require the search fall into the same key section, and spread to both sides.
 	}
 }

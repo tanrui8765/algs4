@@ -216,14 +216,12 @@ public class StaticSETofInts_TR
 
 	public static void main(String[] args)
 	{
-//		int[] w = {1, 1, 1, 1, 1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10};
+		int[] w = {1, 1, 1, 1, 1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10};
 //		int[] w = {1, 1, 1, 1, 1};
-		int[] w = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+//		int[] w = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 		StaticSETofInts_TR set = new StaticSETofInts_TR(w);
 //		StdOut.println(set.contains(5));
 		set.howMany(1);
-
-
 	}
 }
