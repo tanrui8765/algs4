@@ -18,6 +18,7 @@ public class StaticSETofInts_TR
 			a[i] = keys[i];
 		}
 		Arrays.sort(a);
+		StdOut.println("Array Size: " + a.length);
 	}
 
 	public boolean contains(int key)
@@ -49,13 +50,18 @@ public class StaticSETofInts_TR
 	// this is just an initial implement, will be refined in the future
 	private int find_same(int key_rank, int key)
 	{
+		int debug_steps_num = 0;
+
 		int num = 0;
 		if (key_rank == 0)
 		{
 			for (int i = 0; i < a.length; i++)
 			{
 				if (key == a[i])
+				{
 					num++;
+					debug_steps_num++;
+				}
 				else
 					break;
 			}
@@ -65,7 +71,10 @@ public class StaticSETofInts_TR
 			for (int i = a.length - 1; i >= 0; i--)
 			{
 				if (key == a[i])
+				{
 					num++;
+					debug_steps_num++;
+				}
 				else
 					break;
 			}
@@ -76,17 +85,110 @@ public class StaticSETofInts_TR
 			for (int i = key_rank; i >= 0; i--)
 			{
 				if (key == a[i])
+				{
 					num++;
+					debug_steps_num++;
+				}
 				else break;
 			}
 			// search for right
-			for (int i = key_rank + 1; i < a.length - 1; i++)
+			for (int i = key_rank + 1; i < a.length; i++)
 			{
 				if (key == a[i])
+				{
 					num++;
+					debug_steps_num++;
+				}
 				else break;
 			}
 		}
+
+		StdOut.print("step_num (" + debug_steps_num + ") ");
+
+		return num;
+	}
+
+	private int find_same_binary(int key_rank, int key)
+	{
+		int debug_steps_num = 0;
+
+		int num = 0;
+		if (key_rank == 0)
+		{
+			// Binary search
+			int lo = 0;
+			int hi = a.length - 1;
+
+			while (lo <= hi)
+			{
+				// key is in a[lo .. hi] or not present
+				int mid = lo + (hi - lo) / 2;
+				if (key < a[mid]) hi = mid - 1;
+				else if (key > a[mid]) lo = mid + 1;
+				else lo = mid + 1;
+
+				debug_steps_num++;
+			}
+			num = hi - key_rank + 1;
+		}
+		else if (key_rank == a.length - 1)
+		{
+			// Binary search
+			int lo = 0;
+			int hi = a.length - 1;
+
+			while (lo <= hi)
+			{
+				// key is in a[lo .. hi] or not present
+				int mid = lo + (hi - lo) / 2;
+				if (key < a[mid]) hi = mid - 1;
+				else if (key > a[mid]) lo = mid + 1;
+				else hi = mid - 1;
+
+				debug_steps_num++;
+			}
+			num = key_rank - lo + 1;
+		}
+		else
+		{
+			{
+				// Binary search to find left edge
+				int lo = 0;
+				int hi = a.length - 1;
+
+				while (lo <= hi)
+				{
+					// key is in a[lo .. hi] or not present
+					int mid = lo + (hi - lo) / 2;
+					if (key < a[mid]) hi = mid - 1;
+					else if (key > a[mid]) lo = mid + 1;
+					else hi = mid - 1;
+
+					debug_steps_num++;
+				}
+				num = key_rank - lo + 1;
+			}
+
+			{
+				// Binary search to find right edge
+				int lo = 0;
+				int hi = a.length - 1;
+
+				while (lo <= hi)
+				{
+					// key is in a[lo .. hi] or not present
+					int mid = lo + (hi - lo) / 2;
+					if (key < a[mid]) hi = mid - 1;
+					else if (key > a[mid]) lo = mid + 1;
+					else lo = mid + 1;
+
+					debug_steps_num++;
+				}
+				num += hi - key_rank + 1 - 1; // key at key_rank added twice, hence -1.
+			}
+		}
+
+		StdOut.print("step_num (" + debug_steps_num + ") ");
 
 		return num;
 	}
@@ -98,7 +200,15 @@ public class StaticSETofInts_TR
 
 		if (key_rank != -1)
 		{
-			occur_num = find_same(key_rank, key);
+			StdOut.print("Ordinary Find: ");
+			occur_num = find_same(key_rank, key);           // this is the ordinary one, worst case is N
+			StdOut.println(occur_num);
+
+			StdOut.print("Binary Find: ");
+			occur_num = find_same_binary(key_rank, key);    // this is the binary search one, worst case might be log(N)
+			// Am I Right ??? Could anyone help me to figure it out,
+			// thanks !!!
+			StdOut.println(occur_num);
 		}
 
 		return occur_num;
@@ -106,11 +216,13 @@ public class StaticSETofInts_TR
 
 	public static void main(String[] args)
 	{
-		int[] w = {1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10};
+//		int[] w = {1, 1, 1, 1, 1, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10};
+//		int[] w = {1, 1, 1, 1, 1};
+		int[] w = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 		StaticSETofInts_TR set = new StaticSETofInts_TR(w);
-		StdOut.println(set.contains(11));
-		StdOut.println(set.howMany(11));
+//		StdOut.println(set.contains(5));
+		set.howMany(1);
 
 
 	}

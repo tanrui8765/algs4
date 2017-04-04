@@ -77,4 +77,17 @@ public class Exercises_1_4
 	{
 		// BinarySearch_SmallestIndex.java
 	}
+
+	public static void exercise_1_4_11(String[] args)
+	{
+		// code is in StaticSETofInts_TR.java
+		// I tried two methods:
+		// [1] ordinary count with binary search for the key first, and then traverse to both side to count the same key.
+		// [2] binary count with binary search for the key first, and then keep binary searching until the lo > hi (search complete)
+		//      then calculate the gap.
+
+		// However, [2] didn't give a better time complexity than [1].
+		// I think, maybe [1] is better for the small arrays, and [2] is better for the larger ones with large amount of same keys.
+		// I tested in the main(), Am I doing right ???
+	}
 }
