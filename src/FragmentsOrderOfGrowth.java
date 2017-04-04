@@ -6,6 +6,11 @@ import java.util.function.UnaryOperator;
 
 /**
  * Created by the_real_Rui on 3/4/2017.
+ *
+ * This file is referenced from web:
+ * "https://github.com/HatlessFox/SelfStudy/blob/6fe07048d4ed0e8b8d1cd3b438a2e8dbd5a6f9f6/problem_solving/algorithms/algorithms_4th-sedgewick_wayne/Solutions/src/chapter_1/section_4/Task_06.java"
+ *
+ * Q1: Should I change the growth number 16 (n*=16 in testFragment)???
  */
 public class FragmentsOrderOfGrowth
 {
