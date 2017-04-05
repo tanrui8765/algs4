@@ -1,3 +1,7 @@
+import edu.princeton.cs.algs4.StdOut;
+
+import java.util.Arrays;
+
 /**
  * Created by the_real_Rui on 18/3/2017.
  *
@@ -93,5 +97,33 @@ public class Exercises_1_4
 		// GitHub::Hatless Fox has a cleaner and better binary search version, which I copied to "StaticSETofInts_HatlessFox.java"
 
 		// In general, both binary search versions, require the search fall into the same key section, and spread to both sides.
+	}
+
+	public static void exercise_1_4_12(String[] args)
+	{
+		int N = 5;
+		int[] a = {3, 3, 3, 4, 5};
+		int[] b = {3, 4, 5, 6, 7};
+		int[] same = new int[N];
+		int same_index = 0;
+
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				if (b[j] == a[i])
+				{
+					if ((same_index == 0) || (b[j] != same[same_index - 1]))
+						same[same_index++] = a[i];
+				}
+			}
+		}
+
+		StdOut.println(Arrays.toString(same));
+	}
+
+	public static void main(String[] args)
+	{
+		exercise_1_4_12(args);
 	}
 }
