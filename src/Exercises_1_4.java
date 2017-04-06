@@ -122,6 +122,11 @@ public class Exercises_1_4
 		StdOut.println(Arrays.toString(same));
 	}
 
+	public static void exercise_1_4_13(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
