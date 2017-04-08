@@ -124,7 +124,16 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_13(String[] args)
 	{
-		// really tired today...
+		// TODO: will complete this later.
+	}
+
+	public static void exercise_1_4_14(String[] args)
+	{
+		// the code is in FourSum_TR.java
+	}
+
+	public static void exercise_1_4_15(String[] args)
+	{
 	}
 
 	public static void main(String[] args)
