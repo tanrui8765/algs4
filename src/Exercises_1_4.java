@@ -124,7 +124,20 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_13(String[] args)
 	{
-		// TODO: will complete this later.
+		// Am I Right ???
+
+		// Accumulator: 32 bytes. (class 16 + double 8 + int 4 + padding 4)
+		// Transaction: 112 + 2N bytes, where N is the length of the String who.
+		//              (class 16 + String 56+2N + Date 32 + double 8)
+
+		// FixedCapacityStackOfStrings with capacity C and N entries
+		//              20 + 24*C + (32+2*L)*N, where L is the length of the existing String entries' length.
+		//              (class 16 + String array header 24*(C-N) + String array entries (56+2*L)*N + int 4)
+
+		// Point2D: 32 bytes. (class 16 + double 8 + double 8)
+		// Interval1D: 32 bytes. (class 16 + double 8 + double 8)
+		// Interval2D: 80 bytes. (class 16 + Interval1D 32 + Interval 32)
+		// Double: 24 bytes. (class 16 + double 8)
 	}
 
 	public static void exercise_1_4_14(String[] args)
