@@ -61,13 +61,31 @@ public class TwoSumFaster_TR
 				}
 			}
 
-			if (count_0 == 1) return 0;
 			count = count_0 * (count_0 - 1);
 		}
 
 		if (a[0] < 0)
 		{
+			int pos_0 = 0;
+			int count_0 = 0;
+			// find 0
+			for (int i = 0; i < n; i++)
+			{
+				if (a[i] == 0)
+				{
+					pos_0 = i;
+				}
+			}
 
+			for (int i = pos_0; i < n; i++)
+			{
+				if (a[i] == 0)
+				{
+					count_0++;
+				}
+			}
+
+			count = count_0 * (count_0 - 1);
 		}
 
 		return count;
