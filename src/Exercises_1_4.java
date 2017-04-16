@@ -147,6 +147,8 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_15(String[] args)
 	{
+		// two sum faster is in TwoSumFaster_TR.java
+		// three sum quadratic algorithm? do you mean brute force one? it's in ThreeSum_TR.java
 	}
 
 	public static void main(String[] args)

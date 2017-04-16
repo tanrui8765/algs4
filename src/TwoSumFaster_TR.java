@@ -66,8 +66,8 @@ public class TwoSumFaster_TR
 
 		if (a[0] < 0)
 		{
-			int pos_0 = 0;
-			int pos_positive = 0;
+			int pos_0 = -1;
+			int pos_positive = -1;
 			int count_0 = 0;
 			// find 0
 			for (int i = 0; i < n; i++)
@@ -75,31 +75,72 @@ public class TwoSumFaster_TR
 				if (a[i] == 0)
 				{
 					pos_0 = i;
+					break;
 				}
 			}
-
-			for (int i = pos_0; i < n; i++)
+			// find position positive
+			for (int i = 0; i < n; i++)
 			{
-				if (a[i] == 0)
-				{
-					count_0++;
-				}
-				else
+				if (a[i] > 0)
 				{
 					pos_positive = i;
 					break;
 				}
 			}
 
-			count = count_0 * (count_0 - 1) / 2;
-
-			for (int i = 0; i < pos_0; i++)
+			if ((pos_0 != -1) && (pos_positive != -1))
 			{
-				for (int j = pos_positive; j < n; j++)
+				for (int i = pos_0; i < n; i++)
 				{
-					if (a[i] == (0 - a[j]))
+					if (a[i] == 0)
 					{
-						count++;
+						count_0++;
+					}
+					else
+					{
+						break;
+					}
+				}
+
+				count = count_0 * (count_0 - 1) / 2;
+
+				for (int i = 0; i < pos_0; i++)
+				{
+					for (int j = pos_positive; j < n; j++)
+					{
+						if (a[i] == (0 - a[j]))
+						{
+							count++;
+						}
+					}
+				}
+			}
+			else if ((pos_0 != -1) && (pos_positive == -1))
+			{
+				for (int i = pos_0; i < n; i++)
+				{
+					if (a[i] == 0)
+					{
+						count_0++;
+					}
+					else
+					{
+						break;
+					}
+				}
+
+				count = count_0 * (count_0 - 1) / 2;
+			}
+			else if ((pos_0 == -1) && (pos_positive != -1))
+			{
+				for (int i = 0; i < pos_positive; i++)
+				{
+					for (int j = pos_positive; j < n; j++)
+					{
+						if (a[i] == (0 - a[j]))
+						{
+							count++;
+						}
 					}
 				}
 			}
@@ -115,7 +156,7 @@ public class TwoSumFaster_TR
 
 //		int[] a = in.readAllInts();
 //		int[] a = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 7, 5, 4, 1, 6, 8, 9, -2, 4, -7, -7, -9, -6, -5, -6, -9, -8, -7, -5, -3, -9, -2, -1};
-		int[] a = {-1, 1};
+		int[] a = {-2, -1, 0, 0};
 		Stopwatch timer = new Stopwatch();
 
 		Arrays.sort(a);
