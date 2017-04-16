@@ -48,7 +48,7 @@ public class TwoSumFaster_TR
 		int n = a.length;
 		int count = 0;
 
-		if ((a[0] > 0) || (a[n] < 0)) return 0;
+		if ((a[0] > 0) || (a[n - 1] < 0)) return 0;
 
 		if (a[0] == 0)
 		{
@@ -61,12 +61,13 @@ public class TwoSumFaster_TR
 				}
 			}
 
-			count = count_0 * (count_0 - 1);
+			count = count_0 * (count_0 - 1) / 2;
 		}
 
 		if (a[0] < 0)
 		{
 			int pos_0 = 0;
+			int pos_positive = 0;
 			int count_0 = 0;
 			// find 0
 			for (int i = 0; i < n; i++)
@@ -83,9 +84,25 @@ public class TwoSumFaster_TR
 				{
 					count_0++;
 				}
+				else
+				{
+					pos_positive = i;
+					break;
+				}
 			}
 
-			count = count_0 * (count_0 - 1);
+			count = count_0 * (count_0 - 1) / 2;
+
+			for (int i = 0; i < pos_0; i++)
+			{
+				for (int j = pos_positive; j < n; j++)
+				{
+					if (a[i] == (0 - a[j]))
+					{
+						count++;
+					}
+				}
+			}
 		}
 
 		return count;
@@ -97,11 +114,13 @@ public class TwoSumFaster_TR
 //		In in = new In(args[0]);
 
 //		int[] a = in.readAllInts();
-		int[] a = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 7, 5, 4, 1, 6, 8, 9, -2, 4, -7, -7, -9, -6, -5, -6, -9, -8, -7, -5, -3, -9, -2, -1};
+//		int[] a = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 7, 5, 4, 1, 6, 8, 9, -2, 4, -7, -7, -9, -6, -5, -6, -9, -8, -7, -5, -3, -9, -2, -1};
+		int[] a = {-1, 1};
 		Stopwatch timer = new Stopwatch();
 
 		Arrays.sort(a);
-		int count = count_brute(a);
+//		int count = count_brute(a);
+		int count = count_sorted(a);
 		StdOut.println("elapsed time = " + timer.elapsedTime());
 		StdOut.println(count);
 	}
