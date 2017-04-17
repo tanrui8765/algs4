@@ -167,6 +167,13 @@ public class Exercises_1_4
 		// What a Genius!!!
 	}
 
+	public static void exercise_1_4_18(String[] args)
+	{
+		// In LocalMinArray_TR.java
+		// The code in this page is from:
+		// "https://github.com/HatlessFox/SelfStudy/blob/master/problem_solving/algorithms/algorithms_4th-sedgewick_wayne/Solutions/src/chapter_1/section_4/Task_18.java"
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
