@@ -174,6 +174,11 @@ public class Exercises_1_4
 		// "https://github.com/HatlessFox/SelfStudy/blob/master/problem_solving/algorithms/algorithms_4th-sedgewick_wayne/Solutions/src/chapter_1/section_4/Task_18.java"
 	}
 
+	public static void exercise_1_4_19(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
