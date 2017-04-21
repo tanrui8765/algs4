@@ -45,8 +45,26 @@ public class LocalMinMatrix_TR
 	{
 		int ret_val = -1;
 
+		if (((x > 0) && (x < mat[0].length - 1)) && (y == 0))
+		{
+			ret_val = 0;
+		}
+		else if ((x == mat[0].length - 1) && ((y > 0) && (y < mat.length - 1)))
+		{
+			ret_val = 1;
+		}
+		else if (((x > 0) && (x < mat[0].length - 1)) && (y == mat.length - 1))
+		{
+			ret_val = 2;
+		}
+		else if ((x == 0) && ((y > 0) && (y < mat.length - 1)))
+		{
+			ret_val = 3;
+		}
+
 		return ret_val;
 	}
+
 
 	public boolean isLocalMin(int[][] matrix, int x, int y)
 	{
