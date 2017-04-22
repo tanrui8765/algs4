@@ -11,7 +11,7 @@ public class LocalMinMatrix_TR
 	// 1: right top point
 	// 2: right bottom point
 	// 3: left bottom point
-	public int isConnerPoint(int[][] mat, int x, int y)
+	public static int isConnerPoint(int[][] mat, int x, int y)
 	{
 		int ret_val = -1;
 
@@ -41,7 +41,7 @@ public class LocalMinMatrix_TR
 	// 1: right side
 	// 2: bottom side
 	// 3: left side
-	public int isSidePoint(int[][] mat, int x, int y)
+	public static int isSidePoint(int[][] mat, int x, int y)
 	{
 		int ret_val = -1;
 
@@ -66,9 +66,104 @@ public class LocalMinMatrix_TR
 	}
 
 
-	public boolean isLocalMin(int[][] matrix, int x, int y)
+	public static boolean isLocalMin(int[][] matrix, int x, int y)
 	{
+		boolean is_local_min = false;
+		int is_conner_point = isConnerPoint(matrix, x, y);
+		if (is_conner_point == -1)
+		{
+			int is_side_point = isSidePoint(matrix, x, y);
+			if (is_side_point == -1)
+			{
+				// Normal Points
+				if ((matrix[x][y] < matrix[x - 1][y]) &&
+						(matrix[x][y] < matrix[x + 1][y]) &&
+						(matrix[x][y] < matrix[x][y - 1]) &&
+						(matrix[x][y] < matrix[x][y + 1]))
+				{
+					is_local_min = true;
+				}
 
+			}
+			else
+			{
+				// Side Points
+				if (is_side_point == 0)      // top side
+				{
+					if ((matrix[x][y] < matrix[x - 1][y]) &&
+							(matrix[x][y] < matrix[x + 1][y]) &&
+							(matrix[x][y] < matrix[x][y + 1]))
+					{
+						is_local_min = true;
+					}
+				}
+				else if (is_side_point == 1) // right side
+				{
+					if ((matrix[x][y] < matrix[x - 1][y]) &&
+							(matrix[x][y] < matrix[x][y - 1]) &&
+							(matrix[x][y] < matrix[x][y + 1]))
+					{
+						is_local_min = true;
+					}
+				}
+				else if (is_side_point == 2) // bottom side
+				{
+					if ((matrix[x][y] < matrix[x - 1][y]) &&
+							(matrix[x][y] < matrix[x + 1][y]) &&
+							(matrix[x][y] < matrix[x][y - 1]))
+					{
+						is_local_min = true;
+					}
+				}
+				else if (is_side_point == 3) // left side
+				{
+					if ((matrix[x][y] < matrix[x + 1][y]) &&
+							(matrix[x][y] < matrix[x][y - 1]) &&
+							(matrix[x][y] < matrix[x][y + 1]))
+					{
+						is_local_min = true;
+					}
+				}
+			}
+		}
+		else
+		{
+			// Conner Points
+			if (is_conner_point == 0)        // left top
+			{
+				if ((matrix[x][y] < matrix[x + 1][y]) &&
+						(matrix[x][y] < matrix[x][y + 1]))
+				{
+					is_local_min = true;
+				}
+			}
+			else if (is_conner_point == 1)   // right top
+			{
+				if ((matrix[x][y] < matrix[x - 1][y]) &&
+						(matrix[x][y] < matrix[x][y + 1]))
+				{
+					is_local_min = true;
+				}
+			}
+			else if (is_conner_point == 2)   // right bottom
+			{
+				if ((matrix[x][y] < matrix[x - 1][y]) &&
+						(matrix[x][y] < matrix[x][y - 1]))
+				{
+					is_local_min = true;
+				}
+			}
+			else if (is_conner_point == 3)   // left bottom
+			{
+				if ((matrix[x][y] < matrix[x + 1][y]) &&
+						(matrix[x][y] < matrix[x][y - 1]))
+				{
+					is_local_min = true;
+				}
+			}
+		}
+
+		return is_local_min;
 	}
 
 
@@ -76,6 +171,16 @@ public class LocalMinMatrix_TR
 	{
 		int[][] a = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-		StdOut.println(a[2][2]);
+		for (int j = 0; j < a.length; j++)
+		{
+			for (int i = 0; i < a[0].length; i++)
+			{
+				boolean is_local_min = isLocalMin(a, i, j);
+				if (is_local_min == true)
+				{
+					StdOut.println("local min: " + a[i][j] + "; " + "x is " + i + "; " + "y is " + j + ";");
+				}
+			}
+		}
 	}
 }
