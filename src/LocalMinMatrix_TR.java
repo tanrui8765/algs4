@@ -2,6 +2,11 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Created by the_real_Rui on 20/4/2017.
+ *
+ * Three reference websites, demonstrate a better solution:
+ * "http://stackoverflow.com/questions/18525179/find-local-minimum-in-n-x-n-matrix-in-on-time"
+ * "http://www.filipekberg.se/2014/02/10/understanding-peak-finding/"
+ * "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf"
  */
 public class LocalMinMatrix_TR
 {
@@ -169,7 +174,7 @@ public class LocalMinMatrix_TR
 
 	public static void main(String[] args)
 	{
-		int[][] a = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+		int[][] a = {{10, 2, 3}, {4, 5, 6}, {7, 1, 9}};
 
 		for (int j = 0; j < a.length; j++)
 		{
