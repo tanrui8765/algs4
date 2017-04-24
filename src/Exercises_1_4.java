@@ -176,7 +176,12 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_19(String[] args)
 	{
-
+		/*
+		 * Three reference websites, demonstrate a better solution:
+         * "http://stackoverflow.com/questions/18525179/find-local-minimum-in-n-x-n-matrix-in-on-time"
+		 * "http://www.filipekberg.se/2014/02/10/understanding-peak-finding/"
+		 * "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf"
+		 */
 	}
 
 	public static void main(String[] args)
