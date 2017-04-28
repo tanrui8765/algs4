@@ -5,21 +5,26 @@ import edu.princeton.cs.algs4.StdOut;
  */
 public class LocalMinMatrix_TR2
 {
-	public static int findColumnMin(int[][] array, int column)
+	public static int findColumnMin(int[][] matrix, int column)
 	{
 		int min = Integer.MAX_VALUE;
 		int index = 0;
 
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < matrix.length; i++)
 		{
-			if (min > array[i][column])
+			if (min > matrix[i][column])
 			{
-				min = array[i][column];
+				min = matrix[i][column];
 				index = i;
 			}
 		}
 
 		return index;
+	}
+
+	int findLocalMin(int[][] matrix, int left, int right)
+	{
+
 	}
 
 	public static void main(String[] args)
