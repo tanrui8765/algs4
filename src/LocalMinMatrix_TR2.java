@@ -24,6 +24,14 @@ public class LocalMinMatrix_TR2
 
 	int findLocalMin(int[][] matrix, int left, int right)
 	{
+		// if(matrix.length <= 0) return 0;
+
+		int j = (left + right) / 2;
+		int column_min = findColumnMin(matrix, j);
+
+		if ()
+
+
 
 	}
 
