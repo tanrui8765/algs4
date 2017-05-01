@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public class BinarySearch
 {
+	// this binary search is not apply for negative numbers.
 	public static int rank(int key, int[] a, int start_pos, int end_pos)
 	{
 		if (start_pos > end_pos) return -1;

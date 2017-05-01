@@ -2,6 +2,8 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Created by the_real_Rui on 1/5/2017.
+ *
+ * Note: this algorithm is not good enough for arrays that contain negative numbers.
  */
 public class BitonicSearch_TR
 {
@@ -10,7 +12,7 @@ public class BitonicSearch_TR
 		BitonicMax bm = new BitonicMax();
 		BinarySearch bs = new BinarySearch();
 
-		int key = 10;
+		int key = 20;
 		int N = 20;
 		int[] a = bm.bitonic(N);
 		int max_pos = bm.max(a, 0, N - 1);
