@@ -9,6 +9,24 @@ import java.util.Arrays;
 
 public class BinarySearch
 {
+	public static int rank(int key, int[] a, int start_pos, int end_pos)
+	{
+		if (start_pos > end_pos) return -1;
+		if (start_pos < 0) return -1;
+		if (end_pos > a.length - 1) return -1;
+
+		int lo = start_pos;
+		int hi = end_pos;
+		while (lo <= hi)
+		{   // Key is in a[lo..hi] or not present.
+			int mid = lo + (hi - lo) / 2;
+			if (key < a[mid]) hi = mid - 1;
+			else if (key > a[mid]) lo = mid + 1;
+			else return mid;
+		}
+		return -1;
+	}
+
     public static int rank(int key, int[] a)
     {   // Array must be sorted.
         int lo = 0;

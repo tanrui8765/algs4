@@ -190,6 +190,11 @@ public class Exercises_1_4
 		// In LocalMinMatrix_TR2.java, the algs is referenced from websites above, which is expected to be more efficient.
 	}
 
+	public static void exercise_1_4_20(String[] args)
+	{
+		// In BitonicSearch_TR.java
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
