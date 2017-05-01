@@ -22,24 +22,51 @@ public class LocalMinMatrix_TR2
 		return index;
 	}
 
-	int findLocalMin(int[][] matrix, int left, int right)
+	public static void findLocalMin(int[][] matrix)
 	{
 		// if(matrix.length <= 0) return 0;
 
-		int j = (left + right) / 2;
-		int column_min = findColumnMin(matrix, j);
+		int left = 0;
+		int right = matrix[0].length - 1;
 
-		boolean is_local_min = isLocalMin(matrix, j, column_min);
+		int j = 0;
+		int column_min = 0;
+		boolean is_local_min = false;
+
+		do
+		{
+			j = (left + right) / 2;
+			column_min = findColumnMin(matrix, j);
+
+			// this function is not well written, the x and y are inverted.
+			// will fix this later.
+			is_local_min = isLocalMin(matrix, column_min, j);
+
+			if (is_local_min == false)
+			{
+				// move to Left
+				if (matrix[column_min][j] > matrix[column_min][j - 1])
+				{
+					right = j - 1;
+				}
+				// move to Right
+				else if (matrix[column_min][j] > matrix[column_min][j + 1])
+				{
+					left = j + 1;
+				}
+			}
+			else
+			{
+				StdOut.println("local min is: " + matrix[column_min][j] + ", x: " + j + ", y: " + column_min);
+				break;
+			}
+		}
+		while (left < right);
 
 		if (is_local_min == false)
 		{
-
+			StdOut.println("No local min found.");
 		}
-		else
-		{
-
-		}
-
 	}
 
 	// Return
@@ -216,6 +243,6 @@ public class LocalMinMatrix_TR2
 			StdOut.println();
 		}
 
-		StdOut.println("Column Min: " + a[findColumnMin(a, 0)][0]);
+		findLocalMin(a);
 	}
 }

@@ -182,6 +182,12 @@ public class Exercises_1_4
 		 * "http://www.filipekberg.se/2014/02/10/understanding-peak-finding/"
 		 * "http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf"
 		 */
+
+		// the purpose of this exercise is to find a local min, but not THE global min.
+		// this means once we found the local min, we can output it, then its done.
+
+		// In LocalMinMatrix_TR.java, there is a slowest version.
+		// In LocalMinMatrix_TR2.java, the algs is referenced from websites above, which is expected to be more efficient.
 	}
 
 	public static void main(String[] args)

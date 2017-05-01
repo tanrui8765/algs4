@@ -180,6 +180,9 @@ public class LocalMinMatrix_TR
 		{
 			for (int i = 0; i < a[0].length; i++)
 			{
+
+				// this function is not well written, the x and y are inverted.
+				// will fix this later.
 				boolean is_local_min = isLocalMin(a, i, j);
 				if (is_local_min == true)
 				{
