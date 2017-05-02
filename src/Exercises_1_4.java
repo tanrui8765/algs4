@@ -195,6 +195,11 @@ public class Exercises_1_4
 		// In BitonicSearch_TR.java
 	}
 
+	public static void exercise_1_4_21(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
