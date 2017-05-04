@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class StaticSETofInts_TR
 {
 	private int[] a;
+	private int[] a_distinct;
 
 	public StaticSETofInts_TR(int[] keys)
 	{
@@ -20,6 +21,30 @@ public class StaticSETofInts_TR
 		Arrays.sort(a);
 		StdOut.println("Array Size: " + a.length);
 	}
+
+// Function Below is referenced from web:"https://ask.julyedu.com/question/558#!answer_form";
+/*
+	public StaticSETofInts_TR2(int[] keys)
+	{
+		a = new int[keys.length];
+		for (int i = 0; i < keys.length; i++)
+		{
+			a[i] = keys[i];
+		}
+		Arrays.sort(a);
+
+		// remove duplicates
+		int length = 0;
+		for (int i = 0; i < a.length; i++)
+			if ((i == 0) || (a[i] != a[length - 1]))
+				a[length++] = a[i];
+		// no duplications in a[] now.
+		a_distinct = new int[length];
+		for (int i = 0; i < length; i++)
+			a_distinct[i] = a[i];
+		StdOut.println("Array Size: " + a_distinct.length);
+	}
+*/
 
 	public boolean contains(int key)
 	{

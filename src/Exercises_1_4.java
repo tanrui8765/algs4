@@ -197,7 +197,13 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_21(String[] args)
 	{
+		// The constructor code is in StaticSETofInts_TR.java
+		// Function "StaticSETofInts_TR2" is referenced from web:"https://ask.julyedu.com/question/558#!answer_form";
 
+		// this solution is trying to change the constructor to create a sorted distinct element array.
+		// In this case the binary search's running time would be guaranteed to be ~lg(R). (Not tested yet)
+
+		// However, is this really RIGHT ?
 	}
 
 	public static void main(String[] args)
