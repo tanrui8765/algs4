@@ -208,7 +208,7 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_22(String[] args)
 	{
-
+		// to be finished
 	}
 
 	public static void main(String[] args)
