@@ -1,3 +1,7 @@
+import edu.princeton.cs.algs4.StdOut;
+
+import java.util.Arrays;
+
 /**
  * Created by the_real_Rui on 12/5/2017.
  */
@@ -39,7 +43,7 @@ public class FibonacciSearch_ACM
 			433494437, 701408733, 1134903170, 1836311903
 	};
 
-	public static int fbsearch(int[] data, int n, int key)
+	public static int FibonacciSearch(int[] data, int n, int key)
 	{
 		int k, idx, offs;
 		int prevn = -1, prevk = -1;
@@ -70,9 +74,35 @@ public class FibonacciSearch_ACM
 			idx = offs + Fib[--k];
 
 			/* note that at this point k  has already been decremented once */
-
+			if ((idx >= n) || (key < data[idx])) // index out of bounds or key in 1st part
+			{
+				continue;
+			}
+			else if (key > data[idx])
+			{
+				// key in 2nd part
+				offs = idx;
+				--k;
+			}
+			else // key == data[idx], found
+				return idx;
 		}
+
+		return -1; // not found
 	}
 
+	public static void main(String[] args)
+	{
+		int NUM = 10;
+		int[] array = new int[NUM];
 
+		for (int i = 0; i < NUM; ++i)
+		{
+			array[i] = i;
+		}
+
+		StdOut.println(Arrays.toString(array) + array[2]);
+
+		StdOut.printf("FibonacciSearch Index : %d\n", FibonacciSearch(array, NUM, array[2]));
+	}
 }
