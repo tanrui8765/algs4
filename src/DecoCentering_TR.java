@@ -69,6 +69,11 @@ public class DecoCentering_TR
 
 	}
 
+	public void isOverlap()
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		DecoCentering_TR dc = new DecoCentering_TR();
