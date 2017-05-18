@@ -2,6 +2,9 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Created by the_real_Rui on 8/5/2017.
+ *
+ * Code in this file is mainly from web below:
+ * http://blog.csdn.net/flymu0808/article/details/53217890
  */
 public class FibonacciSearch_TR
 {
@@ -77,6 +80,16 @@ public class FibonacciSearch_TR
 		return -1;
 	}
 
+	// 终于理解这里的原理了，这个搜索的实质就是要去查找"菲波那切数列"
+	// 一定要对着数列看，参考下面网站（尤其是第三个）：
+	// http://blog.csdn.net/zsw12013/article/details/50003505
+	// http://stackoverflow.com/questions/22877763/is-fibonacci-search-faster-than-binary-search
+	// http://www.geeksforgeeks.org/fibonacci-search/
+
+	// 其本质就是对照菲波那切数列，讲数组分为"少"和"多"两部分，两部分都是临近的菲波那切数列元素；
+	// 目标数据与中间进行查找，如果小于中间，则将"少"的部分，继续根据菲波那切数列回退"两级"到新的"少"和"多"两部分；
+	// 如果目前大于中间，则将"多"的部分，继续根据菲波那切数列回退"一级"到新的"少"和"多"两部分；
+	// 以此类推，依照菲波那切数列数列向原点方向，划分，搜索目标值。
 	int fbsearch(int[] arry, int target)
 	{
 		int fm1 = 1;
@@ -96,6 +109,9 @@ public class FibonacciSearch_TR
 			int mid = min((offset + fm1), arry.length - 1);
 			if (arry[mid] == target)
 				return mid;
+				// 目标数据与中间进行查找，如果小于中间，则将"少"的部分，继续根据菲波那切数列回退"两级"到新的"少"和"多"两部分；
+				// 如果目前大于中间，则将"多"的部分，继续根据菲波那切数列回退"一级"到新的"少"和"多"两部分；
+				// 以此类推，依照菲波那切数列数列向原点方向，划分，搜索目标值。
 			else if (arry[mid] < target)
 			{
 				fm0 = fm2;

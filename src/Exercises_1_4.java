@@ -208,6 +208,23 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_22(String[] args)
 	{
+		// 终于理解这里的原理了，这个搜索的实质就是要去查找"菲波那切数列"
+		// 一定要对着数列看，参考下面网站（尤其是第三个）：
+		// http://blog.csdn.net/zsw12013/article/details/50003505
+		// http://stackoverflow.com/questions/22877763/is-fibonacci-search-faster-than-binary-search
+		// http://www.geeksforgeeks.org/fibonacci-search/
+
+		// 其本质就是对照菲波那切数列，讲数组分为"少"和"多"两部分，两部分都是临近的菲波那切数列元素；
+		// 目标数据与中间进行查找，如果小于中间，则将"少"的部分，继续根据菲波那切数列回退"两级"到新的"少"和"多"两部分；
+		// 如果目前大于中间，则将"多"的部分，继续根据菲波那切数列回退"一级"到新的"少"和"多"两部分；
+		// 以此类推，依照菲波那切数列数列向原点方向，划分，搜索目标值。
+
+		// 它的好处，如网站中的一些介绍：
+		// 对储存器的访问可能比较少，因为搜索空间总是落在"少"的空间内，内存跨度较小，现代储存器如Cache等如果比较小，是可以考虑。
+		// 仅仅使用了加减法操作，比起乘除法，会更高一些，当然，也是取决于CPU
+
+		// 因此才说，FibonacciSearch是个特殊的BinarySearch。
+		// 详细请见 FibonacciSearch_TR.java FibonacciSearch_ACM.java
 	}
 
 	public static void main(String[] args)
