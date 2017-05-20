@@ -227,6 +227,10 @@ public class Exercises_1_4
 		// 详细请见 FibonacciSearch_TR.java FibonacciSearch_ACM.java
 	}
 
+	public static void exercise_1_4_23(String[] args)
+	{
+
+	}
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
