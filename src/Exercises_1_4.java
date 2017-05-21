@@ -230,6 +230,7 @@ public class Exercises_1_4
 	public static void exercise_1_4_23(String[] args)
 	{
 		// gotta to for a business trip. will back late this week.
+		// http://stackoverflow.com/questions/9702576/binary-search-if-array-contains-duplicates
 	}
 	public static void main(String[] args)
 	{
