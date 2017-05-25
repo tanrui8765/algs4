@@ -2,6 +2,8 @@ import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Created by john on 2017/5/25.
+ *
+ * Array must sorted first, in ascending order.
  */
 public class BinarySearch_WithDuplicates
 {
@@ -12,23 +14,31 @@ public class BinarySearch_WithDuplicates
 		while (lo <= hi)
 		{
 			int mid = lo + (hi - lo) / 2;
-			if (k < data[mid])
+			if (k < data[mid])		// key smaller than mid value, find to the left section
 			{
 				hi = mid - 1;
 			}
-			else if (k > data[mid])
+			else if (k > data[mid])	// key larger than mid value, find to the right section
 			{
 				lo = mid + 1;
 			}
+			// key equal to the mid value, if mid value is not the largest index, and the mid value and mid+1
+			// are equal, it means duplicates exist, search further to the right(higher) section.
 			else if ((mid != (data.length - 1)) && (k == data[mid]) && (k == data[mid + 1]))
 			{
 				lo = mid + 1;
 			}
+			// if key equal to the mid value,
+			// and if mid index is reached to the top index,
+			// or if mid value is the key and the mid+1(higher) value is not the key,
+			// any condition above means the higher bound of duplicates found.
 			else
 			{
 				return mid;
 			}
 		}
+
+		// if cursor lo greater than cursor hi, means search complete, and nothing found.
 		return -1;
 	}
 
