@@ -232,6 +232,12 @@ public class Exercises_1_4
 		// In BinarySearch_WithDuplicates.java
 		// this implementation can guarantee log(n) time to find the bound value of duplicates.
 	}
+
+	public static void exercise_1_4_24(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
