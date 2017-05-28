@@ -235,6 +235,7 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_24(String[] args)
 	{
+		// http://tianjun.me/essays/57
 		// http://www.datagenetics.com/blog/july22012/index.html
 	}
 
