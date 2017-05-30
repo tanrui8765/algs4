@@ -33,6 +33,72 @@ public class ThrowEggs_TR
 	}
 
 	// test through floors to see how many tries to find the threshold floor, with Binary Search.
+	public static int building_test_doubling_n_binary(int N, int F)
+	{
+		boolean is_egg_break = false;
+		int test_cnt = 0;
+
+		int start = 1;
+		int end = 1;
+
+		do
+		{
+			test_cnt++;
+			is_egg_break = throw_egg_once(F, end);
+			if (is_egg_break == true)
+			{
+				egg_cnt++;
+			}
+			if (is_egg_break == true)
+			{
+				break;
+			}
+			start = end;
+			end = end * 2;
+		}
+		while (end <= N);
+
+		if (end > N)
+		{
+			end = N;
+		}
+
+		// if the threshold floor not found, keep on searching with binary search.
+		if (F != end)
+		{
+			int lo = start;
+			int hi = end;
+			int mid = 0;
+
+			while (lo <= hi)
+			{
+				test_cnt++;
+				mid = lo + (hi - lo) / 2;
+				is_egg_break = throw_egg_once(F, mid);
+
+				if (is_egg_break == true)
+				{
+					egg_cnt++;
+				}
+
+				if ((is_egg_break == true) && (mid == F))
+				{
+					break;
+				}
+				else if (is_egg_break == true)
+				{
+					hi = mid - 1;
+				}
+				else // is_egg_break == false
+				{
+					lo = mid + 1;
+				}
+			}
+		}
+		return test_cnt;
+	}
+
+	// test through floors to see how many tries to find the threshold floor, with Binary Search.
 	public static int building_test_binary(int N, int F)
 	{
 		boolean is_egg_break = false;
@@ -128,7 +194,8 @@ public class ThrowEggs_TR
 			egg_cnt = 0;
 
 //			find_thresh_cnt = building_test_basic(build_story_num, egg_break_floor);
-			find_thresh_cnt = building_test_binary(build_story_num, egg_break_floor);
+//			find_thresh_cnt = building_test_binary(build_story_num, egg_break_floor);
+			find_thresh_cnt = building_test_doubling_n_binary(build_story_num, egg_break_floor);
 
 			if (find_thresh_cnt > worst_case_cnt)
 			{
@@ -153,7 +220,7 @@ public class ThrowEggs_TR
 
 		for (int i = 1; i <= (T / 2); i++)
 		{
-			N = N * i;
+			N = N * (int) Math.pow((double) 2, (double) i);
 			unit_test(N, T);
 		}
 

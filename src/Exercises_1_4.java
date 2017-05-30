@@ -235,8 +235,16 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_24(String[] args)
 	{
+		// References:
 		// http://tianjun.me/essays/57
 		// http://www.datagenetics.com/blog/july22012/index.html
+
+
+		// the code is in ThrowEggs_TR.java
+
+		// However, the second part of question: "find a way to reduce the cost to ~2lgF when N is much larger than F."
+		// i think the code in ThrowEggs_TR.java - building_test_doubling_n_binary() might achieve the goal,
+		// but i am not so sure yet...... need some review later.
 	}
 
 	public static void main(String[] args)
