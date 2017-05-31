@@ -247,6 +247,31 @@ public class Exercises_1_4
 		// but i am not so sure yet...... need some review later.
 	}
 
+	public static void exercise_1_4_25(String[] args)
+	{
+		// References:
+		// http://tianjun.me/essays/57
+		// http://www.datagenetics.com/blog/july22012/index.html
+
+		// the code is in ThrowEggs_TR.java
+
+		// this question will take a balance with only 2 eggs and try counts.
+		// the websites above provide the solution very useful.
+
+		// I have to take time to review 1.4.24 and 1.4.25, very interesting question!
+
+		// Some functions:
+
+		// The answer to 1.4.24
+		//	building_test_basic(build_story_num, egg_break_floor);
+		//	building_test_binary(build_story_num, egg_break_floor);
+		//	building_test_doubling_n_binary(build_story_num, egg_break_floor);
+
+		// The answer to 1.4.25
+		//	building_test_jump_fix(build_story_num,egg_break_floor);
+		//	building_test_jump_vari(build_story_num,egg_break_floor);
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
