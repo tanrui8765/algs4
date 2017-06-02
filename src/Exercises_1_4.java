@@ -272,6 +272,11 @@ public class Exercises_1_4
 		//	building_test_jump_vari(build_story_num,egg_break_floor);
 	}
 
+	public static void exercise_1_4_26(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
