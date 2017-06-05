@@ -274,7 +274,10 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_26(String[] args)
 	{
+		// In ThreeColinearity_TR.java
 
+		// Refer from:
+		// "https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ex14/Ex1426ThreeCollinearity.java"
 	}
 
 	public static void main(String[] args)
