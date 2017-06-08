@@ -3,4 +3,6 @@
  */
 public class QueueWithTwoStacks_TR
 {
+	// A queue is first in first out
+	// A queue is last in first out
 }
