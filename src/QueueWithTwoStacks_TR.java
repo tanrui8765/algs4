@@ -2,6 +2,8 @@ import edu.princeton.cs.algs4.Stack;
 
 /**
  * Created by the_real_Rui on 7/6/2017.
+ *
+ * https://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks
  */
 public class QueueWithTwoStacks_TR<Item>
 {
@@ -34,12 +36,30 @@ public class QueueWithTwoStacks_TR<Item>
 	}
 
 	// this method is not amortized operation
+//	public Item dequeue()
+//	{
+//		Item out_item = null;
+//		shift_between_stacks(out_stk, in_stk);
+//		out_item = out_stk.pop();
+//		shift_between_stacks(in_stk, out_stk);
+//
+//		if (out_item != null)
+//			n_nodes--;
+//
+//		return out_item;
+//	}
+
+	// this is the way to amortized the operations.
 	public Item dequeue()
 	{
-		Item out_item = null;
-		shift_between_stacks(out_stk, in_stk);
-		out_item = out_stk.pop();
-		shift_between_stacks(in_stk, out_stk);
+		if (out_stk.isEmpty() == true)
+		{
+			while (in_stk.isEmpty() == false)
+			{
+				out_stk.push(in_stk.pop());
+			}
+		}
+		Item out_item = out_stk.pop();
 
 		if (out_item != null)
 			n_nodes--;
