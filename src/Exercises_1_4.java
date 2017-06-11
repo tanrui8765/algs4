@@ -288,6 +288,14 @@ public class Exercises_1_4
 		// https://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks
 	}
 
+	public static void exercise_1_4_28(String[] args)
+	{
+		// In StackWithOneQueue_TR.java
+
+		// not a robust implementation. just for demo.
+	}
+
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);

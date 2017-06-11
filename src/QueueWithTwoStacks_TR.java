@@ -16,6 +16,8 @@ public class QueueWithTwoStacks_TR<Item>
 
 	public QueueWithTwoStacks_TR()
 	{
+		in_stk = new Stack<Item>();
+		out_stk = new Stack<Item>();
 		n_nodes = 0;
 	}
 
