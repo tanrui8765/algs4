@@ -282,7 +282,10 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_27(String[] args)
 	{
+		// In QueueWithTwoStacks_TR.java
 
+		// Referred from below
+		// https://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks
 	}
 
 	public static void main(String[] args)
