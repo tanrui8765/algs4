@@ -28,7 +28,8 @@ public class StequeWithTwoStacks_TR<Item>
 
 	public void push(Item item)
 	{
-
+		in_stk.push(item);
+		n_nodes++;
 	}
 
 	public Item pop()
@@ -38,12 +39,26 @@ public class StequeWithTwoStacks_TR<Item>
 
 	public void enqueue(Item item)
 	{
-
+		in_stk.push(item);
+		n_nodes++;
 	}
 
+	// this is the way to amortized the operations.
 	public Item dequeue()
 	{
+		if (out_stk.isEmpty() == true)
+		{
+			while (in_stk.isEmpty() == false)
+			{
+				out_stk.push(in_stk.pop());
+			}
+		}
+		Item out_item = out_stk.pop();
 
+		if (out_item != null)
+			n_nodes--;
+
+		return out_item;
 	}
 
 }
