@@ -295,6 +295,16 @@ public class Exercises_1_4
 		// not a robust implementation. just for demo.
 	}
 
+	public static void exercise_1_4_29(String[] args)
+	{
+		// In StequeWithTwoStacks_TR.java
+
+		// the queue part is the same with exercise 1.4.27
+		// the stack part is the opposite of the exercise 1.4.27
+
+		// queue part explanation please refer to
+		// "https://stackoverflow.com/questions/69192/how-to-implement-a-queue-using-two-stacks"
+	}
 
 	public static void main(String[] args)
 	{

@@ -34,7 +34,19 @@ public class StequeWithTwoStacks_TR<Item>
 
 	public Item pop()
 	{
+		if (in_stk.isEmpty() == true)
+		{
+			while (out_stk.isEmpty() == false)
+			{
+				in_stk.push(out_stk.pop());
+			}
+		}
+		Item out_item = in_stk.pop();
 
+		if (out_item != null)
+			n_nodes--;
+
+		return out_item;
 	}
 
 	public void enqueue(Item item)
@@ -61,4 +73,8 @@ public class StequeWithTwoStacks_TR<Item>
 		return out_item;
 	}
 
+	public void main(String args[])
+	{
+		// test code later.
+	}
 }
