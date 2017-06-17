@@ -43,13 +43,12 @@ public class DequeWithStackAndStaque_TR<Item>
 	//Amortized O(1)
 	public Item popLeft()
 	{
-//		if (staque.isEmpty() == true)
-//		{
-//			while (stack.isEmpty() == false)
-//			{
-//
-//			}
-//		}
+		if (staque.isEmpty() == true)
+		{
+			while (stack.isEmpty() == false)
+			{
+			}
+		}
 	}
 
 	//Amortized O(1)
