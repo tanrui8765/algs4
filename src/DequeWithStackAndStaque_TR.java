@@ -5,8 +5,8 @@ import edu.princeton.cs.algs4.Stack;
  */
 public class DequeWithStackAndStaque_TR<Item>
 {
-	private Stack<Item> stack;        // left
-	private Steque_TR<Item> staque;    // right
+	private Stack<Item> stack;         // right
+	private Steque_TR<Item> staque;    // left
 	private int n_nodes = 0;
 
 	public DequeWithStackAndStaque_TR()
@@ -47,14 +47,39 @@ public class DequeWithStackAndStaque_TR<Item>
 		{
 			while (stack.isEmpty() == false)
 			{
+				staque.enqueue(stack.pop());
 			}
 		}
+
+		Item out_item = staque.pop();
+
+		if (out_item != null)
+		{
+			n_nodes--;
+		}
+
+		return out_item;
 	}
 
 	//Amortized O(1)
 	public Item popRight()
 	{
+		if (stack.isEmpty() == true)
+		{
+			while (staque.isEmpty() == false)
+			{
+				stack.push(staque.pop());
+			}
+		}
 
+		Item out_item = stack.pop();
+
+		if (out_item != null)
+		{
+			n_nodes--;
+		}
+
+		return out_item;
 	}
 
 	public void main(String args[])
