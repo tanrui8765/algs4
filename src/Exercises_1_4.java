@@ -311,6 +311,11 @@ public class Exercises_1_4
 		// In DequeWithStackAndStaque_TR.java
 	}
 
+	public static void exercise_1_4_31(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);

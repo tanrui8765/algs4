@@ -10,7 +10,20 @@ public class DequeWithThreeStacks_TR<Item>
 
 	public DequeWithThreeStacks_TR()
 	{
+		stack1 = new Stack<Item>();
+		stack2 = new Stack<Item>();
+		stack3 = new Stack<Item>();
+		n_nodes = 0;
+	}
 
+	public int size()
+	{
+		return n_nodes;
+	}
+
+	public boolean isEmpty()
+	{
+		return (n_nodes == 0);
 	}
 
 	public void main(String[] args)
