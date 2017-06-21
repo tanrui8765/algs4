@@ -26,6 +26,26 @@ public class DequeWithThreeStacks_TR<Item>
 		return (n_nodes == 0);
 	}
 
+	//O(1)
+	public void pushLeft(Item item)
+	{
+	}
+
+	//O(1)
+	public void pushRight(Item item)
+	{
+	}
+
+	//Amortized O(1)
+	public Item popLeft()
+	{
+	}
+
+	//Amortized O(1)
+	public Item popRight()
+	{
+	}
+
 	public void main(String[] args)
 	{
 
