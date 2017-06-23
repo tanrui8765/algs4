@@ -5,14 +5,14 @@ import edu.princeton.cs.algs4.Stack;
  */
 public class DequeWithThreeStacks_TR<Item>
 {
-	private Stack<Item> stack1, stack2, stack3;
+	private Stack<Item> stack_left, stack_mid, stack_right;
 	private int n_nodes = 0;
 
 	public DequeWithThreeStacks_TR()
 	{
-		stack1 = new Stack<Item>();
-		stack2 = new Stack<Item>();
-		stack3 = new Stack<Item>();
+		stack_left = new Stack<Item>();
+		stack_mid = new Stack<Item>();
+		stack_right = new Stack<Item>();
 		n_nodes = 0;
 	}
 
@@ -29,16 +29,21 @@ public class DequeWithThreeStacks_TR<Item>
 	//O(1)
 	public void pushLeft(Item item)
 	{
+		stack_left.push(item);
+		n_nodes++;
 	}
 
 	//O(1)
 	public void pushRight(Item item)
 	{
+		stack_right.push(item);
+		n_nodes++;
 	}
 
 	//Amortized O(1)
 	public Item popLeft()
 	{
+
 	}
 
 	//Amortized O(1)
