@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.Stack;
  * Created by the_real_Rui on 18/6/2017.
  *
  * https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ds/DequeWithThreeStacks.java
+ * https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ex14/Ex1431DequeWithThreeStacks.java
  */
 public class DequeWithThreeStacks_TR<Item>
 {
