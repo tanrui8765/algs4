@@ -313,7 +313,7 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_31(String[] args)
 	{
-
+		// O(1) push is easy, but how to pop with O(1) complexity ???
 	}
 
 	public static void main(String[] args)
