@@ -1,5 +1,7 @@
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.NoSuchElementException;
+
 /**
  * Created by the_real_Rui on 18/6/2017.
  *
@@ -46,7 +48,19 @@ public class DequeWithThreeStacks_TR<Item>
 	//Amortized O(1)
 	public Item popLeft()
 	{
+		// remove and return an item from the left end, i.e. the first item.
+		// rebalance the allocation of items between stack left and stack right if appropriate
 
+		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
+		if (!stack_left.isEmpty())
+		{
+			return stack_left.pop();
+		}
+		else
+		{
+			int s = stack_right.size();
+			if (s == 1) return stack_right.pop();
+		}
 	}
 
 	//Amortized O(1)
