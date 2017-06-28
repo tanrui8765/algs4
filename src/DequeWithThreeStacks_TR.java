@@ -60,6 +60,20 @@ public class DequeWithThreeStacks_TR<Item>
 		{
 			int s = stack_right.size();
 			if (s == 1) return stack_right.pop();
+			if (s - 1 > 1) // balance stack_left and stack_right (excuse to use stack_mid)
+			{
+				for (int i = 0; i < (s - 1) / 2; i++)
+				{
+					stack_mid.push(stack_right.pop());
+				}
+				s = stack_right.size();
+				for (int i = 0; i < s - 1; i++)
+				{
+					stack_left.push(stack_right.pop());
+				}
+				Item first = stack_right.pop();
+				s = stack_mid.size();
+			}
 		}
 	}
 
