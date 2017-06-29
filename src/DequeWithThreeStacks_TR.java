@@ -73,6 +73,19 @@ public class DequeWithThreeStacks_TR<Item>
 				}
 				Item first = stack_right.pop();
 				s = stack_mid.size();
+				for (int i = 0; i < s; i++)
+				{
+					stack_right.push(stack_mid.pop());
+				}
+				return first;
+			}
+			else
+			{
+				for (int i = 0; i < s - 1; i++)
+				{
+					stack_left.push(stack_right.pop());
+				}
+				return stack_right.pop();
 			}
 		}
 	}
