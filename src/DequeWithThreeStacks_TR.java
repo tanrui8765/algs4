@@ -93,6 +93,9 @@ public class DequeWithThreeStacks_TR<Item>
 	//Amortized O(1)
 	public Item popRight()
 	{
+		// remove and return an item from the right end, i.e. the last item
+		// rebalance the allocation of items between stack1 and stack2 if appropriate
+		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
 	}
 
 	public void main(String[] args)
