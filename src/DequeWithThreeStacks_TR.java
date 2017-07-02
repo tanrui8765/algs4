@@ -96,6 +96,13 @@ public class DequeWithThreeStacks_TR<Item>
 		// remove and return an item from the right end, i.e. the last item
 		// rebalance the allocation of items between stack1 and stack2 if appropriate
 		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
+
+		if (!stack_right.isEmpty())
+			return stack_right.pop();
+		else
+		{
+			int s = stack_left.size();
+		}
 	}
 
 	public void main(String[] args)
