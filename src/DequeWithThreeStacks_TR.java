@@ -101,7 +101,7 @@ public class DequeWithThreeStacks_TR<Item>
 			return stack_right.pop();
 		else
 		{
-			int s = stack_left.size();
+
 		}
 	}
 
