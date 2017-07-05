@@ -99,10 +99,7 @@ public class DequeWithThreeStacks_TR<Item>
 
 		if (!stack_right.isEmpty())
 			return stack_right.pop();
-		else
-		{
 
-		}
 	}
 
 	public void main(String[] args)
