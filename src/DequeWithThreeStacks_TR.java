@@ -103,6 +103,10 @@ public class DequeWithThreeStacks_TR<Item>
 		{
 			int s = stack_left.size();
 			if (s == 1) return stack_left.pop();
+			if (s - 1 > 1) // balance stack_left and stack_right (excuse to use stack_mid)
+			{
+
+			}
 		}
 
 	}
