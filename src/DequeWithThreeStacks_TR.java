@@ -34,16 +34,21 @@ public class DequeWithThreeStacks_TR<Item>
 	//O(1)
 	public void pushLeft(Item item)
 	{
+		stack_left.push(item);
+		n_nodes++;
 	}
 
 	//O(1)
 	public void pushRight(Item item)
 	{
+		stack_right.push(item);
+		n_nodes++;
 	}
 
 	//Amortized O(1)
 	public Item popLeft()
 	{
+		// remove and return an item from the left end. i.e.
 	}
 
 	//Amortized O(1)
