@@ -313,7 +313,12 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_31(String[] args)
 	{
-		// O(1) push is easy, but how to pop with O(1) complexity ???
+		// In DequeWithThreeStacks_TR.java
+
+		// This module is not tested. the main algorithm is a copy from:
+		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ds/DequeWithThreeStacks.java
+
+		// A better chinese version is "https://www.zhihu.com/question/53233538"
 	}
 
 	public static void main(String[] args)

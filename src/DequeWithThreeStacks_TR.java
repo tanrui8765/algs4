@@ -49,7 +49,7 @@ public class DequeWithThreeStacks_TR<Item>
 	public Item popLeft()
 	{
 		// remove and return an item from the left end. i.e. the first item.
-		// rebalance the allocation of items between stack_left and stack_right if appropriate.
+		// rebalance the allocation of items between stack_left and stack_mid if appropriate.
 		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
 
 		if (!stack_left.isEmpty())
@@ -97,10 +97,41 @@ public class DequeWithThreeStacks_TR<Item>
 	//Amortized O(1)
 	public Item popRight()
 	{
+		// remove and return an item from the right end, i.e. the last item
+		// rebalance the allocation of items between stack_left and stack_mid if appropriate
+		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
+		if (!stack_right.isEmpty())
+		{
+			return stack_right.pop();
+		}
+		else
+		{
+			int s = stack_left.size();
+			if (s == 1) return stack_left.pop();
+			if (s - 1 > 1)
+			{
+				// balance stack_left and stack_right(use stack_mid)
+				for (int i = 0; i < (s - 1) / 2; i++) stack_mid.push(stack_left.pop());
+				s = stack_left.size();
+				for (int i = 0; i < s - 1; i++) stack_right.push(stack_left.pop());
+				Item first = stack_left.pop();
+				s = stack_mid.size();
+				for (int i = 0; i < s; i++) stack_left.push(stack_mid.pop());
+				return first;
+			}
+			else
+			{
+				for (int i = 0; i < s - 1; i++) stack_right.push(stack_left.pop());
+				return stack_left.pop();
+			}
+		}
 	}
 
 	public void main(String[] args)
 	{
+		// This module is not tested. the main algorithm is a copy from:
+		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ds/DequeWithThreeStacks.java
 
+		// A better chinese version is "https://www.zhihu.com/question/53233538"
 	}
 }
