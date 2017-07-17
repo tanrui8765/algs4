@@ -48,7 +48,50 @@ public class DequeWithThreeStacks_TR<Item>
 	//Amortized O(1)
 	public Item popLeft()
 	{
-		// remove and return an item from the left end. i.e.
+		// remove and return an item from the left end. i.e. the first item.
+		// rebalance the allocation of items between stack_left and stack_right if appropriate.
+		if (isEmpty()) throw new NoSuchElementException("DequeWithThreeStacks underflow");
+
+		if (!stack_left.isEmpty())
+		{
+			return stack_left.pop();
+		}
+		else
+		{
+			int s = stack_right.size();
+			if (s == 1) return stack_right.pop(); // only 1 node in right stack
+			if (s - 1 > 1) // at least 3 nodes in right stack
+			{ // balance stack_left and stack_right(excuse to use stack_mid)
+				for (int i = 0; i < (s - 1) / 2; i++)
+				{
+					stack_mid.push(stack_right.pop());
+				}
+				s = stack_right.size();
+				for (int i = 0; i < s - 1; i++)
+				{
+					stack_left.push(stack_right.pop());
+				}
+				Item first = stack_right.pop();
+				s = stack_mid.size();
+				for (int i = 0; i < s; i++)
+				{
+					stack_right.push(stack_mid.pop());
+				}
+				return first;
+				// 注解：这里相当于左边栈是没有元素的，右边还是有元素的，把右边的元素一半先挪进中间栈，再将右边栈
+				//		的元素-1挪到左边栈（这样下次再弹出左边时，可以直接从左边弹出），右边还剩下一个，直接弹出。
+				//		将中间栈的元素再挪回到右边栈；
+				//		通过上述方式，将左右两个栈的元素进行平摊；
+			}
+			else // s <= 2 but s != 1 and s != 0
+			{
+				for (int i = 0; i < s - 1; i++)
+				{
+					stack_left.push(stack_right.pop());
+				}
+				return stack_right.pop();
+			}
+		}
 	}
 
 	//Amortized O(1)
