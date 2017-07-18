@@ -321,6 +321,11 @@ public class Exercises_1_4
 		// A better chinese version is "https://www.zhihu.com/question/53233538"
 	}
 
+	public static void exercise_1_4_32(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
