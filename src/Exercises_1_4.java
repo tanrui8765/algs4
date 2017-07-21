@@ -334,6 +334,11 @@ public class Exercises_1_4
 		// https://github.com/zalacer/projects-tn/blob/862c13adc573d6bd88ab242790f67eb5bebc243f/Algorithms4edCh1%2B2/src/ex14/Ex1433MemoryRequirementsOn32BitMachine.java
 	}
 
+	public static void exercise_1_4_34(String[] args)
+	{
+
+	}
+
 	public static void main(String[] args)
 	{
 		exercise_1_4_12(args);
