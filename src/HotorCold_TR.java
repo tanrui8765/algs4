@@ -16,9 +16,31 @@ public class HotorCold_TR
 		return StdRandom.uniform(min_num, (max_num + 1));
 	}
 
-	public static int new_guess(int min_num, int max_num, int prev_guess_value, int prev_guess_rate)
+	public static int new_guess(int min_num, int max_num, int prev_guess_value, int[] prev_guess_rate)
 	{
+		int guess_num = 0;
 
+		if (prev_guess_value == 0) // the first guess, no previous guess
+		{
+			guess_num = min_num + (max_num - min_num) / 2;
+		}
+		else
+		{
+			if (prev_guess_rate[0] == 0)
+			{
+				guess_num = prev_guess_value - 1;
+			}
+			else if (prev_guess_rate[0] == 1)
+			{
+				guess_num = prev_guess_value - 1;
+			}
+			else if (prev_guess_rate[0] == -1)
+			{
+				guess_num = prev_guess_value - 2;
+			}
+		}
+
+		return guess_num;
 	}
 
 	public static boolean is_guess_hit(int secret_num, int guess_num)
@@ -26,26 +48,45 @@ public class HotorCold_TR
 		return (secret_num == guess_num);
 	}
 
-	// return result: guess doesn't go further or closer 0; closer 1; further -1;
-	public static int guess_result_rating(int secret_num, int guess_num, int prev_guess_num)
+	// return result[0]: guess doesn't go further or closer 0; closer 1; further -1;
+	// return result[1]: guess direction in negative dir -1; in positive dir 1; stays dir 0;
+	public static int[] guess_result_rating(int secret_num, int guess_num, int prev_guess_num, int min_num, int max_num)
 	{
-		int ret_val = 0;
+		int[] ret_val = new int[2];
+
+		if (prev_guess_num == 0)
+		{
+			prev_guess_num = min_num;
+		}
 
 		if (Math.abs(guess_num - secret_num) == Math.abs(prev_guess_num - secret_num))
 		{
-			ret_val = 0;
+			ret_val[0] = 0;
 		}
 		else if (Math.abs(guess_num - secret_num) > Math.abs(prev_guess_num - secret_num))
 		{
-			ret_val = -1;
+			ret_val[0] = -1;
 		}
 		else if (Math.abs(guess_num - secret_num) < Math.abs(prev_guess_num - secret_num))
 		{
-			ret_val = 1;
+			ret_val[0] = 1;
 		}
 		else
 		{
 			throw new RuntimeException("No Such case in guess_result().");
+		}
+
+		if (guess_num > prev_guess_num)
+		{
+			ret_val[1] = 1;
+		}
+		else if (guess_num < prev_guess_num)
+		{
+			ret_val[1] = -1;
+		}
+		else
+		{
+			ret_val[1] = 0;
 		}
 
 		return ret_val;
@@ -68,8 +109,8 @@ public class HotorCold_TR
 		int new_guess_val = 0;
 		int prev_guess_val = 0;
 
-		int new_guess_rate = 0;
-		int prev_guess_rate = 0;
+		int[] new_guess_rate = new int[2];
+		int[] prev_guess_rate = new int[2];
 
 		int guess_cnt = 0;
 
@@ -79,7 +120,7 @@ public class HotorCold_TR
 
 			new_guess_val = new_guess(min_num, max_num, prev_guess_val, prev_guess_rate);
 			is_secret_num_found = is_guess_hit(secret_num, new_guess_val);
-			new_guess_rate = guess_result_rating(secret_num, new_guess_val, prev_guess_val);
+			new_guess_rate = guess_result_rating(secret_num, new_guess_val, prev_guess_val, min_num, max_num);
 
 			if (is_secret_num_found == false)
 			{
