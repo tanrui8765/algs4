@@ -336,7 +336,6 @@ public class Exercises_1_4
 
 	public static void exercise_1_4_34(String[] args)
 	{
-		// Read CSAPP Chapter 3 today~
 	}
 
 	public static void main(String[] args)
